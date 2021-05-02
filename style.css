@@ -13,3 +13,10 @@ h2 {
 h1 {
 	font-size: 3.5em;
 }
+button {
+	font-family: "JetBrains Mono Light";
+	border-radius: 20%;
+	border: midnightblue;
+	background-color: midnightblue;
+	color: lightgray;
+}

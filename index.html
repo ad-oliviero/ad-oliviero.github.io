@@ -12,6 +12,9 @@
 				document.onmousedown = new Function("return false");
 				document.onmouseup = new Function("return true");
 			}
+			function wipalert() {
+				alert("This website is work in progress");
+			}
 		</script>
 	</head>
 	<body>
@@ -23,6 +26,7 @@
 				data-rotate='["Coming soon..."]'
 			></span>
 		</h1>
+		<button onclick="wipalert()">Test</button>
 		<script>
 			var TxtRotate = function (el, toRotate, period) {
 				this.toRotate = toRotate;
@@ -42,7 +46,7 @@
 					'<span class="wrap">' + this.txt + "</span>";
 
 				var that = this;
-				var delta = 300 - Math.random() * 100;
+				var delta = 300 - Math.random() * 200;
 				setTimeout(function () {
 					that.tick();
 				}, delta);
@@ -50,7 +54,7 @@
 
 			window.onload = function () {
 				var elements = document.getElementsByClassName("txt-rotate");
-				new TxtRotate(
+				var txtRot = new TxtRotate(
 					elements[0],
 					JSON.parse(elements[0].getAttribute("data-rotate"))
 				);
@@ -59,7 +63,6 @@
 				css.innerHTML =
 					".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
 				document.body.appendChild(css);
-				console.log(elements[0].getAttribute("toRotate"));
 			};
 		</script>
 	</body>
