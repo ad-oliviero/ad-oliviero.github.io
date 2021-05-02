@@ -2,13 +2,65 @@
 <html>
 	<head>
 		<title>TheDarkBug</title>
-		<link
-			rel="icon"
-			type="image/png"
-			href="https://thedarkbug.github.io/favicon.png"
-		/>
+		<link rel="icon" type="image/png" href="favicon.png" />
+		<link rel="stylesheet" href="style.css" />
+		<meta charset="UTF-8" />
+		<script>
+			if (typeof document.onselectstart != "undefined") {
+				document.onselectstart = new Function("return false");
+			} else {
+				document.onmousedown = new Function("return false");
+				document.onmouseup = new Function("return true");
+			}
+		</script>
 	</head>
 	<body>
-		<p>Coming soon...</p>
+		<!-- <h1></h1> -->
+		<h1>
+			<span
+				class="txt-rotate"
+				data-period="2000"
+				data-rotate='["Coming soon..."]'
+			></span>
+		</h1>
+		<script>
+			var TxtRotate = function (el, toRotate, period) {
+				this.toRotate = toRotate;
+				this.el = el;
+				this.loopNum = 0;
+				this.txt = "";
+				this.tick();
+			};
+
+			TxtRotate.prototype.tick = function () {
+				var i = this.loopNum % this.toRotate.length;
+				var fullTxt = this.toRotate[i];
+
+				this.txt = fullTxt.substring(0, this.txt.length + 1);
+
+				this.el.innerHTML =
+					'<span class="wrap">' + this.txt + "</span>";
+
+				var that = this;
+				var delta = 300 - Math.random() * 100;
+				setTimeout(function () {
+					that.tick();
+				}, delta);
+			};
+
+			window.onload = function () {
+				var elements = document.getElementsByClassName("txt-rotate");
+				new TxtRotate(
+					elements[0],
+					JSON.parse(elements[0].getAttribute("data-rotate"))
+				);
+				var css = document.createElement("style");
+				css.type = "text/css";
+				css.innerHTML =
+					".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+				document.body.appendChild(css);
+				console.log(elements[0].getAttribute("toRotate"));
+			};
+		</script>
 	</body>
 </html>

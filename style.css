@@ -1,0 +1,15 @@
+body {
+	background-color: #101521;
+	text-align: center;
+	color: #666;
+	font-family: "JetBrains Mono Light";
+}
+
+h1,
+h2 {
+	font-weight: 200;
+	margin: 0.4em 0;
+}
+h1 {
+	font-size: 3.5em;
+}
