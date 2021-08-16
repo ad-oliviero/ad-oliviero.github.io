@@ -1,39 +1,14 @@
 body {
-	background-color: #101521;
+	background-color: #fafafa;
 	text-align: center;
-	color: #666;
-	font-family: "JetBrains Mono Light";
+	color: #000000;
+	/* font-family: "JetBrains Mono"; */
 	display: flex;
 	min-height: 100vh;
 	flex-direction: column;
 }
 
-h1,
-h2 {
-	font-weight: 200;
-	margin: 0.4em 0;
-}
 h1 {
-	font-size: 3.5em;
-}
-button {
-	font-family: "JetBrains Mono Light";
-	border-radius: 20px;
-	border: none;
-	transition-duration: 0.5s;
-	background-color: #101521;
-	padding: 5px 10px;
-	color: lightgray;
-	/* text-align: center; */
-}
-
-button:hover {
-	background-color: midnightblue;
-	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
-		0 17px 50px 0 rgba(0, 0, 0, 0.19);
-	cursor: pointer;
-}
-
-main {
-	flex: 1 0 auto;
+	color: navy;
+	/* font: "JetBrains Mono"; */
 }
