@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="/icons/favicon.png" type="image/x-icon">
-  <link rel="stylesheet" href="/style.css">
-  <script src="/index.js"></script>
-  <title>BFLI</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/icons/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/index.js"></script>
+    <script src="bfli.js"></script>
+    <title>BFLI</title>
 </head>
+
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="/" class="nav-link">Home</a></li>
-        <li><a href="/bfli/bfli.html" class="nav-link">BFLI</a></li>
-        <script type="text/javascript">active_page();</script>
-      </ul>
-    </nav>
-  <hr>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/bfli/bfli.html" class="nav-link">BFLI</a></li>
+                <script type="text/javascript">
+                    active_page();
+                </script>
+            </ul>
+        </nav>
+        <hr>
+        <h1>Brainfuck live interpreter (and compiler)</h1>
+        <textarea id="user_input"></textarea>
+        <br>
+        <div class="exec_btn_div">
+            <button onclick="bfli_main(document.getElementById('user_input').value)">Execute</button>
+        </div>
+        <p id="bfli_out"></p>
 </body>
+
 </html>
