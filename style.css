@@ -65,10 +65,7 @@ li a:hover {
     background-color: #111;
 }
 
-
-/* ++++++++++++++++++++++++++++[>+++<-]>.+++++++++++++++++.++++++++++++++.+..... */
-
-textarea {
+#user_input {
     resize: none;
     word-wrap: unset;
     width: 100%;
@@ -78,10 +75,17 @@ textarea {
     border: 2px solid #6cc;
     border-radius: 10px;
     background-color: #e8e8e8;
+    font-family: monospace;
     font-size: 16px;
+    -webkit-touch-callout: initial;
+    -webkit-user-select: initial;
+    -khtml-user-select: initial;
+    -moz-user-select: initial;
+    -ms-user-select: initial;
+    user-select: initial;
 }
 
-button {
+.exec_btn {
     display: inline-block;
     padding: 0.3em 1.2em;
     margin: 0 0.1em 0.1em 0;
@@ -93,17 +97,62 @@ button {
     font-size: large;
     color: #FFFFFF;
     text-align: center;
-    transition: all 0.5s;
+    transition: all 0.2s;
     background-color: #4e9af1;
-    /* position: absolute; */
-    /* left: 50%; */
     width: 50%;
+    height: 50px;
 }
 
-button:hover {
+.exec_btn:hover {
     border-color: #ffffff;
+    background-color: #367dce;
 }
 
 .exec_btn_div {
     text-align: center;
+}
+
+#bfli_out {
+    display: inline-block;
+    padding: 0.3em 1.2em;
+    margin: 0 0.1em 0.1em 0;
+    box-sizing: border-box;
+    border: 2px solid #6cc;
+    border-radius: 10px;
+    background-color: #e8e8e8;
+    height: 150px;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: large;
+    transition: all 0.2s;
+    width: 100%;
+    -webkit-touch-callout: initial;
+    -webkit-user-select: initial;
+    -khtml-user-select: initial;
+    -moz-user-select: initial;
+    -ms-user-select: initial;
+    user-select: initial;
+}
+
+#bfli_out:hover {
+    background-color: #cecece;
+}
+
+.bfli_out_div .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    margin-left: -60px;
+    width: 120px;
+}
+
+.bfli_out_div:hover .tooltiptext {
+    visibility: visible;
 }

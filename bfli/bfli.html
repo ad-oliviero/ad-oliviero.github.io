@@ -19,18 +19,23 @@
                 <li><a href="/" class="nav-link">Home</a></li>
                 <li><a href="/bfli/bfli.html" class="nav-link">BFLI</a></li>
                 <script type="text/javascript">
-                    active_page();
+                    activate_page();
                 </script>
             </ul>
         </nav>
         <hr>
         <h1>Brainfuck live interpreter (and compiler)</h1>
-        <textarea id="user_input"></textarea>
+        <textarea id="user_input" placeholder="Insert some brainfuck code here"></textarea>
+        <br>
         <br>
         <div class="exec_btn_div">
-            <button onclick="bfli_main(document.getElementById('user_input').value)">Execute</button>
+            <button onclick="bfli_main(document.getElementById('user_input').value)" class="exec_btn">Execute</button>
         </div>
-        <p id="bfli_out"></p>
+        <br>
+        <div class="bfli_out_div">
+            <span class="tooltiptext">Click to copy the output</span>
+            <p id="bfli_out" onclick="navigator.clipboard.writeText(textContent)"></p>
+        </div>
 </body>
 
 </html>
