@@ -33,7 +33,7 @@ module.exports = {
   },
   logLevel: "info",
   logPrefix: "Browsersync",
-  logConnections: true,
+  logConnections: false,
   logFileChanges: true,
   logSnippet: true,
   rewriteRules: [],

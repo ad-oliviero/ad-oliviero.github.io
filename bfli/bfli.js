@@ -22,6 +22,7 @@ async function load_bfli() {
 function bfli_main(input) {
   const len = input.length;
   if (len > 0) {
+    input = input.replaceAll("\n", "");
     const OUT_SZ = 32768;
     let output = new Uint8Array(memoryG.buffer, 0, OUT_SZ);
     let input_cstr = new Uint8Array(memoryG.buffer, OUT_SZ, OUT_SZ);
