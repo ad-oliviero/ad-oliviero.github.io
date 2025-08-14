@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/global.js"></script>
+    <script src="bfli.js"></script>
+    <title>Brainfuck Live Interpreter</title>
+  </head>
+  <body>
+    <script src="/global.js"></script>
+    <div id="navbar_placeholder"></div>
+    <main>
+      <div class="d-flex justify-content-between">
+        <div style="width: 100%; height: 100%; padding: 10px">
+          <textarea
+            id="user_input"
+            class="form-control"
+            type="text"
+            rows="5"
+            placeholder="Brainfuck Source Code"
+            style="resize: none"
+          ></textarea>
+        </div>
+        <div style="width: 100%; height: 100%; padding: 10px">
+          <textarea
+            id="bfli_out"
+            class="form-control"
+            type="text"
+            rows="5"
+            placeholder="Output will be displayed here..."
+            onclick="navigator.clipboard.writeText(textContent)"
+            readonly
+            data-toggle="tooltip"
+            data-placement="bottom"
+            style="resize: none"
+            title="Click to copy the output"
+          ></textarea>
+        </div>
+      </div>
+      <div class="container dropdown-center" style="display: flex; flex-direction: column">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Examples
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <a
+              class="dropdown-item"
+              onClick="document.getElementById('user_input').innerHTML='++++++++++[>+++++++>++++++++++>++<<<-]>++.>+.<<+++[>>++<<-]>>+..+++.>.<<<+++++[>+++<-]>.>.+++.------.--------.><<<++++[>>>+++<<<-]>>>+.'"
+              >Hello World</a
+            >
+          </li>
+        </ul>
+      </div>
+    </main>
+    <div id="footer_placeholder"></div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
