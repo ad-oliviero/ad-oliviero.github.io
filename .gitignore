@@ -1,0 +1,6 @@
+public/
+sass_cache/
+.zola-checkouts/
+
+.DS_Store
+Thumbs.db

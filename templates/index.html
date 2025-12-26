@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto min-h-screen flex flex-col justify-center items-start">
+        <div class="font-mono text-indigo-400 mb-4">Ciao, I am</div>
+        <h1 class="text-5xl sm:text-7xl font-bold text-white mb-6 tracking-tight">
+            {{ config.extra.author }}.
+        </h1>
+        <h2 class="text-4xl sm:text-5xl font-bold text-slate-400 mb-8 tracking-tight">
+	  Computer Engineering Student
+        </h2>
+        <div class="max-w-xl text-lg text-slate-400 mb-12 leading-relaxed">
+            <p>{{ section.extra.hero_description }}</p>
+        </div>
+        <div class="flex flex-wrap gap-4">
+            <a href="#projects" class="border border-indigo-500 text-indigo-400 hover:bg-indigo-500/10 px-6 py-3 rounded font-mono transition-colors">
+                Check out my projects
+            </a>
+	    <a href="{{ config.extra.resume }}" target="_blank" class="border border-indigo-500 text-indigo-400 hover:bg-indigo-500/10 px-6 py-3 rounded font-mono transition-colors">My Resume</a>
+            <a href="{{ config.extra.github }}" target="_blank" class="border border-indigo-500 text-slate-400 hover:bg-indigo-500/10 px-6 py-3 rounded font-mono transition-colors flex gap-2 hover:text-white px-6 py-3 transition-colors">
+	      <svg role="img" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                GitHub
+            </a>
+        </div>
+
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div class="flex items-center mb-12">
+            <h2 class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">01.</span>About Me</h2>
+            <div class="h-px bg-slate-700 flex-grow"></div>
+        </div>
+        
+        <div class="text-slate-400 leading-relaxed space-y-4 max-w-2xl">
+             {{ section.content | safe }}
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div class="flex items-center mb-12">
+            <h2 class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">02.</span>Experience</h2>
+            <div class="h-px bg-slate-700 flex-grow"></div>
+        </div>
+
+        <div class="space-y-12 border-l border-slate-700 ml-3 md:ml-0 pl-8 md:pl-0">
+            {% for job in config.extra.experience %}
+            <div class="relative md:grid md:grid-cols-4 md:gap-4">
+                <div class="hidden md:block text-right px-4 pt-1">
+                    <div class="font-mono text-xs text-slate-500">{{ job.dates }}</div>
+                    <div class="text-sm font-semibold text-slate-300">{{ job.location }}</div>
+                </div>
+                <!-- Timeline Dot -->
+                <div class="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-indigo-500 bg-slate-900 md:left-auto md:right-0 md:hidden"></div>
+                
+                <div class="md:col-span-3">
+                    <h3 class="text-xl font-bold text-white">{{ job.role }} @ <a href="{{ job.url }}" target="_blank" class="text-indigo-400 hover:underline">{{ job.company }}</a></h3>
+                    <div class="md:hidden font-mono text-xs text-slate-500 mb-2">{{ job.dates }} | {{ job.location }}</div>
+                    <p class="mt-2 text-slate-400">{{ job.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+        <div class="flex items-center mb-12">
+            <h2 class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">03.</span>Some Things I've Built</h2>
+            <div class="h-px bg-slate-700 flex-grow"></div>
+        </div>
+
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <!-- We will loop through the project pages here -->
+            {% set projects_section = get_section(path="projects/_index.md") %}
+            {% for project in projects_section.pages | sort(attribute="extra.order") %}
+            <a href="{{ project.extra.github_url }}" target="_blank" class="group bg-slate-800 rounded-lg p-6 hover:-translate-y-2 transition-transform duration-300 border border-slate-700 shadow-lg flex flex-col h-full">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="text-indigo-400 group-hover:text-indigo-300 transition-colors">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                    </div>
+                    <svg class="w-5 h-5 text-slate-500 group-hover:text-indigo-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">{{ project.title }}</h3>
+                <div class="text-slate-400 text-sm mb-4 flex-grow">
+                    {{ project.content | safe }}
+                </div>
+                <div class="font-mono text-xs text-slate-500 mt-4 space-x-2">
+                    {% for tag in project.extra.tags %}
+                    <span>{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+
+        <div class="mt-12 text-center">
+            <a href="{{ config.extra.github }}?tab=repositories" target="_blank" class="inline-flex items-center gap-2 border border-indigo-500 text-indigo-400 hover:bg-indigo-500/10 px-8 py-4 rounded font-mono transition-colors">
+                View All My Projects
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div class="flex items-center mb-12">
+            <h2 class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">04.</span>Skills & Tools</h2>
+            <div class="h-px bg-slate-700 flex-grow"></div>
+        </div>
+
+        <div class="bg-slate-800/50 rounded-xl p-8 border border-slate-700 text-center">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="font-mono text-indigo-400 mb-4 text-lg">Languages</h3>
+                    <div class="flex justify-center gap-2 mb-4">
+                        <img src="https://skillicons.dev/icons?i=c,py,swift,rust" height="50" alt="Languages" />
+                    </div>
+                    <ul class="text-slate-400 text-sm space-y-1 font-mono">
+                        <li>C / Python / Rust / Swift</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-mono text-indigo-400 mb-4 text-lg">Backend & Data</h3>
+                    <div class="flex justify-center gap-2 mb-4">
+                        <img src="https://skillicons.dev/icons?i=flask,mongodb,sqlite" height="50" alt="Backend" />
+                    </div>
+                    <ul class="text-slate-400 text-sm space-y-1 font-mono">
+                        <li>Flask / MongoDB / SQLite</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-mono text-indigo-400 mb-4 text-lg">Tools & Platforms</h3>
+                    <div class="flex justify-center gap-2 mb-4">
+                        <img src="https://skillicons.dev/icons?i=arch,linux,git,docker" height="50" alt="Tools" />
+                    </div>
+                    <ul class="text-slate-400 text-sm space-y-1 font-mono">
+                        <li>Linux (Arch) / Git / Docker</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-mono text-indigo-400 mb-4 text-lg">Editors</h3>
+                    <div class="flex justify-center gap-2 items-center mb-4">
+                        <img src="https://skillicons.dev/icons?i=neovim,vscode,matlab" height="50" alt="Editors" />
+                    </div>
+                    <ul class="text-slate-400 text-sm space-y-1 font-mono">
+                        <li>Neovim / VS Code / MatLab</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div class="flex items-center mb-12">
+            <h2 class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">05.</span>Education</h2>
+            <div class="h-px bg-slate-700 flex-grow"></div>
+        </div>
+
+        <div class="space-y-8">
+            {% for edu in config.extra.education %}
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center {% if not loop.last %}border-b border-slate-800 pb-8{% endif %}">
+                <div>
+                    <h3 class="text-xl font-bold text-white"><a href="{{ edu.url }}" target="_blank" class="hover:text-indigo-400 transition-colors">{{ edu.school }}</a></h3>
+                    <p class="text-slate-400">{{ edu.degree }}</p>
+                </div>
+                <div class="text-right mt-2 md:mt-0">
+                    <div class="font-mono text-indigo-400">{{ edu.dates }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock content %}

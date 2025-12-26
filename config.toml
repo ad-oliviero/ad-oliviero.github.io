@@ -1,0 +1,46 @@
+base_url = "https://ad-oliviero.github.io"
+title = "Adriano Oliviero"
+description = "My Portfolio"
+default_language = "en"
+
+[extra]
+author = "Adriano Oliviero"
+github = "https://github.com/ad-oliviero"
+email = "adrianoliviero23@gmail.com"
+resume = "https://rxresu.me/ad-oliviero/cv"
+
+[[extra.experience]]
+role = "Student"
+company = "Apple Developer Academy"
+url = "https://www.developeracademy.unina.it/"
+dates = "Oct 2025 - Present"
+location = "Napoli, IT"
+description = "Academy program focusing on iOS development, design thinking, and app business."
+
+[[extra.experience]]
+role = "Student"
+company = "Apple Foundation Program"
+url = "https://www.developeracademy.unina.it/"
+dates = "Apr 2024 - May 2024"
+location = "Napoli, IT"
+description = "4-week program covering the fundamentals of Swift and iOS app development."
+
+[[extra.experience]]
+role = "Autonomous Driving System Developer"
+company = "UniNa Corse"
+url = "https://www.unina.it/it/visualizzatore?query=/-/62908421-unina-corse-squadra-corse-federico-ii"
+dates = "Mar 2022 - Jun 2023"
+location = "Napoli, IT"
+description = "Contributed to the AI development team for the university racing team, UniNa Corse. Focused on autonomous driving systems."
+
+[[extra.education]]
+school = "Università degli Studi di Napoli Federico II"
+url = "https://www.unina.it/"
+degree = "Bachelor's in Computer Engineering"
+dates = "2021 - Present"
+
+[[extra.education]]
+school = "Liceo Scientifico Filippo Silvestri"
+url = "https://www.liceosilvestri.edu.it/"
+degree = "High School Diploma (74/100)"
+dates = "2016 - 2021"
