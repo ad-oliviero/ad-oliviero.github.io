@@ -15,7 +15,7 @@
             <p>{{ section.extra.hero_description }}</p>
         </div>
         <div class="flex flex-wrap gap-4">
-            <a href="#projects" class="border border-indigo-500 text-indigo-400 hover:bg-indigo-500/10 px-6 py-3 rounded font-mono transition-colors">
+            <a href="{{ get_url(path="@/all-projects.md") }}" class="border border-indigo-500 text-indigo-400 hover:bg-indigo-500/10 px-6 py-3 rounded font-mono transition-colors">
                 Check out my projects
             </a>
 	    <a href="{{ config.extra.resume }}" target="_blank" rel="noopener noreferrer" class="border border-indigo-500 text-indigo-400 hover:bg-indigo-500/10 px-6 py-3 rounded font-mono transition-colors">My Resume</a>
@@ -99,7 +99,7 @@
         </div>
 
         <div class="mt-12 text-center">
-            <a href="{{ config.extra.github }}?tab=repositories" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-indigo-500 text-indigo-400 hover:bg-indigo-500/10 px-8 py-4 rounded font-mono transition-colors">
+            <a href="{{ get_url(path="@/all-projects.md") }}" class="inline-flex items-center gap-2 border border-indigo-500 text-indigo-400 hover:bg-indigo-500/10 px-8 py-4 rounded font-mono transition-colors">
                 View All My Projects
                 {{ svgs::arrow_right_icon() }}
             </a>
@@ -131,7 +131,7 @@
     </section>
 
     <!-- Education Section -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <section id="education" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <div class="flex items-center mb-12">
             <h2 class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">05.</span>Education</h2>
             <div class="h-px bg-slate-700 flex-grow"></div>

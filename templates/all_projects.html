@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% import "svgs.html" as svgs %}
+
+{% block content %}
+<section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto min-h-screen">
+    <div class="mb-12">
+        <a href="{{ get_url(path="/") }}" class="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 font-mono text-sm mb-6 transition-colors group">
+            {{ svgs::arrow_left_icon(class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform") }}
+            Back to Home
+        </a>
+        <h1 class="text-4xl font-bold text-white mb-6 tracking-tight">All Projects</h1>
+        <p class="text-slate-400 text-lg mb-8">A comprehensive list of my software engineering endeavors.</p>
+        <div id="filter-container" class="flex flex-wrap gap-2"></div>
+    </div>
+
+    {% set projects_section = get_section(path="projects/_index.md") %}
+    {% set projects = projects_section.pages %}
+    {% if projects %}
+    <div class="mb-16" id="pinned-section">
+        <div class="flex items-center mb-8">
+            <h2 class="text-2xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-xl mr-2 section-number">01.</span>Featured Projects</h2>
+            <div class="h-px bg-slate-800 flex-grow"></div>
+        </div>
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" id="pinned-grid">
+            {% for p in projects %}
+            <a href="{{ p.extra.github_url }}" target="_blank" rel="noopener noreferrer" 
+               class="group bg-slate-800 rounded-lg p-6 hover:-translate-y-2 transition-transform duration-300 border border-slate-700 shadow-lg flex flex-col h-full pinned-project project-card" 
+               data-url="{{ p.extra.github_url }}" data-tags="{{ p.extra.tags | join(sep=',') | lower }}">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="text-indigo-400 group-hover:text-indigo-300 transition-colors">{{ svgs::get_icon_for_tags(tags=p.extra.tags) }}</div>
+                    <div class="text-slate-500 group-hover:text-indigo-400 transition-colors">{{ svgs::external_link_icon() }}</div>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">{{ p.title }}</h3>
+                <div class="text-slate-400 text-sm mb-4 flex-grow">{{ p.content | safe }}</div>
+                <div class="font-mono text-xs text-slate-500 mt-4 space-x-2">
+                    {% for t in p.extra.tags %}<span>{{ t }}</span>{% endfor %}
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <div id="repos-section">
+        <div class="flex items-center mb-8">
+            <h2 class="text-2xl font-bold text-white mr-4">
+                <span class="font-mono text-indigo-400 text-xl mr-2 section-number">{% if projects %}02.{% else %}01.{% endif %}</span>
+                Other Repositories
+            </h2>
+            <div class="h-px bg-slate-800 flex-grow"></div>
+        </div>
+        <div id="repos-container" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div class="col-span-full text-center text-slate-500 py-12 animate-pulse font-mono">Fetching latest data from GitHub...</div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const CONFIG = { user: 'ad-oliviero', key: 'gh_cache', ttl: 3600000 };
+    const ICONS = {
+        star: `<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>`,
+        external: `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>`,
+        phone: `<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"></path></svg>`,
+        terminal: `<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"></path></svg>`,
+        globe: `<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S12 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S12 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.546-3.1 1.487-4.282M19.517 6.567A11.974 11.974 0 0012 3c-2.392 0-4.744.578-6.857 1.618"></path></svg>`,
+        chip: `<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25z"></path></svg>`,
+        folder: `<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>`
+    };
+    
+    let activeFilter = 'All';
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        const container = document.getElementById('repos-container');
+        const pinnedUrls = new Set(Array.from(document.querySelectorAll('.pinned-project')).map(el => el.dataset.url.toLowerCase().replace(/\/$/, "")));
+        
+        try {
+            let data = JSON.parse(localStorage.getItem(CONFIG.key));
+            if (!data || Date.now() - data.ts > CONFIG.ttl) {
+                const res = await fetch(`https://api.github.com/users/${CONFIG.user}/repos?sort=pushed&per_page=100`);
+                if (!res.ok) throw new Error('API Error');
+                data = { ts: Date.now(), repos: await res.json() };
+                localStorage.setItem(CONFIG.key, JSON.stringify(data));
+            }
+            
+            const repos = data.repos.filter(r => !r.fork && !pinnedUrls.has(r.html_url.toLowerCase().replace(/\/$/, "")))
+                .sort((a, b) => (b.stargazers_count - a.stargazers_count) || (new Date(b.pushed_at) - new Date(a.pushed_at)));
+            
+            container.innerHTML = repos.length ? '' : '<div class="col-span-full text-center text-slate-500 py-12 font-mono">No other public repositories found.</div>';
+            repos.forEach(r => container.appendChild(createCard(r)));
+            
+            initFilters();
+            updateVisibility();
+        } catch (e) {
+            console.error(e);
+            container.innerHTML = '<div class="col-span-full text-center text-red-400 py-12">Failed to load from GitHub.</div>';
+        }
+    });
+
+    function getIcon(lang) {
+        const l = (lang || '').toLowerCase();
+        if (['swift','kotlin','dart','flutter'].some(x => l.includes(x))) return ICONS.phone;
+        if (['html','css','javascript','typescript','react','vue'].some(x => l.includes(x))) return ICONS.globe;
+        if (['c','c++','rust','go','python','shell'].some(x => l.includes(x))) return ICONS.terminal;
+        if (['verilog','vhdl','assembly'].some(x => l.includes(x))) return ICONS.chip;
+        return ICONS.folder;
+    }
+
+    function createCard(repo) {
+        const a = document.createElement('a');
+        a.className = 'group bg-slate-800 rounded-lg p-6 hover:-translate-y-2 transition-transform duration-300 border border-slate-700 shadow-lg flex flex-col h-full project-card';
+        a.href = repo.html_url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+        a.dataset.tags = (repo.language || '').toLowerCase();
+        
+        a.innerHTML = `
+            <div class="flex justify-between items-center mb-4">
+                <div class="text-indigo-400 group-hover:text-indigo-300 transition-colors">${getIcon(repo.language)}</div>
+                <div class="flex items-center gap-3">
+                    ${repo.stargazers_count > 0 ? `<div class="flex items-center gap-1 text-yellow-500 text-xs font-mono ml-auto">${ICONS.star}${repo.stargazers_count}</div>` : ''}
+                    <div class="text-slate-500 group-hover:text-indigo-400 transition-colors">${ICONS.external}</div>
+                </div>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors break-words">${repo.name}</h3>
+            <div class="text-slate-400 text-sm mb-4 flex-grow line-clamp-3">${repo.description || 'No description available.'}</div>
+            ${repo.language ? `<span class="font-mono text-xs text-slate-500 mt-4">${repo.language}</span>` : ''}
+        `;
+        return a;
+    }
+
+    function initFilters() {
+        const skills = new Set();
+        document.querySelectorAll('.project-card').forEach(el => el.dataset.tags.split(',').forEach(t => t && skills.add(t.trim())));
+        const container = document.getElementById('filter-container');
+        
+        const renderBtns = () => {
+            container.innerHTML = ['All', ...Array.from(skills).sort()].map(s => `
+                <button onclick="filter('${s}')" class="px-3 py-1 text-sm rounded-full border transition-colors duration-200 font-mono ${s === activeFilter ? 'bg-indigo-500/10 border-indigo-500 text-indigo-400' : 'bg-slate-800 border-slate-700 text-slate-400 hover:border-slate-500'}">${s}</button>
+            `).join('');
+        };
+        
+        window.filter = (s) => {
+            activeFilter = s;
+            document.querySelectorAll('.project-card').forEach(c => c.style.display = (s === 'All' || c.dataset.tags.split(',').includes(s.toLowerCase())) ? 'flex' : 'none');
+            renderBtns();
+            updateVisibility();
+        };
+        renderBtns();
+    }
+
+    function updateVisibility() {
+        let n = 1;
+        ['pinned', 'repos'].forEach(id => {
+            const sec = document.getElementById(`${id}-section`);
+            if (!sec) return;
+            const vis = Array.from(sec.querySelectorAll('.project-card')).some(c => c.style.display !== 'none');
+            sec.style.display = vis ? 'block' : 'none';
+            if (vis) sec.querySelector('.section-number').innerText = `0${n++}.`;
+        });
+    }
+</script>
+{% endblock content %}
