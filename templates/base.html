@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-slate-900 [&::-webkit-scrollbar-thumb]:bg-slate-700 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-slate-600">
+<html lang="en" class="scroll-smooth snap-y snap-mandatory h-screen overflow-y-scroll scrollbar-hide">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +25,20 @@
                         }
                     }
                 }
-            }
+            },
+            plugins: [
+                function ({ addUtilities }) {
+                    addUtilities({
+                        '.scrollbar-hide': {
+                            '-ms-overflow-style': 'none', /* IE and Edge */
+                            'scrollbar-width': 'none', /* Firefox */
+                            '&::-webkit-scrollbar': {
+                                display: 'none' /* Safari and Chrome */
+                            }
+                        }
+                    })
+                }
+            ]
         }
     </script>
 </head>
@@ -53,6 +66,8 @@
                 </div>
             </div>
         </div>
+        <!-- Scroll Progress Bar -->
+        <div id="scroll-progress" class="absolute bottom-0 left-0 h-[3px] bg-indigo-500 w-0 transition-[width] duration-100 ease-linear"></div>
     </nav>
 
     <main>
@@ -69,6 +84,15 @@
         </nav>
         <p>&copy; 2025 {{ config.extra.author }}</p>
     </footer>
+
+    <script>
+        document.addEventListener('scroll', function() {
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("scroll-progress").style.width = scrolled + "%";
+        }, { capture: true });
+    </script>
 
 </body>
 </html>

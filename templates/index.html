@@ -3,7 +3,7 @@
 
 {% block content %}
     <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto min-h-screen flex flex-col justify-center items-start">
+    <section class="snap-start pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto min-h-screen flex flex-col justify-center items-start">
         <div class="font-mono text-indigo-400 mb-4">Ciao, I am</div>
         <h1 class="text-5xl sm:text-7xl font-bold text-white mb-6 tracking-tight">
             {{ config.extra.author }}.
@@ -28,7 +28,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <section id="about" class="snap-start py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <div class="flex items-center mb-12">
             <h2 class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">01.</span>About Me</h2>
             <div class="h-px bg-slate-700 flex-grow"></div>
@@ -40,7 +40,7 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <section id="experience" class="snap-start py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <div class="flex items-center mb-12">
             <h2 class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">02.</span>Experience</h2>
             <div class="h-px bg-slate-700 flex-grow"></div>
@@ -67,7 +67,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <section id="projects" class="snap-start py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <div class="flex items-center mb-12">
             <h2 class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">03.</span>Some Things I've Built</h2>
             <div class="h-px bg-slate-700 flex-grow"></div>
@@ -76,16 +76,27 @@
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {% set projects_section = get_section(path="projects/_index.md") %}
             {% for project in projects_section.pages %}
-            <a href="{{ project.extra.github_url }}" target="_blank" rel="noopener noreferrer" class="group bg-slate-800 rounded-lg p-6 hover:-translate-y-2 transition-transform duration-300 border border-slate-700 shadow-lg flex flex-col h-full">
+            <div class="group bg-slate-800 rounded-lg p-6 hover:-translate-y-2 transition-transform duration-300 border border-slate-700 shadow-lg flex flex-col h-full relative">
                 <div class="flex justify-between items-center mb-4">
                     <div class="text-indigo-400 group-hover:text-indigo-300 transition-colors">
                         {{ svgs::folder_icon() }}
                     </div>
-                    <div class="text-slate-500 group-hover:text-indigo-400 transition-colors">
-                        {{ svgs::external_link_icon() }}
+                    <div class="flex items-center gap-3 z-10">
+                        {% if project.extra.demo_url %}
+                        <a href="{{ project.extra.demo_url }}" class="text-slate-500 hover:text-indigo-400 transition-colors" title="Live Demo">
+                            {{ svgs::play_icon(class="w-5 h-5") }}
+                        </a>
+                        {% endif %}
+                        <a href="{{ project.extra.github_url }}" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-400 transition-colors" title="View Source">
+                            {{ svgs::external_link_icon() }}
+                        </a>
                     </div>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">{{ project.title }}</h3>
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
+                    <a href="{{ project.extra.github_url }}" target="_blank" rel="noopener noreferrer" class="after:absolute after:inset-0">
+                        {{ project.title }}
+                    </a>
+                </h3>
                 <div class="text-slate-400 text-sm mb-4 flex-grow">
                     {{ project.content | safe }}
                 </div>
@@ -94,7 +105,7 @@
                     <span>{{ tag }}</span>
                     {% endfor %}
                 </div>
-            </a>
+            </div>
             {% endfor %}
         </div>
 
@@ -107,7 +118,7 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <section id="skills" class="snap-start py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <div class="flex items-center mb-12">
             <h2 class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">04.</span>Skills & Tools</h2>
             <div class="h-px bg-slate-700 flex-grow"></div>
@@ -131,7 +142,7 @@
     </section>
 
     <!-- Education Section -->
-    <section id="education" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <section id="education" class="snap-start py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <div class="flex items-center mb-12">
             <h2 class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">05.</span>Education</h2>
             <div class="h-px bg-slate-700 flex-grow"></div>

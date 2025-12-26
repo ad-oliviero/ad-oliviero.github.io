@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% import "svgs.html" as svgs %}
+
+{% block content %}
+<section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto min-h-screen">
+    <div class="mb-12">
+        <a href="{{ get_url(path="@/all-projects.md") }}" class="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 font-mono text-sm mb-6 transition-colors group">
+            {{ svgs::back_icon(class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform") }}
+            Back to Projects
+        </a>
+        <h1 class="text-4xl font-bold text-white mb-4 tracking-tight">{{ page.title }} Demo</h1>
+        <p class="text-slate-400 text-lg">{{ page.description }}</p>
+    </div>
+
+    <div class="bg-slate-800 rounded-xl border border-slate-700 shadow-2xl overflow-hidden min-h-[500px] flex items-center justify-center">
+        <div class="text-center p-8">
+            <div class="text-indigo-400 mb-6 flex justify-center">
+                {{ svgs::play_icon(class="w-16 h-16") }}
+            </div>
+            <h2 class="text-2xl font-bold text-white mb-4">Interactive Demo Coming Soon</h2>
+            <p class="text-slate-400 max-w-md mx-auto">This is a placeholder for the {{ page.title }} interactive demo. In the meantime, you can check the source code on GitHub.</p>
+            <a href="{{ page.extra.github_url }}" target="_blank" rel="noopener noreferrer" class="mt-8 inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded font-mono transition-colors">
+                {{ svgs::github_icon() }}
+                View on GitHub
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock content %}

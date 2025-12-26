@@ -23,19 +23,31 @@
         </div>
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" id="pinned-grid">
             {% for p in projects %}
-            <a href="{{ p.extra.github_url }}" target="_blank" rel="noopener noreferrer" 
-               class="group bg-slate-800 rounded-lg p-6 hover:-translate-y-2 transition-transform duration-300 border border-slate-700 shadow-lg flex flex-col h-full pinned-project project-card" 
+            <div class="group bg-slate-800 rounded-lg p-6 hover:-translate-y-2 transition-transform duration-300 border border-slate-700 shadow-lg flex flex-col h-full pinned-project project-card relative" 
                data-url="{{ p.extra.github_url }}" data-tags="{{ p.extra.tags | join(sep=',') | lower }}">
                 <div class="flex justify-between items-center mb-4">
                     <div class="text-indigo-400 group-hover:text-indigo-300 transition-colors">{{ svgs::get_icon_for_tags(tags=p.extra.tags) }}</div>
-                    <div class="text-slate-500 group-hover:text-indigo-400 transition-colors">{{ svgs::external_link_icon() }}</div>
+                    <div class="flex items-center gap-3 z-10">
+                        {% if p.extra.demo_url %}
+                        <a href="{{ p.extra.demo_url }}" class="text-slate-500 hover:text-indigo-400 transition-colors" title="Live Demo">
+                            {{ svgs::play_icon(class="w-5 h-5") }}
+                        </a>
+                        {% endif %}
+                        <a href="{{ p.extra.github_url }}" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-400 transition-colors" title="View Source">
+                            {{ svgs::external_link_icon() }}
+                        </a>
+                    </div>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">{{ p.title }}</h3>
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
+                    <a href="{{ p.extra.github_url }}" target="_blank" rel="noopener noreferrer" class="after:absolute after:inset-0">
+                        {{ p.title }}
+                    </a>
+                </h3>
                 <div class="text-slate-400 text-sm mb-4 flex-grow">{{ p.content | safe }}</div>
                 <div class="font-mono text-xs text-slate-500 mt-4 space-x-2">
                     {% for t in p.extra.tags %}<span>{{ t }}</span>{% endfor %}
                 </div>
-            </a>
+            </div>
             {% endfor %}
         </div>
     </div>
@@ -60,6 +72,7 @@
     const ICONS = {
         star: `<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>`,
         external: `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>`,
+        play: `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>`,
         phone: `<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"></path></svg>`,
         terminal: `<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"></path></svg>`,
         globe: `<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S12 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S12 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.546-3.1 1.487-4.282M19.517 6.567A11.974 11.974 0 0012 3c-2.392 0-4.744.578-6.857 1.618"></path></svg>`,
@@ -106,24 +119,34 @@
     }
 
     function createCard(repo) {
-        const a = document.createElement('a');
-        a.className = 'group bg-slate-800 rounded-lg p-6 hover:-translate-y-2 transition-transform duration-300 border border-slate-700 shadow-lg flex flex-col h-full project-card';
-        a.href = repo.html_url; a.target = '_blank'; a.rel = 'noopener noreferrer';
-        a.dataset.tags = (repo.language || '').toLowerCase();
+        const div = document.createElement('div');
+        div.className = 'group bg-slate-800 rounded-lg p-6 hover:-translate-y-2 transition-transform duration-300 border border-slate-700 shadow-lg flex flex-col h-full project-card relative';
+        div.dataset.tags = (repo.language || '').toLowerCase();
         
-        a.innerHTML = `
+        const demoBtn = repo.homepage ? `
+            <a href="${repo.homepage}" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-400 transition-colors z-10" title="Live Demo">
+                ${ICONS.play}
+            </a>
+        ` : '';
+
+        div.innerHTML = `
             <div class="flex justify-between items-center mb-4">
                 <div class="text-indigo-400 group-hover:text-indigo-300 transition-colors">${getIcon(repo.language)}</div>
-                <div class="flex items-center gap-3">
+                <div class="flex items-center gap-3 z-10">
+                    ${demoBtn}
                     ${repo.stargazers_count > 0 ? `<div class="flex items-center gap-1 text-yellow-500 text-xs font-mono ml-auto">${ICONS.star}${repo.stargazers_count}</div>` : ''}
-                    <div class="text-slate-500 group-hover:text-indigo-400 transition-colors">${ICONS.external}</div>
+                    <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-400 transition-colors" title="View Source">
+                        ${ICONS.external}
+                    </a>
                 </div>
             </div>
-            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors break-words">${repo.name}</h3>
+            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors break-words">
+                <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="after:absolute after:inset-0">${repo.name}</a>
+            </h3>
             <div class="text-slate-400 text-sm mb-4 flex-grow line-clamp-3">${repo.description || 'No description available.'}</div>
             ${repo.language ? `<span class="font-mono text-xs text-slate-500 mt-4">${repo.language}</span>` : ''}
         `;
-        return a;
+        return div;
     }
 
     function initFilters() {
