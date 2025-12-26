@@ -5,6 +5,7 @@ default_language = "en"
 
 [extra]
 author = "Adriano Oliviero"
+role = "Computer Engineering Student"
 github = "https://github.com/ad-oliviero"
 email = "adrianoliviero23@gmail.com"
 resume = "https://rxresu.me/ad-oliviero/cv"
@@ -32,6 +33,26 @@ url = "https://www.unina.it/it/visualizzatore?query=/-/62908421-unina-corse-squa
 dates = "Mar 2022 - Jun 2023"
 location = "Napoli, IT"
 description = "Contributed to the AI development team for the university racing team, UniNa Corse. Focused on autonomous driving systems."
+
+[[extra.skills]]
+category = "Languages"
+icons = "c,py,swift,rust"
+items = ["C", "Python", "Rust", "Swift"]
+
+[[extra.skills]]
+category = "Backend & Data"
+icons = "flask,mongodb,sqlite"
+items = ["Flask", "MongoDB", "SQLite"]
+
+[[extra.skills]]
+category = "Tools & Platforms"
+icons = "arch,linux,git,docker"
+items = ["Linux (Arch)", "Git", "Docker"]
+
+[[extra.skills]]
+category = "Editors"
+icons = "neovim,vscode,matlab"
+items = ["Neovim", "VS Code", "MatLab"]
 
 [[extra.education]]
 school = "Università degli Studi di Napoli Federico II"
