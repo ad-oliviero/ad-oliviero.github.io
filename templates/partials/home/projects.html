@@ -1,0 +1,21 @@
+<!-- Projects Section -->
+<section id="projects" class="snap-start py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <div class="flex items-center mb-12">
+        <h2 class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">03.</span>Some Things I've Built</h2>
+        <div class="h-px bg-slate-700 flex-grow"></div>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {% set projects_section = get_section(path="projects/_index.md") %}
+        {% for project in projects_section.pages %}
+            {{ macros::project_card(project=project) }}
+        {% endfor %}
+    </div>
+
+    <div class="mt-12 text-center">
+        <a href="{{ get_url(path="@/all-projects.md") }}" class="inline-flex items-center gap-2 border border-indigo-500 text-indigo-400 hover:bg-indigo-500/10 px-8 py-4 rounded font-mono transition-colors">
+            View All My Projects
+            {{ svgs::arrow_right_icon() }}
+        </a>
+    </div>
+</section>

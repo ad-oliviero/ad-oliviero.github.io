@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% import "svgs.html" as svgs %}
+{% import "macros.html" as macros %}
 
 {% block content %}
 <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto min-h-screen">
@@ -23,31 +24,7 @@
         </div>
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" id="pinned-grid">
             {% for p in projects %}
-            <div class="group bg-slate-800 rounded-lg p-6 hover:-translate-y-2 transition-transform duration-300 border border-slate-700 shadow-lg flex flex-col h-full pinned-project project-card relative" 
-               data-url="{{ p.extra.github_url }}" data-tags="{{ p.extra.tags | join(sep=',') | lower }}">
-                <div class="flex justify-between items-center mb-4">
-                    <div class="text-indigo-400 group-hover:text-indigo-300 transition-colors">{{ svgs::get_icon_for_tags(tags=p.extra.tags) }}</div>
-                    <div class="flex items-center gap-3 z-10">
-                        {% if p.extra.demo_url %}
-                        <a href="{{ p.extra.demo_url }}" class="text-slate-500 hover:text-indigo-400 transition-colors" title="Live Demo">
-                            {{ svgs::play_icon(class="w-5 h-5") }}
-                        </a>
-                        {% endif %}
-                        <a href="{{ p.extra.github_url }}" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-400 transition-colors" title="View Source">
-                            {{ svgs::external_link_icon() }}
-                        </a>
-                    </div>
-                </div>
-                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
-                    <a href="{{ p.extra.github_url }}" target="_blank" rel="noopener noreferrer" class="after:absolute after:inset-0">
-                        {{ p.title }}
-                    </a>
-                </h3>
-                <div class="text-slate-400 text-sm mb-4 flex-grow">{{ p.content | safe }}</div>
-                <div class="font-mono text-xs text-slate-500 mt-4 space-x-2">
-                    {% for t in p.extra.tags %}<span>{{ t }}</span>{% endfor %}
-                </div>
-            </div>
+                {{ macros::project_card(project=p, class="pinned-project project-card", extra_attrs='data-url="' ~ p.extra.github_url ~ '"') }}
             {% endfor %}
         </div>
     </div>

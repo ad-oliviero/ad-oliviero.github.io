@@ -1,0 +1,16 @@
+<!-- Skills Section -->
+<section id="skills" class="snap-start py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <div class="flex items-center mb-12">
+        <h2 class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">04.</span>Skills & Tools</h2>
+        <div class="h-px bg-slate-700 flex-grow"></div>
+    </div>
+
+    {% set skills_data = load_data(path="data/skills.toml") %}
+    <div class="bg-slate-800/50 rounded-xl p-8 border border-slate-700 text-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {% for skill in skills_data.skills %}
+                {{ macros::skill_category(skill=skill) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>

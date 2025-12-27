@@ -13,46 +13,14 @@
 </head>
 <body class="bg-slate-900 text-slate-300 font-sans antialiased selection:bg-indigo-500 selection:text-white">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-slate-900/90 backdrop-blur-sm border-b border-slate-800">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <a href="{{ get_url(path="/") }}" class="flex-shrink-0 flex items-center gap-3 group">
-                    <img class="h-10 w-10 rounded-full border-2 border-transparent group-hover:border-indigo-500 transition-all" src="{{ get_url(path="img/avatar.png") }}" alt="{{ config.extra.author }}">
-                    <span class="font-mono font-bold text-white text-lg tracking-tighter group-hover:text-indigo-400 transition-colors">
-                        ad-oliviero
-                    </span>
-                </a>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="{{ get_url(path="/") }}#about" class="hover:text-indigo-400 px-3 py-2 rounded text-sm font-medium transition-colors">About</a>
-                        <a href="{{ get_url(path="/") }}#experience" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Experience</a>
-                        <a href="{{ get_url(path="/") }}#projects" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
-                        <a href="{{ get_url(path="/") }}#skills" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
-                        <a href="{{ get_url(path="/") }}#education" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Education</a>
-                        <a href="{{ config.extra.resume }}" target="_blank" rel="noopener noreferrer" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">My Resume</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Scroll Progress Bar -->
-        <div id="scroll-progress" class="absolute bottom-0 left-0 h-[3px] bg-indigo-500 w-0 transition-[width] duration-100 ease-linear"></div>
-    </nav>
+    {% include "partials/nav.html" %}
 
     <main>
         {% block content %}
         {% endblock content %}
     </main>
 
-    <!-- Footer -->
-    <footer class="py-8 text-center text-slate-500 text-sm font-mono bg-slate-900 border-t border-slate-800">
-        <nav class="mb-2" aria-label="Footer Navigation">
-            <a href="mailto:{{ config.extra.email }}" class="hover:text-indigo-400 transition-colors mx-2">Email</a>
-            <a href="{{ config.extra.github }}" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition-colors mx-2">GitHub</a>
-            <a href="{{ config.extra.resume }}" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition-colors mx-2">Resume</a>
-        </nav>
-        <p>&copy; 2025 {{ config.extra.author }}</p>
-    </footer>
+    {% include "partials/footer.html" %}
 
     <script>
         document.addEventListener('scroll', function() {

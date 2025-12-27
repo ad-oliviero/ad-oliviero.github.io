@@ -1,0 +1,14 @@
+<!-- Education Section -->
+<section id="education" class="snap-start py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <div class="flex items-center mb-12">
+        <h2 class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">05.</span>Education</h2>
+        <div class="h-px bg-slate-700 flex-grow"></div>
+    </div>
+
+    {% set education_data = load_data(path="data/education.toml") %}
+    <div class="space-y-8">
+        {% for edu in education_data.education %}
+            {{ macros::education_item(edu=edu, last=loop.last) }}
+        {% endfor %}
+    </div>
+</section>
