@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% import "svgs.html" as svgs %}
+
+{% block content %}
+<section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto min-h-[80vh] flex flex-col items-center justify-center text-center">
+    <div class="mb-8">
+        <a href="{{ get_url(path="/") }}#projects" class="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 font-mono text-sm mb-12 transition-colors group">
+            {{ svgs::arrow_left_icon(class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform") }}
+            Back to Projects
+        </a>
+        
+        <div class="flex justify-center mb-8">
+            <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 shadow-xl text-indigo-400 animate-pulse">
+                {{ svgs::terminal_icon(class="w-16 h-16") }}
+            </div>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6 tracking-tight">
+            {{ page.title | default(value="Work in Progress") }}
+        </h1>
+        
+        <div class="text-slate-400 text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
+            {{ page.content | safe }}
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            {% if page.extra.github_url %}
+            <a href="{{ page.extra.github_url }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-8 py-4 rounded font-mono transition-colors border border-slate-700">
+                {{ svgs::github_icon() }}
+                View Source on GitHub
+            </a>
+            {% endif %}
+            <a href="{{ get_url(path="/") }}" class="inline-flex items-center justify-center gap-2 border border-indigo-500 text-indigo-400 hover:bg-indigo-500/10 px-8 py-4 rounded font-mono transition-colors">
+                Return Home
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock content %}
