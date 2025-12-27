@@ -2,5 +2,8 @@ public/
 sass_cache/
 .zola-checkouts/
 
+static/css/style.css
+tailwindcss
+
 .DS_Store
 Thumbs.db

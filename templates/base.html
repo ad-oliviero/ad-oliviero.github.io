@@ -5,42 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config.title }}</title>
     <meta name="description" content="{{ config.description }}">
-    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link rel="stylesheet" href="{{ get_url(path="css/style.css") }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="{{ get_url(path="favicon.png") }}">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Quattrocento', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        slate: {
-                            850: '#151e2e',
-                            900: '#0f172a',
-                        }
-                    }
-                }
-            },
-            plugins: [
-                function ({ addUtilities }) {
-                    addUtilities({
-                        '.scrollbar-hide': {
-                            '-ms-overflow-style': 'none', /* IE and Edge */
-                            'scrollbar-width': 'none', /* Firefox */
-                            '&::-webkit-scrollbar': {
-                                display: 'none' /* Safari and Chrome */
-                            }
-                        }
-                    })
-                }
-            ]
-        }
-    </script>
 </head>
 <body class="bg-slate-900 text-slate-300 font-sans antialiased selection:bg-indigo-500 selection:text-white">
 
