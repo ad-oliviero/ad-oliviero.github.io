@@ -1,0 +1,20 @@
+[[skills]]
+category = "Languages"
+icons = "c,py,swift,rust"
+items = [ "C", "Python", "Rust", "Swift" ]
+
+[[skills]]
+category = "Backend & Data"
+icons = "flask,mongodb,sqlite"
+items = [ "Flask", "MongoDB", "SQLite" ]
+
+[[skills]]
+category = "Tools & Platforms"
+icons = "arch,linux,git,docker"
+items = [ "Linux (Arch)", "Git", "Docker" ]
+
+[[skills]]
+category = "Editors"
+icons = "neovim,vscode,matlab"
+items = [ "Neovim", "VS Code", "MatLab" ]
+
