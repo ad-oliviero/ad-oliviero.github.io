@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% import "svgs.html" as svgs %}
 
+{% block title %}{{ page.title | default(value="Work in Progress") }} - {{ config.title }}{% endblock title %}
+
 {% block content %}
 <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto min-h-[80vh] flex flex-col items-center justify-center text-center">
     <div class="mb-8">
@@ -8,7 +10,7 @@
             {{ svgs::arrow_left_icon(class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform") }}
             Back to Projects
         </a>
-        
+
         <div class="flex justify-center mb-8">
             <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 shadow-xl text-indigo-400 animate-pulse">
                 {{ svgs::terminal_icon(class="w-16 h-16") }}
@@ -18,7 +20,7 @@
         <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6 tracking-tight">
             {{ page.title | default(value="Work in Progress") }}
         </h1>
-        
+
         <div class="text-slate-400 text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
             {{ page.content | safe }}
         </div>

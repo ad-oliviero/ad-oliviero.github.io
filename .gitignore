@@ -4,6 +4,8 @@ sass_cache/
 
 static/css/style.css
 tailwindcss
+node_modules
+package*
 
 .DS_Store
 Thumbs.db

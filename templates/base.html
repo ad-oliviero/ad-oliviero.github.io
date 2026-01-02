@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config.title }}</title>
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
     <meta name="description" content="{{ config.description }}">
+    <meta name="author" content="{{ config.extra.author }}">
     <link rel="stylesheet" href="{{ get_url(path="css/style.css") }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,24 +13,24 @@
     <link rel="icon" type="image/png" href="{{ get_url(path="favicon.png") }}">
 </head>
 <body class="bg-slate-900 text-slate-300 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-indigo-600 text-white px-4 py-2 rounded z-[100]">
+        Skip to main content
+    </a>
 
     {% include "partials/nav.html" %}
 
-    <main>
-        {% block content %}
-        {% endblock content %}
+    <main id="main-content">
+        {% block content %}{% endblock content %}
     </main>
 
     {% include "partials/footer.html" %}
 
     <script>
-        document.addEventListener('scroll', function() {
-            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById("scroll-progress").style.width = scrolled + "%";
-        }, { capture: true });
+        document.addEventListener('scroll', () => {
+            const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+            const scrolled = (scrollTop / (scrollHeight - clientHeight)) * 100;
+            document.getElementById('scroll-progress').style.width = `${scrolled}%`;
+        }, { passive: true });
     </script>
-
 </body>
 </html>

@@ -1,24 +1,45 @@
-<nav class="fixed w-full z-50 bg-slate-900/90 backdrop-blur-sm border-b border-slate-800">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
-            <a href="{{ get_url(path="/") }}" class="flex-shrink-0 flex items-center gap-3 group">
-                <img class="h-10 w-10 rounded-full border-2 border-transparent group-hover:border-indigo-500 transition-all" src="{{ get_url(path="img/avatar.png") }}" alt="{{ config.extra.author }}">
-                <span class="font-mono font-bold text-white text-lg tracking-tighter group-hover:text-indigo-400 transition-colors">
-                    ad-oliviero
-                </span>
-            </a>
-            <div class="hidden md:block">
-                <div class="ml-10 flex items-baseline space-x-8">
-                    <a href="{{ get_url(path="/") }}#about" class="hover:text-indigo-400 px-3 py-2 rounded text-sm font-medium transition-colors">About</a>
-                    <a href="{{ get_url(path="/") }}#experience" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Experience</a>
-                    <a href="{{ get_url(path="/") }}#projects" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
-                    <a href="{{ get_url(path="/") }}#skills" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
-                    <a href="{{ get_url(path="/") }}#education" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Education</a>
+{% set nav_links = ["about", "experience", "projects", "skills", "education"] %}
+<header>
+    <nav class="fixed w-full z-50 bg-slate-900/90 backdrop-blur-sm border-b border-slate-800" aria-label="Main navigation">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="{{ get_url(path="/") }}" class="flex-shrink-0 flex items-center gap-3 group" aria-label="Home">
+                    <img class="h-10 w-10 rounded-full border-2 border-transparent group-hover:border-indigo-500 transition-all" src="{{ get_url(path="img/avatar.png") }}" alt="" aria-hidden="true">
+                    <span class="font-mono font-bold text-white text-lg tracking-tighter group-hover:text-indigo-400 transition-colors">ad-oliviero</span>
+                </a>
+                <button type="button" id="mobile-menu-btn" class="md:hidden p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+                <div class="hidden md:flex md:items-center md:space-x-6">
+                    {% for link in nav_links %}
+                    <a href="{{ get_url(path="/") }}#{{ link }}" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">{{ link }}</a>
+                    {% endfor %}
                     <a href="{{ config.extra.resume }}" target="_blank" rel="noopener noreferrer" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">My Resume</a>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Scroll Progress Bar -->
-    <div id="scroll-progress" class="absolute bottom-0 left-0 h-[3px] bg-indigo-500 w-0 transition-[width] duration-100 ease-linear"></div>
-</nav>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-slate-900/95 backdrop-blur-sm">
+            <div class="px-4 py-4 space-y-2">
+                {% for link in nav_links %}
+                <a href="{{ get_url(path="/") }}#{{ link }}" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">{{ link }}</a>
+                {% endfor %}
+                <a href="{{ config.extra.resume }}" target="_blank" rel="noopener noreferrer" class="block bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-md text-base font-medium transition-colors text-center mt-4">My Resume</a>
+            </div>
+        </div>
+        <div id="scroll-progress" class="absolute bottom-0 left-0 h-[3px] bg-indigo-500 w-0 transition-[width] duration-100 ease-linear" aria-hidden="true"></div>
+    </nav>
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        menuBtn.onclick = () => {
+            const open = menu.classList.toggle('hidden');
+            menuBtn.setAttribute('aria-expanded', !open);
+            menuBtn.querySelector('.menu-open').classList.toggle('hidden');
+            menuBtn.querySelector('.menu-close').classList.toggle('hidden');
+        };
+        menu.querySelectorAll('a').forEach(a => a.onclick = () => menuBtn.click());
+    </script>
+</header>

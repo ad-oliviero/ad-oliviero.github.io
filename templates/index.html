@@ -3,10 +3,103 @@
 {% import "macros.html" as macros %}
 
 {% block content %}
-    {% include "partials/home/hero.html" %}
-    {% include "partials/home/about.html" %}
-    {% include "partials/home/experience.html" %}
-    {% include "partials/home/projects.html" %}
-    {% include "partials/home/skills.html" %}
-    {% include "partials/home/education.html" %}
+<!-- Hero -->
+<section class="snap-start pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto min-h-screen flex flex-col justify-center items-start" aria-labelledby="hero-heading">
+    <p class="font-mono text-indigo-400 mb-4">Ciao, I am</p>
+    <h1 id="hero-heading" class="text-5xl sm:text-7xl font-bold text-white mb-6 tracking-tight">{{ config.extra.author }}.</h1>
+    <p class="text-4xl sm:text-5xl font-bold text-slate-400 mb-8 tracking-tight">{{ config.extra.role }}</p>
+    <p class="max-w-xl text-lg text-slate-400 mb-12 leading-relaxed">{{ section.extra.hero_description }}</p>
+    <div class="flex flex-wrap gap-4">
+        <a href="{{ get_url(path="@/all-projects.md") }}" class="border border-indigo-500 text-indigo-400 hover:bg-indigo-500/10 px-6 py-3 rounded font-mono transition-colors">Check out my projects</a>
+        <a href="{{ config.extra.resume }}" target="_blank" rel="noopener noreferrer" class="border border-indigo-500 text-indigo-400 hover:bg-indigo-500/10 px-6 py-3 rounded font-mono transition-colors">My Resume</a>
+        <a href="{{ config.extra.github }}" target="_blank" rel="noopener noreferrer" class="border border-indigo-500 text-slate-400 hover:text-white hover:bg-indigo-500/10 px-6 py-3 rounded font-mono transition-colors flex items-center gap-2">{{ svgs::github_icon() }} GitHub</a>
+    </div>
+</section>
+
+<!-- About -->
+<section id="about" class="snap-start py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto" aria-labelledby="about-heading">
+    <div class="flex items-center mb-12">
+        <h2 id="about-heading" class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">{{ section.extra.sections.about }}.</span>About Me</h2>
+        <div class="h-px bg-slate-700 flex-grow" aria-hidden="true"></div>
+    </div>
+    <div class="text-slate-400 leading-relaxed space-y-4 max-w-2xl prose prose-invert prose-indigo">{{ section.content | safe }}</div>
+</section>
+
+<!-- Experience -->
+<section id="experience" class="snap-start py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto" aria-labelledby="experience-heading">
+    <div class="flex items-center mb-12">
+        <h2 id="experience-heading" class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">{{ section.extra.sections.experience }}.</span>Experience</h2>
+        <div class="h-px bg-slate-700 flex-grow" aria-hidden="true"></div>
+    </div>
+    {% set exp = get_section(path="experience/_index.md") %}
+    <div class="space-y-12 border-l border-slate-700 ml-3 md:ml-0 pl-8 md:pl-0">
+        {% for job in exp.extra.items %}
+        <article class="relative md:grid md:grid-cols-4 md:gap-4">
+            <div class="hidden md:block text-right px-4 pt-1">
+                <time class="font-mono text-xs text-slate-500">{{ job.dates }}</time>
+                <div class="text-sm font-semibold text-slate-300">{{ job.location }}</div>
+            </div>
+            <div class="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-indigo-500 bg-slate-900 md:hidden" aria-hidden="true"></div>
+            <div class="md:col-span-3">
+                <h3 class="text-xl font-bold text-white">{{ job.role }} @ <a href="{{ job.url }}" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:underline">{{ job.company }}</a></h3>
+                <div class="md:hidden font-mono text-xs text-slate-500 mb-2"><time>{{ job.dates }}</time> | {{ job.location }}</div>
+                <p class="mt-2 text-slate-400">{{ job.description }}</p>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="snap-start py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto" aria-labelledby="projects-heading">
+    <div class="flex items-center mb-12">
+        <h2 id="projects-heading" class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">{{ section.extra.sections.projects }}.</span>Some Things I've Built</h2>
+        <div class="h-px bg-slate-700 flex-grow" aria-hidden="true"></div>
+    </div>
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {% set projects = get_section(path="projects/_index.md") %}
+        {% for project in projects.pages %}{{ macros::project_card(project=project) }}{% endfor %}
+    </div>
+    <div class="mt-12 text-center">
+        <a href="{{ get_url(path="@/all-projects.md") }}" class="inline-flex items-center gap-2 border border-indigo-500 text-indigo-400 hover:bg-indigo-500/10 px-8 py-4 rounded font-mono transition-colors">View All My Projects {{ svgs::arrow_right_icon() }}</a>
+    </div>
+</section>
+
+<!-- Skills -->
+<section id="skills" class="snap-start py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto" aria-labelledby="skills-heading">
+    <div class="flex items-center mb-12">
+        <h2 id="skills-heading" class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">{{ section.extra.sections.skills }}.</span>Skills & Tools</h2>
+        <div class="h-px bg-slate-700 flex-grow" aria-hidden="true"></div>
+    </div>
+    {% set skills = get_section(path="skills/_index.md") %}
+    <div class="bg-slate-800/50 rounded-xl p-8 border border-slate-700 text-center grid grid-cols-1 md:grid-cols-2 gap-8">
+        {% for skill in skills.extra.items %}
+        <div>
+            <h3 class="font-mono text-indigo-400 mb-4 text-lg">{{ skill.category }}</h3>
+            <img src="https://skillicons.dev/icons?i={{ skill.icons }}" class="mx-auto mb-4" height="50" alt="" loading="lazy" aria-hidden="true">
+            <p class="text-slate-400 text-sm font-mono">{{ skill.items | join(sep=" / ") }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Education -->
+<section id="education" class="snap-start py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto" aria-labelledby="education-heading">
+    <div class="flex items-center mb-12">
+        <h2 id="education-heading" class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">{{ section.extra.sections.education }}.</span>Education</h2>
+        <div class="h-px bg-slate-700 flex-grow" aria-hidden="true"></div>
+    </div>
+    {% set edu = get_section(path="education/_index.md") %}
+    <div class="space-y-8">
+        {% for item in edu.extra.items %}
+        <article class="flex flex-col md:flex-row justify-between items-start md:items-center {% if not loop.last %}border-b border-slate-800 pb-8{% endif %}">
+            <div>
+                <h3 class="text-xl font-bold text-white"><a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition-colors">{{ item.school }}</a></h3>
+                <p class="text-slate-400">{{ item.degree }}</p>
+            </div>
+            <time class="font-mono text-indigo-400 mt-2 md:mt-0">{{ item.dates }}</time>
+        </article>
+        {% endfor %}
+    </div>
+</section>
 {% endblock content %}

@@ -1,4 +1,8 @@
-[[experience]]
++++
+title = "Experience"
+render = false
+
+[[extra.items]]
 role = "Student"
 company = "Apple Developer Academy"
 url = "https://www.developeracademy.unina.it/"
@@ -6,7 +10,7 @@ dates = "Oct 2025 - Present"
 location = "Napoli, IT"
 description = "Academy program focusing on iOS development, design thinking, and app business."
 
-[[experience]]
+[[extra.items]]
 role = "Student"
 company = "Apple Foundation Program"
 url = "https://www.developeracademy.unina.it/"
@@ -14,11 +18,11 @@ dates = "Apr 2024 - May 2024"
 location = "Napoli, IT"
 description = "4-week program covering the fundamentals of Swift and iOS app development."
 
-[[experience]]
+[[extra.items]]
 role = "Autonomous Driving System Developer"
 company = "UniNa Corse"
 url = "https://www.unina.it/it/visualizzatore?query=/-/62908421-unina-corse-squadra-corse-federico-ii"
 dates = "Mar 2022 - Jun 2023"
 location = "Napoli, IT"
 description = "Contributed to the AI development team for the university racing team, UniNa Corse. Focused on autonomous driving systems."
-
++++
