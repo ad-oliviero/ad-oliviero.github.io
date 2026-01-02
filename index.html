@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth snap-y snap-mandatory h-screen overflow-y-scroll scrollbar-hide">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adriano Oliviero</title>
+    <meta name="description" content="My Portfolio">
+    <meta name="author" content="Adriano Oliviero">
+    <link rel="stylesheet" href="https://ad-oliviero.github.io/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://ad-oliviero.github.io/favicon.png">
+</head>
+<body class="bg-slate-900 text-slate-300 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-indigo-600 text-white px-4 py-2 rounded z-[100]">
+        Skip to main content
+    </a>
+
+    
+<header>
+    <nav class="fixed w-full z-50 bg-slate-900/90 backdrop-blur-sm border-b border-slate-800" aria-label="Main navigation">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="https://ad-oliviero.github.io" class="flex-shrink-0 flex items-center gap-3 group" aria-label="Home">
+                    <img class="h-10 w-10 rounded-full border-2 border-transparent group-hover:border-indigo-500 transition-all" src="https://ad-oliviero.github.io/img/avatar.png" alt="" aria-hidden="true">
+                    <span class="font-mono font-bold text-white text-lg tracking-tighter group-hover:text-indigo-400 transition-colors">ad-oliviero</span>
+                </a>
+                <button type="button" id="mobile-menu-btn" class="md:hidden p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+                <div class="hidden md:flex md:items-center md:space-x-6">
+                    
+                    <a href="https://ad-oliviero.github.io#about" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">about</a>
+                    
+                    <a href="https://ad-oliviero.github.io#experience" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">experience</a>
+                    
+                    <a href="https://ad-oliviero.github.io#projects" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">projects</a>
+                    
+                    <a href="https://ad-oliviero.github.io#skills" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">skills</a>
+                    
+                    <a href="https://ad-oliviero.github.io#education" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">education</a>
+                    
+                    <a href="https:&#x2F;&#x2F;rxresu.me&#x2F;ad-oliviero&#x2F;cv" target="_blank" rel="noopener noreferrer" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">My Resume</a>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-slate-900/95 backdrop-blur-sm">
+            <div class="px-4 py-4 space-y-2">
+                
+                <a href="https://ad-oliviero.github.io#about" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">about</a>
+                
+                <a href="https://ad-oliviero.github.io#experience" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">experience</a>
+                
+                <a href="https://ad-oliviero.github.io#projects" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">projects</a>
+                
+                <a href="https://ad-oliviero.github.io#skills" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">skills</a>
+                
+                <a href="https://ad-oliviero.github.io#education" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">education</a>
+                
+                <a href="https:&#x2F;&#x2F;rxresu.me&#x2F;ad-oliviero&#x2F;cv" target="_blank" rel="noopener noreferrer" class="block bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-md text-base font-medium transition-colors text-center mt-4">My Resume</a>
+            </div>
+        </div>
+        <div id="scroll-progress" class="absolute bottom-0 left-0 h-[3px] bg-indigo-500 w-0 transition-[width] duration-100 ease-linear" aria-hidden="true"></div>
+    </nav>
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        menuBtn.onclick = () => {
+            const open = menu.classList.toggle('hidden');
+            menuBtn.setAttribute('aria-expanded', !open);
+            menuBtn.querySelector('.menu-open').classList.toggle('hidden');
+            menuBtn.querySelector('.menu-close').classList.toggle('hidden');
+        };
+        menu.querySelectorAll('a').forEach(a => a.onclick = () => menuBtn.click());
+    </script>
+</header>
+
+
+    <main id="main-content">
+        
+<!-- Hero -->
+<section class="snap-start pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto min-h-screen flex flex-col justify-center items-start" aria-labelledby="hero-heading">
+    <p class="font-mono text-indigo-400 mb-4">Ciao, I am</p>
+    <h1 id="hero-heading" class="text-5xl sm:text-7xl font-bold text-white mb-6 tracking-tight">Adriano Oliviero.</h1>
+    <p class="text-4xl sm:text-5xl font-bold text-slate-400 mb-8 tracking-tight">Computer Engineering Student</p>
+    <p class="max-w-xl text-lg text-slate-400 mb-12 leading-relaxed">Student at Federico II University of Naples &amp; Apple Developer Academy in Naples</p>
+    <div class="flex flex-wrap gap-4">
+        <a href="https://ad-oliviero.github.io/all-projects/" class="border border-indigo-500 text-indigo-400 hover:bg-indigo-500/10 px-6 py-3 rounded font-mono transition-colors">Check out my projects</a>
+        <a href="https:&#x2F;&#x2F;rxresu.me&#x2F;ad-oliviero&#x2F;cv" target="_blank" rel="noopener noreferrer" class="border border-indigo-500 text-indigo-400 hover:bg-indigo-500/10 px-6 py-3 rounded font-mono transition-colors">My Resume</a>
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero" target="_blank" rel="noopener noreferrer" class="border border-indigo-500 text-slate-400 hover:text-white hover:bg-indigo-500/10 px-6 py-3 rounded font-mono transition-colors flex items-center gap-2"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> GitHub</a>
+    </div>
+</section>
+
+<!-- About -->
+<section id="about" class="snap-start py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto" aria-labelledby="about-heading">
+    <div class="flex items-center mb-12">
+        <h2 id="about-heading" class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">01.</span>About Me</h2>
+        <div class="h-px bg-slate-700 flex-grow" aria-hidden="true"></div>
+    </div>
+    <div class="text-slate-400 leading-relaxed space-y-4 max-w-2xl prose prose-invert prose-indigo"><p>I study Computer Engineering at <a href="https://www.unina.it/">Federico II University of Naples</a>.
+Computer Engineering isn't just my major; it's my hobby and passion.</p>
+<p>My journey has led me to work with various technologies, from high-level iOS app development at the <a href="https://www.developeracademy.unina.it/">Apple Developer Academy</a> to low-level autonomous driving systems with <a href="https://www.uninacorse.com/">UniNa Corse</a>, and multiple <a href="https://github.com/ad-oliviero?tab=repositories">personal projects</a>.</p>
+</div>
+</section>
+
+<!-- Experience -->
+<section id="experience" class="snap-start py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto" aria-labelledby="experience-heading">
+    <div class="flex items-center mb-12">
+        <h2 id="experience-heading" class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">02.</span>Experience</h2>
+        <div class="h-px bg-slate-700 flex-grow" aria-hidden="true"></div>
+    </div>
+    
+    <div class="space-y-12 border-l border-slate-700 ml-3 md:ml-0 pl-8 md:pl-0">
+        
+        <article class="relative md:grid md:grid-cols-4 md:gap-4">
+            <div class="hidden md:block text-right px-4 pt-1">
+                <time class="font-mono text-xs text-slate-500">Oct 2025 - Present</time>
+                <div class="text-sm font-semibold text-slate-300">Napoli, IT</div>
+            </div>
+            <div class="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-indigo-500 bg-slate-900 md:hidden" aria-hidden="true"></div>
+            <div class="md:col-span-3">
+                <h3 class="text-xl font-bold text-white">Student @ <a href="https:&#x2F;&#x2F;www.developeracademy.unina.it&#x2F;" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:underline">Apple Developer Academy</a></h3>
+                <div class="md:hidden font-mono text-xs text-slate-500 mb-2"><time>Oct 2025 - Present</time> | Napoli, IT</div>
+                <p class="mt-2 text-slate-400">Academy program focusing on iOS development, design thinking, and app business.</p>
+            </div>
+        </article>
+        
+        <article class="relative md:grid md:grid-cols-4 md:gap-4">
+            <div class="hidden md:block text-right px-4 pt-1">
+                <time class="font-mono text-xs text-slate-500">Apr 2024 - May 2024</time>
+                <div class="text-sm font-semibold text-slate-300">Napoli, IT</div>
+            </div>
+            <div class="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-indigo-500 bg-slate-900 md:hidden" aria-hidden="true"></div>
+            <div class="md:col-span-3">
+                <h3 class="text-xl font-bold text-white">Student @ <a href="https:&#x2F;&#x2F;www.developeracademy.unina.it&#x2F;" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:underline">Apple Foundation Program</a></h3>
+                <div class="md:hidden font-mono text-xs text-slate-500 mb-2"><time>Apr 2024 - May 2024</time> | Napoli, IT</div>
+                <p class="mt-2 text-slate-400">4-week program covering the fundamentals of Swift and iOS app development.</p>
+            </div>
+        </article>
+        
+        <article class="relative md:grid md:grid-cols-4 md:gap-4">
+            <div class="hidden md:block text-right px-4 pt-1">
+                <time class="font-mono text-xs text-slate-500">Mar 2022 - Jun 2023</time>
+                <div class="text-sm font-semibold text-slate-300">Napoli, IT</div>
+            </div>
+            <div class="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-indigo-500 bg-slate-900 md:hidden" aria-hidden="true"></div>
+            <div class="md:col-span-3">
+                <h3 class="text-xl font-bold text-white">Autonomous Driving System Developer @ <a href="https:&#x2F;&#x2F;www.unina.it&#x2F;it&#x2F;visualizzatore?query=&#x2F;-&#x2F;62908421-unina-corse-squadra-corse-federico-ii" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:underline">UniNa Corse</a></h3>
+                <div class="md:hidden font-mono text-xs text-slate-500 mb-2"><time>Mar 2022 - Jun 2023</time> | Napoli, IT</div>
+                <p class="mt-2 text-slate-400">Contributed to the AI development team for the university racing team, UniNa Corse. Focused on autonomous driving systems.</p>
+            </div>
+        </article>
+        
+    </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="snap-start py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto" aria-labelledby="projects-heading">
+    <div class="flex items-center mb-12">
+        <h2 id="projects-heading" class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">03.</span>Some Things I've Built</h2>
+        <div class="h-px bg-slate-700 flex-grow" aria-hidden="true"></div>
+    </div>
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        
+        
+<article class="group bg-slate-800 rounded-lg p-6 hover:-translate-y-2 transition-transform duration-300 border border-slate-700 shadow-lg flex flex-col h-full relative "
+    data-tags="c,linux,cli"
+    >
+    <div class="flex justify-between items-center mb-4">
+        <div class="text-indigo-400 group-hover:text-indigo-300 transition-colors">
+            
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"/></svg>
+
+
+        </div>
+        <div class="flex items-center gap-3 z-10">
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;uwufetch" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-400 transition-colors" aria-label="View source"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+        </div>
+    </div>
+    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;uwufetch" target="_blank" rel="noopener noreferrer" class="after:absolute after:inset-0">uwufetch</a>
+    </h3>
+    <div class="text-slate-400 text-sm mb-4 flex-grow"><p>A meme system info tool for Linux, based on nyan/uwu trend on r/linuxmasterrace.</p>
+</div>
+    <ul class="font-mono text-xs text-slate-500 mt-4 flex flex-wrap gap-2"><li>C</li><li>Linux</li><li>CLI</li></ul>
+</article>
+
+<article class="group bg-slate-800 rounded-lg p-6 hover:-translate-y-2 transition-transform duration-300 border border-slate-700 shadow-lg flex flex-col h-full relative "
+    data-tags="c++,embedded,raspberry pi pico,arduino"
+    >
+    <div class="flex justify-between items-center mb-4">
+        <div class="text-indigo-400 group-hover:text-indigo-300 transition-colors">
+            
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25z"/></svg>
+
+
+        </div>
+        <div class="flex items-center gap-3 z-10">
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;telecomand" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-400 transition-colors" aria-label="View source"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+        </div>
+    </div>
+    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;telecomand" target="_blank" rel="noopener noreferrer" class="after:absolute after:inset-0">telecomand.ino</a>
+    </h3>
+    <div class="text-slate-400 text-sm mb-4 flex-grow"><p>A Raspberry Pi Pico embedded project re-implementing an old ceiling fan remote control in both software and hardware.</p>
+</div>
+    <ul class="font-mono text-xs text-slate-500 mt-4 flex flex-wrap gap-2"><li>C++</li><li>Embedded</li><li>Raspberry Pi Pico</li><li>Arduino</li></ul>
+</article>
+
+<article class="group bg-slate-800 rounded-lg p-6 hover:-translate-y-2 transition-transform duration-300 border border-slate-700 shadow-lg flex flex-col h-full relative "
+    data-tags="flutter,android"
+    >
+    <div class="flex justify-between items-center mb-4">
+        <div class="text-indigo-400 group-hover:text-indigo-300 transition-colors">
+            
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/></svg>
+
+
+        </div>
+        <div class="flex items-center gap-3 z-10">
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;unitconverter" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-400 transition-colors" aria-label="View source"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+        </div>
+    </div>
+    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;unitconverter" target="_blank" rel="noopener noreferrer" class="after:absolute after:inset-0">Unit Converter</a>
+    </h3>
+    <div class="text-slate-400 text-sm mb-4 flex-grow"><p>A simple Flutter Android app to quickly convert measurement units. Includes live monetary exchange rates.</p>
+</div>
+    <ul class="font-mono text-xs text-slate-500 mt-4 flex flex-wrap gap-2"><li>Flutter</li><li>Android</li></ul>
+</article>
+
+<article class="group bg-slate-800 rounded-lg p-6 hover:-translate-y-2 transition-transform duration-300 border border-slate-700 shadow-lg flex flex-col h-full relative "
+    data-tags="rust,cli,interpreter"
+    >
+    <div class="flex justify-between items-center mb-4">
+        <div class="text-indigo-400 group-hover:text-indigo-300 transition-colors">
+            
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"/></svg>
+
+
+        </div>
+        <div class="flex items-center gap-3 z-10">
+            <a href="&#x2F;bfli-demo" class="text-slate-500 hover:text-indigo-400 transition-colors" aria-label="Live demo"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></a>
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;bfli" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-400 transition-colors" aria-label="View source"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+        </div>
+    </div>
+    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;bfli" target="_blank" rel="noopener noreferrer" class="after:absolute after:inset-0">bfli</a>
+    </h3>
+    <div class="text-slate-400 text-sm mb-4 flex-grow"><p>A fast and efficient Brainfuck language interpreter written in Rust.</p>
+</div>
+    <ul class="font-mono text-xs text-slate-500 mt-4 flex flex-wrap gap-2"><li>Rust</li><li>CLI</li><li>Interpreter</li></ul>
+</article>
+
+    </div>
+    <div class="mt-12 text-center">
+        <a href="https://ad-oliviero.github.io/all-projects/" class="inline-flex items-center gap-2 border border-indigo-500 text-indigo-400 hover:bg-indigo-500/10 px-8 py-4 rounded font-mono transition-colors">View All My Projects <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+    </div>
+</section>
+
+<!-- Skills -->
+<section id="skills" class="snap-start py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto" aria-labelledby="skills-heading">
+    <div class="flex items-center mb-12">
+        <h2 id="skills-heading" class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">04.</span>Skills & Tools</h2>
+        <div class="h-px bg-slate-700 flex-grow" aria-hidden="true"></div>
+    </div>
+    
+    <div class="bg-slate-800/50 rounded-xl p-8 border border-slate-700 text-center grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <div>
+            <h3 class="font-mono text-indigo-400 mb-4 text-lg">Languages</h3>
+            <img src="https://skillicons.dev/icons?i=c,py,swift,rust" class="mx-auto mb-4" height="50" alt="" loading="lazy" aria-hidden="true">
+            <p class="text-slate-400 text-sm font-mono">C &#x2F; Python &#x2F; Rust &#x2F; Swift</p>
+        </div>
+        
+        <div>
+            <h3 class="font-mono text-indigo-400 mb-4 text-lg">Backend &amp; Data</h3>
+            <img src="https://skillicons.dev/icons?i=flask,mongodb,sqlite" class="mx-auto mb-4" height="50" alt="" loading="lazy" aria-hidden="true">
+            <p class="text-slate-400 text-sm font-mono">Flask &#x2F; MongoDB &#x2F; SQLite</p>
+        </div>
+        
+        <div>
+            <h3 class="font-mono text-indigo-400 mb-4 text-lg">Tools &amp; Platforms</h3>
+            <img src="https://skillicons.dev/icons?i=arch,linux,git,docker" class="mx-auto mb-4" height="50" alt="" loading="lazy" aria-hidden="true">
+            <p class="text-slate-400 text-sm font-mono">Linux (Arch) &#x2F; Git &#x2F; Docker</p>
+        </div>
+        
+        <div>
+            <h3 class="font-mono text-indigo-400 mb-4 text-lg">Editors</h3>
+            <img src="https://skillicons.dev/icons?i=neovim,vscode,matlab" class="mx-auto mb-4" height="50" alt="" loading="lazy" aria-hidden="true">
+            <p class="text-slate-400 text-sm font-mono">Neovim &#x2F; VS Code &#x2F; MatLab</p>
+        </div>
+        
+    </div>
+</section>
+
+<!-- Education -->
+<section id="education" class="snap-start py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto" aria-labelledby="education-heading">
+    <div class="flex items-center mb-12">
+        <h2 id="education-heading" class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">05.</span>Education</h2>
+        <div class="h-px bg-slate-700 flex-grow" aria-hidden="true"></div>
+    </div>
+    
+    <div class="space-y-8">
+        
+        <article class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-800 pb-8">
+            <div>
+                <h3 class="text-xl font-bold text-white"><a href="https:&#x2F;&#x2F;www.unina.it&#x2F;" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition-colors">Università degli Studi di Napoli Federico II</a></h3>
+                <p class="text-slate-400">Bachelor&#x27;s in Computer Engineering</p>
+            </div>
+            <time class="font-mono text-indigo-400 mt-2 md:mt-0">2021 - Present</time>
+        </article>
+        
+        <article class="flex flex-col md:flex-row justify-between items-start md:items-center ">
+            <div>
+                <h3 class="text-xl font-bold text-white"><a href="https:&#x2F;&#x2F;www.liceosilvestri.edu.it&#x2F;" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition-colors">Liceo Scientifico Filippo Silvestri</a></h3>
+                <p class="text-slate-400">High School Diploma (74&#x2F;100)</p>
+            </div>
+            <time class="font-mono text-indigo-400 mt-2 md:mt-0">2016 - 2021</time>
+        </article>
+        
+    </div>
+</section>
+
+    </main>
+
+    <footer class="py-8 text-center text-slate-500 text-sm font-mono bg-slate-900 border-t border-slate-800">
+    <nav class="mb-4 flex justify-center gap-6" aria-label="Footer navigation">
+        <a href="mailto:adrianoliviero23@gmail.com" class="hover:text-indigo-400 transition-colors">Email</a>
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition-colors">GitHub</a>
+        <a href="https:&#x2F;&#x2F;rxresu.me&#x2F;ad-oliviero&#x2F;cv" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition-colors">Resume</a>
+    </nav>
+    <p>&copy; 2026 Adriano Oliviero</p>
+</footer>
+
+
+    <script>
+        document.addEventListener('scroll', () => {
+            const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+            const scrolled = (scrollTop / (scrollHeight - clientHeight)) * 100;
+            document.getElementById('scroll-progress').style.width = `${scrolled}%`;
+        }, { passive: true });
+    </script>
+</body>
+</html>

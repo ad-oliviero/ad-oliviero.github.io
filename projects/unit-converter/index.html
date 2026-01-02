@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth snap-y snap-mandatory h-screen overflow-y-scroll scrollbar-hide">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter - Adriano Oliviero</title>
+    <meta name="description" content="My Portfolio">
+    <meta name="author" content="Adriano Oliviero">
+    <link rel="stylesheet" href="https://ad-oliviero.github.io/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://ad-oliviero.github.io/favicon.png">
+</head>
+<body class="bg-slate-900 text-slate-300 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-indigo-600 text-white px-4 py-2 rounded z-[100]">
+        Skip to main content
+    </a>
+
+    
+<header>
+    <nav class="fixed w-full z-50 bg-slate-900/90 backdrop-blur-sm border-b border-slate-800" aria-label="Main navigation">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="https://ad-oliviero.github.io" class="flex-shrink-0 flex items-center gap-3 group" aria-label="Home">
+                    <img class="h-10 w-10 rounded-full border-2 border-transparent group-hover:border-indigo-500 transition-all" src="https://ad-oliviero.github.io/img/avatar.png" alt="" aria-hidden="true">
+                    <span class="font-mono font-bold text-white text-lg tracking-tighter group-hover:text-indigo-400 transition-colors">ad-oliviero</span>
+                </a>
+                <button type="button" id="mobile-menu-btn" class="md:hidden p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+                <div class="hidden md:flex md:items-center md:space-x-6">
+                    
+                    <a href="https://ad-oliviero.github.io#about" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">about</a>
+                    
+                    <a href="https://ad-oliviero.github.io#experience" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">experience</a>
+                    
+                    <a href="https://ad-oliviero.github.io#projects" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">projects</a>
+                    
+                    <a href="https://ad-oliviero.github.io#skills" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">skills</a>
+                    
+                    <a href="https://ad-oliviero.github.io#education" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">education</a>
+                    
+                    <a href="https:&#x2F;&#x2F;rxresu.me&#x2F;ad-oliviero&#x2F;cv" target="_blank" rel="noopener noreferrer" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">My Resume</a>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-slate-900/95 backdrop-blur-sm">
+            <div class="px-4 py-4 space-y-2">
+                
+                <a href="https://ad-oliviero.github.io#about" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">about</a>
+                
+                <a href="https://ad-oliviero.github.io#experience" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">experience</a>
+                
+                <a href="https://ad-oliviero.github.io#projects" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">projects</a>
+                
+                <a href="https://ad-oliviero.github.io#skills" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">skills</a>
+                
+                <a href="https://ad-oliviero.github.io#education" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">education</a>
+                
+                <a href="https:&#x2F;&#x2F;rxresu.me&#x2F;ad-oliviero&#x2F;cv" target="_blank" rel="noopener noreferrer" class="block bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-md text-base font-medium transition-colors text-center mt-4">My Resume</a>
+            </div>
+        </div>
+        <div id="scroll-progress" class="absolute bottom-0 left-0 h-[3px] bg-indigo-500 w-0 transition-[width] duration-100 ease-linear" aria-hidden="true"></div>
+    </nav>
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        menuBtn.onclick = () => {
+            const open = menu.classList.toggle('hidden');
+            menuBtn.setAttribute('aria-expanded', !open);
+            menuBtn.querySelector('.menu-open').classList.toggle('hidden');
+            menuBtn.querySelector('.menu-close').classList.toggle('hidden');
+        };
+        menu.querySelectorAll('a').forEach(a => a.onclick = () => menuBtn.click());
+    </script>
+</header>
+
+
+    <main id="main-content">
+        
+<section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto min-h-screen">
+    <div class="mb-12">
+        <a href="https://ad-oliviero.github.io" class="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 font-mono text-sm mb-6 transition-colors group">
+            <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"/></svg>
+            Back to Home
+        </a>
+        <h1 class="text-4xl font-bold text-white mb-6 tracking-tight">Unit Converter</h1>
+    </div>
+    <article class="prose prose-invert prose-indigo prose-lg max-w-none text-slate-400">
+        <p>A simple Flutter Android app to quickly convert measurement units. Includes live monetary exchange rates.</p>
+
+    </article>
+</section>
+
+    </main>
+
+    <footer class="py-8 text-center text-slate-500 text-sm font-mono bg-slate-900 border-t border-slate-800">
+    <nav class="mb-4 flex justify-center gap-6" aria-label="Footer navigation">
+        <a href="mailto:adrianoliviero23@gmail.com" class="hover:text-indigo-400 transition-colors">Email</a>
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition-colors">GitHub</a>
+        <a href="https:&#x2F;&#x2F;rxresu.me&#x2F;ad-oliviero&#x2F;cv" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition-colors">Resume</a>
+    </nav>
+    <p>&copy; 2026 Adriano Oliviero</p>
+</footer>
+
+
+    <script>
+        document.addEventListener('scroll', () => {
+            const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+            const scrolled = (scrollTop / (scrollHeight - clientHeight)) * 100;
+            document.getElementById('scroll-progress').style.width = `${scrolled}%`;
+        }, { passive: true });
+    </script>
+</body>
+</html>

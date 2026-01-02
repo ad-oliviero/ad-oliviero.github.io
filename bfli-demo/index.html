@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth snap-y snap-mandatory h-screen overflow-y-scroll scrollbar-hide">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work in Progress - Adriano Oliviero</title>
+    <meta name="description" content="My Portfolio">
+    <meta name="author" content="Adriano Oliviero">
+    <link rel="stylesheet" href="https://ad-oliviero.github.io/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://ad-oliviero.github.io/favicon.png">
+</head>
+<body class="bg-slate-900 text-slate-300 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-indigo-600 text-white px-4 py-2 rounded z-[100]">
+        Skip to main content
+    </a>
+
+    
+<header>
+    <nav class="fixed w-full z-50 bg-slate-900/90 backdrop-blur-sm border-b border-slate-800" aria-label="Main navigation">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="https://ad-oliviero.github.io" class="flex-shrink-0 flex items-center gap-3 group" aria-label="Home">
+                    <img class="h-10 w-10 rounded-full border-2 border-transparent group-hover:border-indigo-500 transition-all" src="https://ad-oliviero.github.io/img/avatar.png" alt="" aria-hidden="true">
+                    <span class="font-mono font-bold text-white text-lg tracking-tighter group-hover:text-indigo-400 transition-colors">ad-oliviero</span>
+                </a>
+                <button type="button" id="mobile-menu-btn" class="md:hidden p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+                <div class="hidden md:flex md:items-center md:space-x-6">
+                    
+                    <a href="https://ad-oliviero.github.io#about" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">about</a>
+                    
+                    <a href="https://ad-oliviero.github.io#experience" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">experience</a>
+                    
+                    <a href="https://ad-oliviero.github.io#projects" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">projects</a>
+                    
+                    <a href="https://ad-oliviero.github.io#skills" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">skills</a>
+                    
+                    <a href="https://ad-oliviero.github.io#education" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">education</a>
+                    
+                    <a href="https:&#x2F;&#x2F;rxresu.me&#x2F;ad-oliviero&#x2F;cv" target="_blank" rel="noopener noreferrer" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">My Resume</a>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-slate-900/95 backdrop-blur-sm">
+            <div class="px-4 py-4 space-y-2">
+                
+                <a href="https://ad-oliviero.github.io#about" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">about</a>
+                
+                <a href="https://ad-oliviero.github.io#experience" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">experience</a>
+                
+                <a href="https://ad-oliviero.github.io#projects" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">projects</a>
+                
+                <a href="https://ad-oliviero.github.io#skills" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">skills</a>
+                
+                <a href="https://ad-oliviero.github.io#education" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">education</a>
+                
+                <a href="https:&#x2F;&#x2F;rxresu.me&#x2F;ad-oliviero&#x2F;cv" target="_blank" rel="noopener noreferrer" class="block bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-md text-base font-medium transition-colors text-center mt-4">My Resume</a>
+            </div>
+        </div>
+        <div id="scroll-progress" class="absolute bottom-0 left-0 h-[3px] bg-indigo-500 w-0 transition-[width] duration-100 ease-linear" aria-hidden="true"></div>
+    </nav>
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        menuBtn.onclick = () => {
+            const open = menu.classList.toggle('hidden');
+            menuBtn.setAttribute('aria-expanded', !open);
+            menuBtn.querySelector('.menu-open').classList.toggle('hidden');
+            menuBtn.querySelector('.menu-close').classList.toggle('hidden');
+        };
+        menu.querySelectorAll('a').forEach(a => a.onclick = () => menuBtn.click());
+    </script>
+</header>
+
+
+    <main id="main-content">
+        
+<section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto min-h-[80vh] flex flex-col items-center justify-center text-center">
+    <div class="mb-8">
+        <a href="https://ad-oliviero.github.io#projects" class="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 font-mono text-sm mb-12 transition-colors group">
+            <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"/></svg>
+            Back to Projects
+        </a>
+
+        <div class="flex justify-center mb-8">
+            <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 shadow-xl text-indigo-400 animate-pulse">
+                <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"/></svg>
+            </div>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6 tracking-tight">
+            Work in Progress
+        </h1>
+
+        <div class="text-slate-400 text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
+            <p>The live demo for <span class="text-indigo-400 font-mono">bfli</span> is currently under development.</p>
+
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;brainfuck-live-interpreter" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-8 py-4 rounded font-mono transition-colors border border-slate-700">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                View Source on GitHub
+            </a>
+            
+            <a href="https://ad-oliviero.github.io" class="inline-flex items-center justify-center gap-2 border border-indigo-500 text-indigo-400 hover:bg-indigo-500/10 px-8 py-4 rounded font-mono transition-colors">
+                Return Home
+            </a>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <footer class="py-8 text-center text-slate-500 text-sm font-mono bg-slate-900 border-t border-slate-800">
+    <nav class="mb-4 flex justify-center gap-6" aria-label="Footer navigation">
+        <a href="mailto:adrianoliviero23@gmail.com" class="hover:text-indigo-400 transition-colors">Email</a>
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition-colors">GitHub</a>
+        <a href="https:&#x2F;&#x2F;rxresu.me&#x2F;ad-oliviero&#x2F;cv" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition-colors">Resume</a>
+    </nav>
+    <p>&copy; 2026 Adriano Oliviero</p>
+</footer>
+
+
+    <script>
+        document.addEventListener('scroll', () => {
+            const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+            const scrolled = (scrollTop / (scrollHeight - clientHeight)) * 100;
+            document.getElementById('scroll-progress').style.width = `${scrolled}%`;
+        }, { passive: true });
+    </script>
+</body>
+</html>

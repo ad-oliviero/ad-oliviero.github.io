@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth snap-y snap-mandatory h-screen overflow-y-scroll scrollbar-hide">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter Privacy Policy - Adriano Oliviero</title>
+    <meta name="description" content="My Portfolio">
+    <meta name="author" content="Adriano Oliviero">
+    <link rel="stylesheet" href="https://ad-oliviero.github.io/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://ad-oliviero.github.io/favicon.png">
+</head>
+<body class="bg-slate-900 text-slate-300 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-indigo-600 text-white px-4 py-2 rounded z-[100]">
+        Skip to main content
+    </a>
+
+    
+<header>
+    <nav class="fixed w-full z-50 bg-slate-900/90 backdrop-blur-sm border-b border-slate-800" aria-label="Main navigation">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="https://ad-oliviero.github.io" class="flex-shrink-0 flex items-center gap-3 group" aria-label="Home">
+                    <img class="h-10 w-10 rounded-full border-2 border-transparent group-hover:border-indigo-500 transition-all" src="https://ad-oliviero.github.io/img/avatar.png" alt="" aria-hidden="true">
+                    <span class="font-mono font-bold text-white text-lg tracking-tighter group-hover:text-indigo-400 transition-colors">ad-oliviero</span>
+                </a>
+                <button type="button" id="mobile-menu-btn" class="md:hidden p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+                <div class="hidden md:flex md:items-center md:space-x-6">
+                    
+                    <a href="https://ad-oliviero.github.io#about" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">about</a>
+                    
+                    <a href="https://ad-oliviero.github.io#experience" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">experience</a>
+                    
+                    <a href="https://ad-oliviero.github.io#projects" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">projects</a>
+                    
+                    <a href="https://ad-oliviero.github.io#skills" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">skills</a>
+                    
+                    <a href="https://ad-oliviero.github.io#education" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">education</a>
+                    
+                    <a href="https:&#x2F;&#x2F;rxresu.me&#x2F;ad-oliviero&#x2F;cv" target="_blank" rel="noopener noreferrer" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">My Resume</a>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-slate-900/95 backdrop-blur-sm">
+            <div class="px-4 py-4 space-y-2">
+                
+                <a href="https://ad-oliviero.github.io#about" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">about</a>
+                
+                <a href="https://ad-oliviero.github.io#experience" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">experience</a>
+                
+                <a href="https://ad-oliviero.github.io#projects" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">projects</a>
+                
+                <a href="https://ad-oliviero.github.io#skills" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">skills</a>
+                
+                <a href="https://ad-oliviero.github.io#education" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">education</a>
+                
+                <a href="https:&#x2F;&#x2F;rxresu.me&#x2F;ad-oliviero&#x2F;cv" target="_blank" rel="noopener noreferrer" class="block bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-md text-base font-medium transition-colors text-center mt-4">My Resume</a>
+            </div>
+        </div>
+        <div id="scroll-progress" class="absolute bottom-0 left-0 h-[3px] bg-indigo-500 w-0 transition-[width] duration-100 ease-linear" aria-hidden="true"></div>
+    </nav>
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        menuBtn.onclick = () => {
+            const open = menu.classList.toggle('hidden');
+            menuBtn.setAttribute('aria-expanded', !open);
+            menuBtn.querySelector('.menu-open').classList.toggle('hidden');
+            menuBtn.querySelector('.menu-close').classList.toggle('hidden');
+        };
+        menu.querySelectorAll('a').forEach(a => a.onclick = () => menuBtn.click());
+    </script>
+</header>
+
+
+    <main id="main-content">
+        
+<section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto min-h-screen">
+    <div class="mb-12">
+        <a href="https://ad-oliviero.github.io" class="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 font-mono text-sm mb-6 transition-colors group">
+            <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"/></svg>
+            Back to Home
+        </a>
+        <h1 class="text-4xl font-bold text-white mb-6 tracking-tight">Unit Converter Privacy Policy</h1>
+    </div>
+    <article class="prose prose-invert prose-indigo prose-lg max-w-none text-slate-400">
+        <p><strong>Privacy Policy</strong></p>
+<p>This privacy policy applies to the Unit Converter app (hereby referred to as "Application") for mobile devices that was created by Adriano Oliviero (hereby referred to as "Service Provider") as an Open Source service. This service is intended for use "AS IS".</p>
+<p><strong>Information Collection and Use</strong></p>
+<p>The Application collects information when you download and use it. This information may include information such as</p>
+<ul>
+<li>Your device's Internet Protocol address (e.g. IP address)</li>
+<li>The pages of the Application that you visit, the time and date of your visit, the time spent on those pages</li>
+<li>The time spent on the Application</li>
+<li>The operating system you use on your mobile device</li>
+</ul>
+<p>The Application does not gather precise information about the location of your mobile device.</p>
+<p>The Service Provider may use the information you provided to contact you from time to time to provide you with important information, required notices and marketing promotions.</p>
+<p>For a better experience, while using the Application, the Service Provider may require you to provide us with certain personally identifiable information. The information that the Service Provider request will be retained by them and used as described in this privacy policy.</p>
+<p><strong>Third Party Access</strong></p>
+<p>Only aggregated, anonymized data is periodically transmitted to external services to aid the Service Provider in improving the Application and their service. The Service Provider may share your information with third parties in the ways that are described in this privacy statement.</p>
+<p>Please note that the Application utilizes third-party services that have their own Privacy Policy about handling data. Below are the links to the Privacy Policy of the third-party service providers used by the Application:</p>
+<ul>
+<li><a href="https://www.google.com/policies/privacy/">Google Play Services</a></li>
+</ul>
+<p><strong>The Service Provider may disclose User Provided and Automatically Collected Information:</strong></p>
+<ul>
+<li>as required by law, such as to comply with a subpoena, or similar legal process;</li>
+<li>when they believe in good faith that disclosure is necessary to protect their rights, protect your safety or the safety of others, investigate fraud, or respond to a government request;</li>
+<li>with their trusted services providers who work on their behalf, do not have an independent use of the information we disclose to them, and have agreed to adhere to the rules set forth in this privacy statement.</li>
+</ul>
+<p><strong>Opt-Out Rights</strong></p>
+<p>You can stop all collection of information by the Application easily by uninstalling it. You may use the standard uninstall processes as may be available as part of your mobile device or via the mobile application marketplace or network.</p>
+<p><strong>Data Retention Policy</strong></p>
+<p>The Service Provider will retain User Provided data for as long as you use the Application and for a reasonable time thereafter. If you'd like them to delete User Provided Data that you have provided via the Application, please contact them at adrianoliviero23@gmail.com and they will respond in a reasonable time.</p>
+<p><strong>Children</strong></p>
+<p>The Service Provider does not use the Application to knowingly solicit data from or market to children under the age of 13.</p>
+<p>The Application does not address anyone under the age of 13. The Service Provider does not knowingly collect personally identifiable information from children under 13 years of age. In the case the Service Provider discover that a child under 13 has provided personal information, the Service Provider will immediately delete this from their servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact the Service Provider (adrianoliviero23@gmail.com) so that they will be able to take the necessary actions.</p>
+<p><strong>Security</strong></p>
+<p>The Service Provider is concerned about safeguarding the confidentiality of your information. The Service Provider provides physical, electronic, and procedural safeguards to protect information the Service Provider processes and maintains.</p>
+<p><strong>Changes</strong></p>
+<p>This Privacy Policy may be updated from time to time for any reason. The Service Provider will notify you of any changes to the Privacy Policy by updating this page with the new Privacy Policy. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.</p>
+<p>This privacy policy is effective as of 2024-04-26</p>
+<p><strong>Your Consent</strong></p>
+<p>By using the Application, you are consenting to the processing of your information as set forth in this Privacy Policy now and as amended by us.</p>
+<p><strong>Contact Us</strong></p>
+<p>If you have any questions regarding privacy while using the Application, or have questions about the practices, please contact the Service Provider via email at adrianoliviero23@gmail.com.</p>
+<hr />
+<p>This privacy policy page was generated by <a href="https://app-privacy-policy-generator.nisrulz.com/">App Privacy Policy Generator</a></p>
+
+    </article>
+</section>
+
+    </main>
+
+    <footer class="py-8 text-center text-slate-500 text-sm font-mono bg-slate-900 border-t border-slate-800">
+    <nav class="mb-4 flex justify-center gap-6" aria-label="Footer navigation">
+        <a href="mailto:adrianoliviero23@gmail.com" class="hover:text-indigo-400 transition-colors">Email</a>
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition-colors">GitHub</a>
+        <a href="https:&#x2F;&#x2F;rxresu.me&#x2F;ad-oliviero&#x2F;cv" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition-colors">Resume</a>
+    </nav>
+    <p>&copy; 2026 Adriano Oliviero</p>
+</footer>
+
+
+    <script>
+        document.addEventListener('scroll', () => {
+            const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+            const scrolled = (scrollTop / (scrollHeight - clientHeight)) * 100;
+            document.getElementById('scroll-progress').style.width = `${scrolled}%`;
+        }, { passive: true });
+    </script>
+</body>
+</html>
