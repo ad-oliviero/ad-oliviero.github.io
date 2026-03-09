@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Quattrocento", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  /* --color-slate-850: #151e2e; */
+  /* --color-slate-900: #0f172a; */
+}
+
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
