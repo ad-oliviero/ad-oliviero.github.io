@@ -15,10 +15,6 @@ The Application does not collect, store, or transmit any personal information or
 
 The Application does not transmit any data to external services.
 
-Please note that the Application utilizes third-party services that have their own Privacy Policy about handling data. Below are the links to the Privacy Policy of the third-party service providers used by the Application:
-
-- [Apple](https://www.apple.com/legal/privacy/)
-
 **Children**
 
 The Service Provider does not use the Application to knowingly solicit data from or market to children under the age of 13.
