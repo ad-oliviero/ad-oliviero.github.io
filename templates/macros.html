@@ -6,11 +6,12 @@
     {% if project.extra.tags %}data-tags="{{ project.extra.tags | join(sep=',') | lower }}"{% endif %}>
     <div class="flex justify-between items-center mb-4">
         <div class="project-icon" style="color: var(--accent)">
-            {{ svgs::get_icon_for_tags(tags=project.extra.tags | default(value=[])) }}
+            {% if project.extra.logo %}<img src="{{ get_url(path=project.extra.logo) }}" alt="" class="w-12 h-12 rounded-xl shadow-md">{% else %}{{ svgs::get_icon_for_tags(tags=project.extra.tags | default(value=[])) }}{% endif %}
         </div>
         <div class="flex items-center gap-3 z-10">
             {% if project.extra.demo_url %}<a href="{{ project.extra.demo_url }}" class="text-muted-foreground hover:text-foreground transition-colors" aria-label="Live demo">{{ svgs::play_icon(class="w-5 h-5") }}</a>{% endif %}
-            <a href="{{ project.extra.github_url }}" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground transition-colors" aria-label="View source">{{ svgs::external_link_icon() }}</a>
+            {% if project.extra.website_url %}<a href="{{ project.extra.website_url }}" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground transition-colors" aria-label="Website">{{ svgs::external_link_icon() }}</a>{% endif %}
+            {% if project.extra.github_url %}<a href="{{ project.extra.github_url }}" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground transition-colors" aria-label="View source">{{ svgs::external_link_icon() }}</a>{% endif %}
         </div>
     </div>
     <h3 class="text-xl font-bold text-card-foreground mb-2">
@@ -31,16 +32,19 @@
         </button>
     </form>
     <div class="flex items-center gap-4 mb-6">
-        <div style="color: var(--accent)">{{ svgs::get_icon_for_tags(tags=project.extra.tags | default(value=[])) }}</div>
+        <div style="color: var(--accent)">{% if project.extra.logo %}<img src="{{ get_url(path=project.extra.logo) }}" alt="" class="w-16 h-16 rounded-2xl shadow-lg">{% else %}{{ svgs::get_icon_for_tags(tags=project.extra.tags | default(value=[])) }}{% endif %}</div>
         <h2 class="text-3xl font-bold text-popover-foreground">{{ project.title }}</h2>
     </div>
     <div class="prose prose-invert prose-sm max-w-none text-muted-foreground mb-6
         prose-headings:text-popover-foreground prose-a:text-[var(--accent)] prose-strong:text-popover-foreground
         marker:text-[var(--accent)]">{{ project.content | safe }}</div>
     {% if project.extra.tags %}<ul class="font-mono text-xs text-secondary-foreground mb-6 flex flex-wrap gap-2">{% for tag in project.extra.tags %}<li class="px-2 py-1 rounded-md bg-secondary border border-border">{{ tag }}</li>{% endfor %}</ul>{% endif %}
+    {% if project.extra.github_url or project.extra.demo_url or project.extra.website_url %}
     <div class="flex flex-wrap gap-3">
-        <a href="{{ project.extra.github_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">{{ svgs::github_icon() }} Source</a>
-        {% if project.extra.demo_url %}<a href="{{ project.extra.demo_url }}" class="btn" style="background: var(--accent); color: var(--primary-foreground)">{{ svgs::play_icon(class="w-4 h-4") }} Live demo</a>{% endif %}
+        {% if project.extra.website_url %}<a href="{{ project.extra.website_url }}" target="_blank" rel="noopener noreferrer" class="btn" style="background: var(--accent); color: var(--primary-foreground)">{{ svgs::external_link_icon(class="w-4 h-4") }} Visit site</a>{% endif %}
+        {% if project.extra.github_url %}<a href="{{ project.extra.github_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">{{ svgs::github_icon() }} Source</a>{% endif %}
+        {% if project.extra.demo_url %}<a href="{{ project.extra.demo_url }}" class="btn btn-outline">{{ svgs::play_icon(class="w-4 h-4") }} Live demo</a>{% endif %}
     </div>
+    {% endif %}
 </dialog>
 {% endmacro %}
