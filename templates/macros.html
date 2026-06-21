@@ -1,9 +1,8 @@
 {% import "svgs.html" as svgs %}
 
-{% macro project_card(project, class="", extra_attrs="") %}
+{% macro project_card(project, class="") %}
 <article class="group bg-slate-800 rounded-lg p-6 hover:-translate-y-2 transition-transform duration-300 border border-slate-700 shadow-lg flex flex-col h-full relative {{ class }}"
-    {% if project.extra.tags %}data-tags="{{ project.extra.tags | join(sep=',') | lower }}"{% endif %}
-    {% if extra_attrs %}{{ extra_attrs | safe }}{% endif %}>
+    {% if project.extra.tags %}data-tags="{{ project.extra.tags | join(sep=',') | lower }}"{% endif %}>
     <div class="flex justify-between items-center mb-4">
         <div class="text-indigo-400 group-hover:text-indigo-300 transition-colors">
             {{ svgs::get_icon_for_tags(tags=project.extra.tags | default(value=[])) }}

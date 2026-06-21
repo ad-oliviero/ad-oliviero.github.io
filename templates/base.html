@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth snap-y snap-mandatory h-screen overflow-y-scroll scrollbar-hide">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{{ config.title }}{% endblock title %}</title>
     <meta name="description" content="{{ config.description }}">
     <meta name="author" content="{{ config.extra.author }}">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{% block og_title %}{{ config.title }}{% endblock og_title %}">
+    <meta property="og:description" content="{{ config.description }}">
+    <meta property="og:url" content="{{ current_url | default(value=config.base_url) }}">
+    <meta property="og:image" content="{{ get_url(path="img/avatar.png") }}">
+    <meta name="twitter:card" content="summary">
+
     <link rel="stylesheet" href="{{ get_url(path="css/style.css") }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ get_url(path="fonts/jetbrains-mono.woff2") }}">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ get_url(path="fonts/quattrocento-400.woff2") }}">
     <link rel="icon" type="image/png" href="{{ get_url(path="favicon.png") }}">
 </head>
 <body class="bg-slate-900 text-slate-300 font-sans antialiased selection:bg-indigo-500 selection:text-white">

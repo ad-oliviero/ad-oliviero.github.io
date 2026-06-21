@@ -17,7 +17,6 @@
                     {% for link in nav_links %}
                     <a href="{{ get_url(path="/") }}#{{ link }}" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">{{ link }}</a>
                     {% endfor %}
-                    <a href="{{ config.extra.resume }}" target="_blank" rel="noopener noreferrer" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">My Resume</a>
                 </div>
             </div>
         </div>
@@ -26,7 +25,6 @@
                 {% for link in nav_links %}
                 <a href="{{ get_url(path="/") }}#{{ link }}" class="block hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">{{ link }}</a>
                 {% endfor %}
-                <a href="{{ config.extra.resume }}" target="_blank" rel="noopener noreferrer" class="block bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-md text-base font-medium transition-colors text-center mt-4">My Resume</a>
             </div>
         </div>
         <div id="scroll-progress" class="absolute bottom-0 left-0 h-[3px] bg-indigo-500 w-0 transition-[width] duration-100 ease-linear" aria-hidden="true"></div>

@@ -18,8 +18,9 @@
 
 {% macro chip_icon(class="w-10 h-10") %}<svg class="{{ class }}" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25z"/></svg>{% endmacro %}
 
+{# Match whole tags, not substrings: "c" must not hit "css". #}
 {% macro get_icon_for_tags(tags) %}
-{% set t = tags | join(sep=" ") | lower %}
+{% set t = tags | join(sep=" ") | lower | split(pat=" ") %}
 {% if "flutter" in t or "swift" in t or "android" in t or "ios" in t or "kotlin" in t %}{{ self::phone_icon() }}
 {% elif "arduino" in t or "embedded" in t or "verilog" in t or "hardware" in t %}{{ self::chip_icon() }}
 {% elif "html" in t or "css" in t or "javascript" in t or "typescript" in t or "web" in t or "react" in t %}{{ self::globe_icon() }}

@@ -1,17 +1,30 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* Self-hosted fonts: no third-party request, no visitor IP leak to Google. */
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 800; /* variable */
+  font-display: swap;
+  src: url("../fonts/jetbrains-mono.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Quattrocento";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/quattrocento-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Quattrocento";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/quattrocento-700.woff2") format("woff2");
+}
+
 @theme {
   --font-sans: "Quattrocento", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
-  /* --color-slate-850: #151e2e; */
-  /* --color-slate-900: #0f172a; */
-}
-
-@utility scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
 }
