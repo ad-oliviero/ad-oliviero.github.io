@@ -10,8 +10,8 @@ accent = "#f59e0b"
 +++
 A Raspberry Pi Pico project re-implementing an old ceiling-fan remote in software and hardware.
 <!-- more -->
-telecomand.ino recreates a vintage ceiling-fan remote control on a Raspberry Pi Pico,
-capturing and reproducing the original remote's signals to drive the fan wirelessly —
+telecomand.ino recreates an old ceiling-fan remote control on a Raspberry Pi Pico,
+capturing and reproducing the original remote's signals to drive the fan wirelessly,
 both the firmware and the supporting hardware were built from scratch.
 
 - Pi Pico microcontroller emulating the original remote's protocol

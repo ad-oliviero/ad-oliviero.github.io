@@ -59,10 +59,16 @@
         <div class="h-px bg-border flex-grow" aria-hidden="true"></div>
     </div>
     {% set projects = get_section(path="projects/_index.md") %}
+    {% set_global highlights = [] %}
+    {% for slug in projects.extra.highlighted %}{% for p in projects.pages %}{% if p.slug == slug %}{% set_global highlights = highlights | concat(with=p) %}{% endif %}{% endfor %}{% endfor %}
     <div class="project-scroll relative left-1/2 -translate-x-1/2 w-screen overflow-x-auto hide-scrollbar py-8" style="perspective: 1200px">
         <div class="project-marquee">
-            <div class="contents">{% for project in projects.pages %}{{ macros::project_card(project=project, class="shrink-0 w-[300px]") }}{% endfor %}</div>
-            <div class="contents">{% for project in projects.pages %}{{ macros::project_card(project=project, class="shrink-0 w-[300px]") }}{% endfor %}</div>
+            {# Three identical copies: the view stays parked in the middle copy and
+               jumps by one copy-width when it drifts out, so scrolling (auto or
+               manual) loops seamlessly in both directions. #}
+            <div class="contents">{% for project in highlights %}{{ macros::project_card(project=project, class="shrink-0 w-[300px]") }}{% endfor %}</div>
+            <div class="contents">{% for project in highlights %}{{ macros::project_card(project=project, class="shrink-0 w-[300px]") }}{% endfor %}</div>
+            <div class="contents">{% for project in highlights %}{{ macros::project_card(project=project, class="shrink-0 w-[300px]") }}{% endfor %}</div>
         </div>
     </div>
     <div class="mt-12 text-center">
@@ -77,11 +83,14 @@
         <div class="h-px bg-border flex-grow" aria-hidden="true"></div>
     </div>
     {% set skills = get_section(path="skills/_index.md") %}
+    {% set skill_projects = get_section(path="projects/_index.md") %}
     <div class="glass text-card-foreground rounded-2xl p-8 text-center grid grid-cols-1 md:grid-cols-2 gap-8">
         {% for skill in skills.extra.items %}
         <div>
             <h3 class="font-mono text-primary mb-4 text-lg">{{ skill.category }}</h3>
-            <p class="text-muted-foreground text-sm font-mono">{{ skill.items | join(sep=" / ") }}</p>
+            <div class="text-muted-foreground text-sm font-mono flex flex-wrap justify-center items-center gap-x-2 gap-y-2">
+                {% for item in skill.items %}{{ macros::skill_chip(item=item, projects=skill_projects, notes=skills.extra.notes, also=skills.extra.also) }}{% if not loop.last %}<span aria-hidden="true">/</span>{% endif %}{% endfor %}
+            </div>
         </div>
         {% endfor %}
     </div>
@@ -96,12 +105,24 @@
     {% set edu = get_section(path="education/_index.md") %}
     <div class="space-y-8">
         {% for item in edu.extra.items %}
-        <article class="flex flex-col md:flex-row justify-between items-start md:items-center {% if not loop.last %}border-b border-border pb-8{% endif %}">
-            <div>
-                <h3 class="text-xl font-bold text-foreground"><a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">{{ item.school }}</a></h3>
+        <article class="flex flex-col md:flex-row justify-between items-start gap-x-6 gap-y-2 {% if not loop.last %}border-b border-border pb-8{% endif %}">
+            <div class="min-w-0">
+                <h3 class="text-xl font-bold text-foreground">{% if item.url %}<a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">{{ item.school }}</a>{% else %}{{ item.school }}{% endif %}</h3>
                 <p class="text-muted-foreground">{{ item.degree }}</p>
+                {% if item.skills %}
+                <div class="mt-3 flex flex-wrap items-center gap-x-2 gap-y-2 text-sm font-mono text-muted-foreground">
+                    <span class="text-xs uppercase tracking-wider text-primary mr-1">Skills</span>
+                    {% for s in item.skills %}{{ macros::skill_chip(item=s, projects=skill_projects, notes=skills.extra.notes, also=skills.extra.also) }}{% if not loop.last %}<span aria-hidden="true">/</span>{% endif %}{% endfor %}
+                </div>
+                {% endif %}
+                {% if item.projects %}
+                <div class="mt-3 flex flex-wrap items-center gap-2 text-sm font-mono">
+                    <span class="text-xs uppercase tracking-wider text-primary mr-1">Projects</span>
+                    {% for slug in item.projects %}{{ macros::project_pill(slug=slug, projects=skill_projects) }}{% endfor %}
+                </div>
+                {% endif %}
             </div>
-            <time class="font-mono text-primary mt-2 md:mt-0">{{ item.dates }}</time>
+            <time class="font-mono text-primary mt-2 md:mt-0 shrink-0">{{ item.dates }}</time>
         </article>
         {% endfor %}
     </div>
@@ -124,6 +145,24 @@
     </div>
 </dialog>
 
+<dialog id="bfli-demo-modal" class="project-dialog project-dialog-wide">
+    <form method="dialog" class="absolute top-4 right-4 z-10">
+        <button class="text-muted-foreground hover:text-foreground transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </form>
+    {% include "partials/bfli_demo.html" %}
+</dialog>
+
+<script>
+    // bfli demo link -> popup (no JS: links still navigate to /bfli-demo)
+    const bfliModal = document.getElementById('bfli-demo-modal');
+    document.querySelectorAll('a[href*="bfli-demo"]').forEach(a => a.addEventListener('click', e => {
+        e.preventDefault();
+        bfliModal.showModal();
+    }));
+</script>
+
 <script>
     // All-projects link -> popup (no JS: links still navigate to /all-projects/)
     const allModal = document.getElementById('all-projects-modal');
@@ -132,22 +171,31 @@
         allModal.showModal();
     }));
 
-    // Slow horizontal auto-scroll; pauses on hover/touch so the user can scroll
-    // and click manually. Two card copies make the scrollLeft loop seamless.
+    // Infinite horizontal scroll (auto + manual, both directions). Three identical
+    // copies of the cards; we keep the view in the middle copy and shift by one
+    // copy-width whenever it drifts into the outer copies, so the loop is seamless.
     const track = document.querySelector('.project-scroll');
-    if (track && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (track) {
+        const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const seg = () => track.scrollWidth / 3;  // width of one copy
+        // Keep scrollLeft within the middle copy [seg/2, seg*1.5).
+        const wrap = () => {
+            const s = seg();
+            if (track.scrollLeft < s * 0.5) track.scrollLeft += s;
+            else if (track.scrollLeft >= s * 1.5) track.scrollLeft -= s;
+        };
+        // Start parked in the middle copy so there's slack on both sides.
+        requestAnimationFrame(() => { track.scrollLeft = seg(); });
+        track.addEventListener('scroll', wrap, { passive: true });
+
         let paused = false, resumeTimer;
-        // Pause only on real manual scrolling (wheel/swipe); resume after the user stops.
+        // Pause the auto-advance only during real manual scrolling; resume after a pause.
         const pause = () => { paused = true; clearTimeout(resumeTimer); resumeTimer = setTimeout(() => paused = false, 2000); };
         ['wheel', 'touchmove'].forEach(ev => track.addEventListener(ev, pause, { passive: true }));
-        // Resume immediately once the cursor leaves the section.
         ['pointerleave', 'touchend'].forEach(ev => track.addEventListener(ev, () => { clearTimeout(resumeTimer); paused = false; }, { passive: true }));
         const step = () => {
-            if (!paused) {
-                track.scrollLeft += 0.5;
-                const half = track.scrollWidth / 2;
-                if (track.scrollLeft >= half) track.scrollLeft -= half;
-            }
+            if (!reduce && !paused) track.scrollLeft += 0.5;
+            wrap();
             requestAnimationFrame(step);
         };
         requestAnimationFrame(step);

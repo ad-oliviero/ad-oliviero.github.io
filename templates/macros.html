@@ -1,5 +1,28 @@
 {% import "svgs.html" as svgs %}
 
+{# A skill name as a hoverable chip. If any project matches its tag (or is listed
+   in `also` for this skill) the popover shows those projects; else a note (exam
+   or link); else plain text. Reused by the Skills and Education sections. #}
+{% macro skill_chip(item, projects, notes, also) %}
+{% set_global sc_matched = [] %}
+{% set sc_also = also | get(key=item, default=[]) %}
+{% for p in projects.pages %}{% if (p.extra.tags and item in p.extra.tags) or (p.slug in sc_also) %}{% set_global sc_matched = sc_matched | concat(with=p) %}{% endif %}{% endfor %}
+{% set note = notes | get(key=item, default=0) %}
+{%- if sc_matched | length > 0 -%}
+<span class="skill-chip" data-projects tabindex="0">{{ item }}<span class="skill-pop"><span class="skill-pop-inner">{% for p in sc_matched %}<button type="button" onclick="document.getElementById('proj-{{ p.slug }}')?.showModal()" class="skill-pop-item" style="--accent: {{ p.extra.accent | default(value='var(--primary)') }}"><span class="skill-dot" aria-hidden="true"></span>{{ p.title }}</button>{% endfor %}</span></span></span>
+{%- elif note -%}
+<span class="skill-chip" data-projects tabindex="0">{{ item }}<span class="skill-pop"><span class="skill-pop-inner">{% if note.project %}<button type="button" onclick="document.getElementById('proj-{{ note.project }}')?.showModal()" class="skill-pop-item"><span class="skill-dot" aria-hidden="true"></span>{{ note.label }}</button>{% elif note.url %}<a href="{{ note.url }}" target="_blank" rel="noopener noreferrer" class="skill-pop-item"><span class="skill-dot" aria-hidden="true"></span>{{ note.label }}</a>{% else %}<span class="skill-pop-note">{{ note.label }}</span>{% endif %}</span></span></span>
+{%- else -%}
+<span>{{ item }}</span>
+{%- endif -%}
+{% endmacro %}
+
+{# A project as a small clickable pill that opens its detail dialog. `slug` is
+   matched against the projects section; renders nothing if not found. #}
+{% macro project_pill(slug, projects) %}
+{%- for p in projects.pages %}{% if p.slug == slug %}<button type="button" onclick="document.getElementById('proj-{{ p.slug }}')?.showModal()" class="edu-proj" style="--accent: {{ p.extra.accent | default(value='var(--primary)') }}"><span class="skill-dot" aria-hidden="true"></span>{{ p.title }}</button>{% endif %}{% endfor -%}
+{% endmacro %}
+
 {% macro project_card(project, class="") %}
 <article class="project-card group p-6 flex flex-col h-full relative {{ class }}"
     style="--accent: {{ project.extra.accent | default(value='var(--primary)') }}"
@@ -38,6 +61,7 @@
     <div class="prose prose-invert prose-sm max-w-none text-muted-foreground mb-6
         prose-headings:text-popover-foreground prose-a:text-[var(--accent)] prose-strong:text-popover-foreground
         marker:text-[var(--accent)]">{{ project.content | safe }}</div>
+    {% if project.extra.screenshots %}<div class="proj-shots hide-scrollbar mb-6">{% for shot in project.extra.screenshots %}<a href="{{ get_url(path=shot) }}" target="_blank" rel="noopener noreferrer"><img src="{{ get_url(path=shot) }}" alt="{{ project.title }} screenshot" loading="lazy"></a>{% endfor %}</div>{% endif %}
     {% if project.extra.tags %}<ul class="font-mono text-xs text-secondary-foreground mb-6 flex flex-wrap gap-2">{% for tag in project.extra.tags %}<li class="px-2 py-1 rounded-md bg-secondary border border-border">{{ tag }}</li>{% endfor %}</ul>{% endif %}
     {% if project.extra.github_url or project.extra.demo_url or project.extra.website_url %}
     <div class="flex flex-wrap gap-3">

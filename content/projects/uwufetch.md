@@ -8,14 +8,15 @@ tags = ["C", "Linux", "CLI"]
 github_url = "https://github.com/ad-oliviero/uwufetch"
 accent = "#f472b6"
 +++
-A meme system info tool for Linux, based on the nyan/uwu trend on r/linuxmasterrace.
+A meme system info tool for (almost) all your Linux/Unix-based systems, based on the nyan/UwU trend on r/linuxmasterrace.
 <!-- more -->
-uwufetch is a humorous system-information utility for Linux and other Unix-like
-systems that prints OS details — CPU, RAM, GPU and more — in a playful, "uwu"-themed
-layout. It's written in pure C with minimal dependencies and builds with a standard
-`make` and C compiler.
+uwufetch is a meme system-information utility for Linux and other Unix-like systems that
+prints OS details. CPU, RAM, GPU and more "uwu"-themed layout. Written in pure
+C with minimal dependencies, it's the project that taught me the most, and ended up packaged in
+the official Arch repositories, the AUR and Pacstall.
 
-- Themed ASCII art for 20+ Linux distributions plus BSD, macOS, iOS and Windows
-- Optional image rendering via `viu` instead of ASCII
+- Themed ASCII art (and optional images) for a wide range of distros, plus FreeBSD, OpenBSD, macOS, iOS and Windows
+- Optional image rendering via `viu` instead of ASCII art
 - Ships `libfetch`, a reusable library so other apps can pull system info programmatically
-- Lightweight pure-C implementation with 630+ commits of history
+- Builds with a plain `make` and a C compiler; available in the Arch repos, AUR and Pacstall
+- GPL-3.0 licensed

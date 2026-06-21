@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% import "svgs.html" as svgs %}
+
+{% block title %}{{ page.title }} - {{ config.title }}{% endblock title %}
+
+{% block content %}
+<section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto min-h-screen">
+    <a href="{{ get_url(path="/") }}#projects" class="inline-flex items-center gap-2 text-primary hover:underline font-mono text-sm mb-8 transition-colors group">
+        {{ svgs::arrow_left_icon(class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform") }}
+        Back to Projects
+    </a>
+    <div class="glass rounded-2xl p-6 sm:p-8">
+        {% include "partials/bfli_demo.html" %}
+    </div>
+</section>
+{% endblock content %}

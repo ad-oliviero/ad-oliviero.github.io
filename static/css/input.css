@@ -174,3 +174,70 @@
   .project-marquee .project-card:hover { transform: scale(1.02); }
   .project-dialog[open] { animation: none; }
 }
+
+/* Skills: hover (or focus) a skill to reveal the projects that prove it.
+   Pure CSS — the popover is a descendant of the chip, so hovering it keeps
+   the chip hovered; padding-top bridges the gap with no dead zone. */
+.skill-chip { position: relative; }
+.skill-chip[data-projects] {
+  cursor: pointer; outline: none;
+  text-decoration: underline dotted color-mix(in oklab, var(--foreground) 35%, transparent);
+  text-underline-offset: 4px;
+  transition: color .12s;
+}
+.skill-chip[data-projects]:hover, .skill-chip[data-projects]:focus-visible { color: var(--foreground); }
+.skill-pop {
+  position: absolute; left: 50%; top: 100%; transform: translateX(-50%);
+  padding-top: .6rem; z-index: 40; min-width: 11rem; max-width: 16rem;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .15s ease;
+}
+.skill-chip:hover .skill-pop, .skill-chip:focus-within .skill-pop {
+  opacity: 1; visibility: visible; pointer-events: auto;
+}
+.skill-pop-inner {
+  display: flex; flex-direction: column; gap: .15rem;
+  padding: .5rem; text-align: left;
+  border-radius: var(--radius-md);
+  background: color-mix(in oklab, var(--popover) 80%, transparent);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid color-mix(in oklab, white 12%, transparent);
+  box-shadow: 0 18px 40px -16px rgb(0 0 0 / 0.55);
+}
+.skill-pop-item {
+  display: flex; align-items: center; gap: .5rem; width: 100%;
+  padding: .35rem .5rem; border-radius: var(--radius-sm);
+  font-size: .8rem; color: var(--popover-foreground); white-space: nowrap;
+  cursor: pointer; transition: background-color .12s;
+}
+.skill-pop-item:hover { background: color-mix(in oklab, var(--accent) 22%, transparent); }
+.skill-dot { width: .5rem; height: .5rem; border-radius: 9999px; background: var(--accent, var(--muted-foreground)); flex-shrink: 0; }
+/* Non-link note (e.g. "learned in an exam") — read-only line, wraps. */
+.skill-pop-note {
+  padding: .35rem .5rem; font-size: .78rem; line-height: 1.35;
+  color: var(--muted-foreground); white-space: normal; text-align: left;
+}
+
+/* Project screenshots: horizontal scroll strip inside the detail dialog. */
+.proj-shots { display: flex; gap: .75rem; overflow-x: auto; padding-bottom: .25rem; }
+.proj-shots img {
+  height: 12rem; width: auto; flex-shrink: 0;
+  border-radius: var(--radius-md);
+  border: 1px solid color-mix(in oklab, white 12%, transparent);
+  background: white; object-fit: contain;
+}
+
+/* Education: a project shown as a clickable pill (opens its dialog). */
+.edu-proj {
+  display: inline-flex; align-items: center; gap: .45rem;
+  padding: .25rem .65rem; border-radius: var(--radius-md);
+  font-size: .8rem; color: var(--secondary-foreground); cursor: pointer;
+  background: var(--secondary);
+  border: 1px solid color-mix(in oklab, var(--accent, var(--border)) 35%, var(--border));
+  transition: background-color .12s, border-color .12s;
+}
+.edu-proj:hover {
+  background: color-mix(in oklab, var(--accent) 22%, var(--secondary));
+  border-color: color-mix(in oklab, var(--accent) 55%, var(--border));
+}

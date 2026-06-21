@@ -4,17 +4,17 @@ date = 2025-12-26
 weight = 4
 
 [extra]
-tags = ["Rust", "CLI", "Interpreter"]
+tags = ["C", "CLI", "Interpreter"]
 github_url = "https://github.com/ad-oliviero/bfli"
 demo_url = "/bfli-demo"
 accent = "#f97316"
 +++
-A fast and efficient Brainfuck language interpreter written in Rust.
+A fast and efficient Brainfuck language interpreter written in C.
 <!-- more -->
-bfli is a fast, efficient interpreter for the Brainfuck esoteric language, written in
-Rust. It focuses on tight, correct execution of Brainfuck programs from the command line,
-with a live browser-based demo in the works.
+bfli is a fast, efficient interpreter for the Brainfuck esoteric language. It focuses on
+tight, correct execution of Brainfuck programs from the command line, and ships with a
+live browser demo that runs the interpreter itself, compiled to WebAssembly (see live demo).
 
 - Brainfuck interpreter with a focus on speed and correctness
-- Built in safe, modern Rust as a command-line tool
-- Companion live web demo (work in progress)
+- Runs as a command-line tool
+- Live web demo running the real interpreter in-browser via WebAssembly

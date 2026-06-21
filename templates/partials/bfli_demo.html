@@ -1,0 +1,81 @@
+{# bfli live demo. Runs the REAL interpreter: main.c (github.com/ad-oliviero/brainfuck-live-interpreter)
+   compiled to bfli.wasm with emscripten. Include once per page (home dialog + /bfli-demo). #}
+<div class="bfli flex flex-col gap-4" style="--accent: #f97316">
+    <div class="flex items-center gap-3">
+        <h2 class="text-2xl font-bold text-popover-foreground">bfli <span class="font-mono text-base text-muted-foreground">live</span></h2>
+        <span class="font-mono text-xs text-muted-foreground hidden sm:inline">brainfuck, in your browser via wasm</span>
+        <details class="relative ml-auto">
+            <summary class="btn btn-outline cursor-pointer list-none">Examples</summary>
+            <div class="bfli-ex absolute right-0 z-20 mt-2 w-56 glass rounded-xl p-2 flex flex-col gap-1"></div>
+        </details>
+    </div>
+
+    <label class="text-xs font-mono text-muted-foreground">Program
+        <textarea class="bfli-code mt-1 w-full h-32 font-mono text-sm rounded-xl bg-secondary text-foreground border border-border p-3 resize-y focus:outline-none focus:ring-2 focus:ring-ring" spellcheck="false" placeholder="++++++++[>++++...]"></textarea>
+    </label>
+
+    <div>
+        <div class="text-xs font-mono text-muted-foreground mb-1">Output</div>
+        <pre class="bfli-out font-mono text-sm rounded-xl bg-secondary text-foreground border border-border p-3 min-h-[3rem] max-h-48 overflow-auto whitespace-pre-wrap break-words m-0"></pre>
+    </div>
+</div>
+
+<script>
+(() => {
+    const root = document.currentScript.previousElementSibling;
+    const code = root.querySelector('.bfli-code');
+    const out = root.querySelector('.bfli-out');
+    const exBox = root.querySelector('.bfli-ex');
+    const details = exBox.closest('details');
+
+    // Only programs verified against the real bfli.wasm (its loop/cell quirks differ
+    // from textbook brainfuck, so don't add untested ones).
+    const examples = {
+        'Hello World': '++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.',
+        'Add 2 + 5': '++>+++++[<+>-]++++++++[<++++++>-]<.',
+    };
+
+    let wasmain, mem;
+    // bfli.wasm exports raw `memory` + `wasmain(in_ptr, out_ptr, len)`. Upstream glue's
+    // fixed layout: output at offset 0 (32KB), input written right after.
+    // ponytail: plain fetch+instantiate (not instantiateStreaming) so a missing
+    // application/wasm MIME type can't reject the load — the file is tiny.
+    const ready = fetch('{{ get_url(path="bfli.wasm") }}')
+        .then(r => r.arrayBuffer())
+        .then(b => WebAssembly.instantiate(b, {}));
+
+    const run = () => {
+        if (!wasmain) return;
+        // Strip newlines: bfli stops at the first one, and they aren't brainfuck commands.
+        const src = code.value.replace(/\n/g, '');
+        const buf = mem.buffer;
+        new Uint8Array(buf, 0, 32768).fill(0);                 // clear output region
+        const bytes = new TextEncoder().encode(src);
+        const inReg = new Uint8Array(buf, 32768, bytes.length + 1);
+        inReg.fill(0); inReg.set(bytes);                        // null-terminated input
+        wasmain(32768, 0, bytes.length);
+        const o = new Uint8Array(buf, 0, 32768);
+        let end = o.indexOf(0); if (end < 0) end = 32768;       // C string: stop at NUL
+        out.textContent = new TextDecoder().decode(o.subarray(0, end));
+    };
+
+    let timer;
+    code.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(run, 150); });
+
+    for (const name in examples) {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'text-left text-sm rounded-lg px-3 py-2 text-foreground hover:bg-accent transition-colors';
+        b.textContent = name;
+        b.onclick = () => { code.value = examples[name]; details.open = false; run(); };
+        exBox.appendChild(b);
+    }
+
+    code.value = examples['Hello World'];
+    out.textContent = 'loading wasm…';
+    ready.then(({ instance }) => {
+        ({ wasmain, memory: mem } = instance.exports);
+        run();
+    }).catch(() => { out.textContent = 'Failed to load bfli.wasm'; });
+})();
+</script>
