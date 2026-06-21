@@ -5,15 +5,15 @@
 {% block content %}
 <!-- Hero -->
 <section class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto min-h-screen flex flex-col justify-center items-start" aria-labelledby="hero-heading">
-    <p class="font-mono text-indigo-400 mb-4">Ciao, I am</p>
-    <h1 id="hero-heading" class="text-5xl sm:text-7xl font-bold text-white mb-6 tracking-tight">{{ config.extra.author }}.</h1>
-    <p class="text-4xl sm:text-5xl font-bold text-slate-400 mb-8 tracking-tight">{{ config.extra.role }}</p>
-    <p class="max-w-xl text-lg text-slate-400 mb-12 leading-relaxed">{{ section.extra.hero_description }}</p>
+    <p class="font-mono text-primary mb-4">Ciao, I am</p>
+    <h1 id="hero-heading" class="text-5xl sm:text-7xl font-bold text-foreground mb-6 tracking-tight">{{ config.extra.author }}.</h1>
+    <p class="text-4xl sm:text-5xl font-bold text-muted-foreground mb-8 tracking-tight">{{ config.extra.role }}</p>
+    <p class="max-w-xl text-lg text-muted-foreground mb-12 leading-relaxed">{{ section.extra.hero_description }}</p>
     <div class="flex flex-wrap gap-4">
-        <a href="{{ get_url(path="@/all-projects.md") }}" class="border border-indigo-500 text-indigo-400 hover:bg-indigo-500/10 px-6 py-3 rounded font-mono transition-colors">Check out my projects</a>
-        <a href="{{ config.extra.github }}" target="_blank" rel="noopener noreferrer" class="border border-indigo-500 text-slate-400 hover:text-white hover:bg-indigo-500/10 px-6 py-3 rounded font-mono transition-colors flex items-center gap-2">{{ svgs::github_icon() }} GitHub</a>
+        <a href="#projects" class="btn btn-primary btn-lg font-mono">Check out my projects</a>
+        <a href="{{ config.extra.github }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-lg font-mono">{{ svgs::github_icon() }} GitHub</a>
     </div>
-    <a href="#about" aria-label="Scroll to about" class="absolute bottom-8 left-1/2 -ml-3 text-slate-500 hover:text-indigo-400 transition-colors animate-bounce">
+    <a href="#about" aria-label="Scroll to about" class="absolute bottom-8 left-1/2 -ml-3 text-muted-foreground hover:text-primary transition-colors animate-bounce">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </a>
 </section>
@@ -21,31 +21,31 @@
 <!-- About -->
 <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto" aria-labelledby="about-heading">
     <div class="flex items-center mb-12">
-        <h2 id="about-heading" class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">{{ section.extra.sections.about }}.</span>About Me</h2>
-        <div class="h-px bg-slate-700 flex-grow" aria-hidden="true"></div>
+        <h2 id="about-heading" class="text-3xl font-bold text-foreground mr-4"><span class="font-mono text-primary text-2xl mr-2">{{ section.extra.sections.about }}.</span>About Me</h2>
+        <div class="h-px bg-border flex-grow" aria-hidden="true"></div>
     </div>
-    <div class="text-slate-400 leading-relaxed space-y-4 max-w-2xl prose prose-invert prose-indigo">{{ section.content | safe }}</div>
+    <div class="text-muted-foreground leading-relaxed space-y-4 max-w-2xl prose prose-invert prose-indigo">{{ section.content | safe }}</div>
 </section>
 
 <!-- Experience -->
 <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto" aria-labelledby="experience-heading">
     <div class="flex items-center mb-12">
-        <h2 id="experience-heading" class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">{{ section.extra.sections.experience }}.</span>Experience</h2>
-        <div class="h-px bg-slate-700 flex-grow" aria-hidden="true"></div>
+        <h2 id="experience-heading" class="text-3xl font-bold text-foreground mr-4"><span class="font-mono text-primary text-2xl mr-2">{{ section.extra.sections.experience }}.</span>Experience</h2>
+        <div class="h-px bg-border flex-grow" aria-hidden="true"></div>
     </div>
     {% set exp = get_section(path="experience/_index.md") %}
-    <div class="space-y-12 border-l border-slate-700 ml-3 md:ml-0 pl-8 md:pl-0">
+    <div class="space-y-12 border-l border-border ml-3 md:ml-0 pl-8 md:pl-0">
         {% for job in exp.extra.items %}
         <article class="relative md:grid md:grid-cols-4 md:gap-4">
             <div class="hidden md:block text-right px-4 pt-1">
-                <time class="font-mono text-xs text-slate-500">{{ job.dates }}</time>
-                <div class="text-sm font-semibold text-slate-300">{{ job.location }}</div>
+                <time class="font-mono text-xs text-muted-foreground">{{ job.dates }}</time>
+                <div class="text-sm font-semibold text-foreground">{{ job.location }}</div>
             </div>
-            <div class="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-indigo-500 bg-slate-900 md:hidden" aria-hidden="true"></div>
+            <div class="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-primary bg-background md:hidden" aria-hidden="true"></div>
             <div class="md:col-span-3">
-                <h3 class="text-xl font-bold text-white">{{ job.role }} @ <a href="{{ job.url }}" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:underline">{{ job.company }}</a></h3>
-                <div class="md:hidden font-mono text-xs text-slate-500 mb-2"><time>{{ job.dates }}</time> | {{ job.location }}</div>
-                <p class="mt-2 text-slate-400">{{ job.description }}</p>
+                <h3 class="text-xl font-bold text-foreground">{{ job.role }} @ <a href="{{ job.url }}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">{{ job.company }}</a></h3>
+                <div class="md:hidden font-mono text-xs text-muted-foreground mb-2"><time>{{ job.dates }}</time> | {{ job.location }}</div>
+                <p class="mt-2 text-muted-foreground">{{ job.description }}</p>
             </div>
         </article>
         {% endfor %}
@@ -55,30 +55,33 @@
 <!-- Projects -->
 <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto" aria-labelledby="projects-heading">
     <div class="flex items-center mb-12">
-        <h2 id="projects-heading" class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">{{ section.extra.sections.projects }}.</span>Some Things I've Built</h2>
-        <div class="h-px bg-slate-700 flex-grow" aria-hidden="true"></div>
+        <h2 id="projects-heading" class="text-3xl font-bold text-foreground mr-4"><span class="font-mono text-primary text-2xl mr-2">{{ section.extra.sections.projects }}.</span>Some Things I've Built</h2>
+        <div class="h-px bg-border flex-grow" aria-hidden="true"></div>
     </div>
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {% set projects = get_section(path="projects/_index.md") %}
-        {% for project in projects.pages %}{{ macros::project_card(project=project) }}{% endfor %}
+    {% set projects = get_section(path="projects/_index.md") %}
+    <div class="project-scroll relative left-1/2 -translate-x-1/2 w-screen overflow-x-auto hide-scrollbar py-8" style="perspective: 1200px">
+        <div class="project-marquee">
+            <div class="contents">{% for project in projects.pages %}{{ macros::project_card(project=project, class="shrink-0 w-[300px]") }}{% endfor %}</div>
+            <div class="contents">{% for project in projects.pages %}{{ macros::project_card(project=project, class="shrink-0 w-[300px]") }}{% endfor %}</div>
+        </div>
     </div>
     <div class="mt-12 text-center">
-        <a href="{{ get_url(path="@/all-projects.md") }}" class="inline-flex items-center gap-2 border border-indigo-500 text-indigo-400 hover:bg-indigo-500/10 px-8 py-4 rounded font-mono transition-colors">View All My Projects {{ svgs::arrow_right_icon() }}</a>
+        <a href="{{ get_url(path="@/all-projects.md") }}" data-all-projects class="btn btn-outline btn-lg font-mono">View All My Projects {{ svgs::arrow_right_icon() }}</a>
     </div>
 </section>
 
 <!-- Skills -->
 <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto" aria-labelledby="skills-heading">
     <div class="flex items-center mb-12">
-        <h2 id="skills-heading" class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">{{ section.extra.sections.skills }}.</span>Skills & Tools</h2>
-        <div class="h-px bg-slate-700 flex-grow" aria-hidden="true"></div>
+        <h2 id="skills-heading" class="text-3xl font-bold text-foreground mr-4"><span class="font-mono text-primary text-2xl mr-2">{{ section.extra.sections.skills }}.</span>Skills & Tools</h2>
+        <div class="h-px bg-border flex-grow" aria-hidden="true"></div>
     </div>
     {% set skills = get_section(path="skills/_index.md") %}
-    <div class="bg-slate-800/50 rounded-xl p-8 border border-slate-700 text-center grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="glass text-card-foreground rounded-2xl p-8 text-center grid grid-cols-1 md:grid-cols-2 gap-8">
         {% for skill in skills.extra.items %}
         <div>
-            <h3 class="font-mono text-indigo-400 mb-4 text-lg">{{ skill.category }}</h3>
-            <p class="text-slate-400 text-sm font-mono">{{ skill.items | join(sep=" / ") }}</p>
+            <h3 class="font-mono text-primary mb-4 text-lg">{{ skill.category }}</h3>
+            <p class="text-muted-foreground text-sm font-mono">{{ skill.items | join(sep=" / ") }}</p>
         </div>
         {% endfor %}
     </div>
@@ -87,20 +90,84 @@
 <!-- Education -->
 <section id="education" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto" aria-labelledby="education-heading">
     <div class="flex items-center mb-12">
-        <h2 id="education-heading" class="text-3xl font-bold text-white mr-4"><span class="font-mono text-indigo-400 text-2xl mr-2">{{ section.extra.sections.education }}.</span>Education</h2>
-        <div class="h-px bg-slate-700 flex-grow" aria-hidden="true"></div>
+        <h2 id="education-heading" class="text-3xl font-bold text-foreground mr-4"><span class="font-mono text-primary text-2xl mr-2">{{ section.extra.sections.education }}.</span>Education</h2>
+        <div class="h-px bg-border flex-grow" aria-hidden="true"></div>
     </div>
     {% set edu = get_section(path="education/_index.md") %}
     <div class="space-y-8">
         {% for item in edu.extra.items %}
-        <article class="flex flex-col md:flex-row justify-between items-start md:items-center {% if not loop.last %}border-b border-slate-800 pb-8{% endif %}">
+        <article class="flex flex-col md:flex-row justify-between items-start md:items-center {% if not loop.last %}border-b border-border pb-8{% endif %}">
             <div>
-                <h3 class="text-xl font-bold text-white"><a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition-colors">{{ item.school }}</a></h3>
-                <p class="text-slate-400">{{ item.degree }}</p>
+                <h3 class="text-xl font-bold text-foreground"><a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">{{ item.school }}</a></h3>
+                <p class="text-muted-foreground">{{ item.degree }}</p>
             </div>
-            <time class="font-mono text-indigo-400 mt-2 md:mt-0">{{ item.dates }}</time>
+            <time class="font-mono text-primary mt-2 md:mt-0">{{ item.dates }}</time>
         </article>
         {% endfor %}
     </div>
 </section>
+<!-- Project detail popups (one per project) + all-projects popup -->
+{% set all_projects = get_section(path="projects/_index.md") %}
+{% for project in all_projects.pages %}{{ macros::project_detail_dialog(project=project) }}{% endfor %}
+
+<dialog id="all-projects-modal" class="project-dialog project-dialog-wide">
+    <form method="dialog" class="absolute top-4 right-4 z-10">
+        <button class="text-muted-foreground hover:text-foreground transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </form>
+    <h2 class="text-3xl font-bold text-popover-foreground mb-2 tracking-tight">All Projects</h2>
+    <p class="text-muted-foreground mb-8">My public software and hardware projects. More on
+        <a href="{{ config.extra.github }}?tab=repositories" class="text-primary hover:underline transition-colors">GitHub</a>.</p>
+    <div class="grid gap-6 md:grid-cols-2">
+        {% for project in all_projects.pages %}{{ macros::project_card(project=project) }}{% endfor %}
+    </div>
+</dialog>
+
+<script>
+    // All-projects link -> popup (no JS: links still navigate to /all-projects/)
+    const allModal = document.getElementById('all-projects-modal');
+    document.querySelectorAll('[data-all-projects]').forEach(a => a.addEventListener('click', e => {
+        e.preventDefault();
+        allModal.showModal();
+    }));
+
+    // Slow horizontal auto-scroll; pauses on hover/touch so the user can scroll
+    // and click manually. Two card copies make the scrollLeft loop seamless.
+    const track = document.querySelector('.project-scroll');
+    if (track && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        let paused = false, resumeTimer;
+        // Pause only on real manual scrolling (wheel/swipe); resume after the user stops.
+        const pause = () => { paused = true; clearTimeout(resumeTimer); resumeTimer = setTimeout(() => paused = false, 2000); };
+        ['wheel', 'touchmove'].forEach(ev => track.addEventListener(ev, pause, { passive: true }));
+        // Resume immediately once the cursor leaves the section.
+        ['pointerleave', 'touchend'].forEach(ev => track.addEventListener(ev, () => { clearTimeout(resumeTimer); paused = false; }, { passive: true }));
+        const step = () => {
+            if (!paused) {
+                track.scrollLeft += 0.5;
+                const half = track.scrollWidth / 2;
+                if (track.scrollLeft >= half) track.scrollLeft -= half;
+            }
+            requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+    }
+
+    // tvOS-style pointer tilt (skipped under reduced motion)
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('.project-marquee .project-card').forEach(card => {
+            card.addEventListener('pointermove', e => {
+                const r = card.getBoundingClientRect();
+                const px = (e.clientX - r.left) / r.width - 0.5;
+                const py = (e.clientY - r.top) / r.height - 0.5;
+                card.style.setProperty('--ry', `${px * 10}deg`);
+                card.style.setProperty('--rx', `${-py * 10}deg`);
+            });
+            card.addEventListener('pointerleave', () => {
+                card.style.removeProperty('--rx');
+                card.style.removeProperty('--ry');
+            });
+        });
+    }
+</script>
 {% endblock content %}

@@ -6,4 +6,4 @@ weight = 1
 [extra]
 github_url = "https://github.com/ad-oliviero/brainfuck-live-interpreter"
 +++
-The live demo for <span class="text-indigo-400 font-mono">bfli</span> is currently under development. 
+The live demo for <span class="text-primary font-mono">bfli</span> is currently under development. 

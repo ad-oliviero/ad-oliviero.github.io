@@ -1,7 +1,7 @@
-<footer class="py-8 text-center text-slate-500 text-sm font-mono bg-slate-900 border-t border-slate-800">
+<footer class="py-8 text-center text-muted-foreground text-sm font-mono bg-background border-t border-border">
     <nav class="mb-4 flex justify-center gap-6" aria-label="Footer navigation">
-        <a href="mailto:{{ config.extra.email }}" class="hover:text-indigo-400 transition-colors">Email</a>
-        <a href="{{ config.extra.github }}" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition-colors">GitHub</a>
+        <a href="mailto:{{ config.extra.email }}" class="hover:text-primary transition-colors">Email</a>
+        <a href="{{ config.extra.github }}" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">GitHub</a>
     </nav>
     <p>&copy; {{ now() | date(format="%Y") }} {{ config.extra.author }}</p>
 </footer>

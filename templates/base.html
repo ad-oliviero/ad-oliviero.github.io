@@ -19,8 +19,8 @@
     <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ get_url(path="fonts/quattrocento-400.woff2") }}">
     <link rel="icon" type="image/png" href="{{ get_url(path="favicon.png") }}">
 </head>
-<body class="bg-slate-900 text-slate-300 font-sans antialiased selection:bg-indigo-500 selection:text-white">
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-indigo-600 text-white px-4 py-2 rounded z-[100]">
+<body class="bg-background text-foreground font-sans antialiased selection:bg-primary selection:text-primary-foreground">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-primary-foreground px-4 py-2 rounded-md z-[100]">
         Skip to main content
     </a>
 
@@ -38,6 +38,27 @@
             const scrolled = (scrollTop / (scrollHeight - clientHeight)) * 100;
             document.getElementById('scroll-progress').style.width = `${scrolled}%`;
         }, { passive: true });
+
+        // Shared dialog behavior: lock background scroll (preserving position) + backdrop close.
+        // position:fixed keeps the exact scroll spot so closing doesn't jump to top.
+        let _openDialogs = 0, _lockY = 0;
+        const _showModal = HTMLDialogElement.prototype.showModal;
+        HTMLDialogElement.prototype.showModal = function () {
+            if (_openDialogs++ === 0) {
+                _lockY = window.scrollY;
+                Object.assign(document.body.style, { position: 'fixed', top: `-${_lockY}px`, width: '100%' });
+            }
+            return _showModal.call(this);
+        };
+        document.addEventListener('close', e => {
+            if (e.target.tagName === 'DIALOG' && --_openDialogs === 0) {
+                Object.assign(document.body.style, { position: '', top: '', width: '' });
+                window.scrollTo({ top: _lockY, behavior: 'instant' });
+            }
+        }, true);
+        document.addEventListener('click', e => {
+            if (e.target.tagName === 'DIALOG' && e.target.open) e.target.close();
+        });
     </script>
 </body>
 </html>
