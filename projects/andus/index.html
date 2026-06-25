@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andus - Adriano Oliviero</title>
+    <meta name="description" content="My Portfolio">
+    <meta name="author" content="Adriano Oliviero">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Adriano Oliviero">
+    <meta property="og:description" content="My Portfolio">
+    <meta property="og:url" content="https:&#x2F;&#x2F;ad.oliviero.xyz&#x2F;projects&#x2F;andus&#x2F;">
+    <meta property="og:image" content="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;41623496?v=4&amp;s=400">
+    <meta name="twitter:card" content="summary">
+
+    <link rel="stylesheet" href="https://ad.oliviero.xyz/css/style.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://ad.oliviero.xyz/fonts/jetbrains-mono.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://ad.oliviero.xyz/fonts/quattrocento-400.woff2">
+    <link rel="icon" type="image/png" href="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;41623496?v=4&amp;s=400">
+</head>
+<body class="bg-background text-foreground font-sans antialiased selection:bg-primary selection:text-primary-foreground">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-primary-foreground px-4 py-2 rounded-md z-[100]">
+        Skip to main content
+    </a>
+
+    
+<header>
+    <nav class="fixed w-full z-50 bg-background/70 supports-[backdrop-filter]:bg-background/40 backdrop-blur-xl backdrop-saturate-150 border-b border-white/10" aria-label="Main navigation">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="https://ad.oliviero.xyz" class="flex-shrink-0 flex items-center gap-3 group" aria-label="Home">
+                    <img class="h-10 w-10 rounded-full border-2 border-transparent group-hover:border-primary transition-all" src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;41623496?v=4&amp;s=400" alt="" aria-hidden="true" loading="eager" decoding="async">
+                    <span class="font-mono font-bold text-foreground text-lg tracking-tighter group-hover:text-primary transition-colors">ad-oliviero</span>
+                </a>
+                <button type="button" id="mobile-menu-btn" class="md:hidden p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-colors" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+                <div class="hidden md:flex md:items-center md:space-x-6">
+                    
+                    <a href="https://ad.oliviero.xyz#about" class="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">about</a>
+                    
+                    <a href="https://ad.oliviero.xyz#experience" class="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">experience</a>
+                    
+                    <a href="https://ad.oliviero.xyz#projects" class="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">projects</a>
+                    
+                    <a href="https://ad.oliviero.xyz#skills" class="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">skills</a>
+                    
+                    <a href="https://ad.oliviero.xyz#education" class="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">education</a>
+                    
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-background/70 backdrop-blur-xl backdrop-saturate-150">
+            <div class="px-4 py-4 space-y-2">
+                
+                <a href="https://ad.oliviero.xyz#about" class="block text-muted-foreground hover:text-foreground hover:bg-accent px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">about</a>
+                
+                <a href="https://ad.oliviero.xyz#experience" class="block text-muted-foreground hover:text-foreground hover:bg-accent px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">experience</a>
+                
+                <a href="https://ad.oliviero.xyz#projects" class="block text-muted-foreground hover:text-foreground hover:bg-accent px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">projects</a>
+                
+                <a href="https://ad.oliviero.xyz#skills" class="block text-muted-foreground hover:text-foreground hover:bg-accent px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">skills</a>
+                
+                <a href="https://ad.oliviero.xyz#education" class="block text-muted-foreground hover:text-foreground hover:bg-accent px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">education</a>
+                
+            </div>
+        </div>
+        <div id="scroll-progress" class="absolute bottom-0 left-0 h-[3px] bg-primary w-0 transition-[width] duration-100 ease-linear" aria-hidden="true"></div>
+    </nav>
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        menuBtn.onclick = () => {
+            const open = menu.classList.toggle('hidden');
+            menuBtn.setAttribute('aria-expanded', !open);
+            menuBtn.querySelector('.menu-open').classList.toggle('hidden');
+            menuBtn.querySelector('.menu-close').classList.toggle('hidden');
+        };
+        menu.querySelectorAll('a').forEach(a => a.onclick = () => menuBtn.click());
+    </script>
+</header>
+
+
+    <main id="main-content">
+        
+<section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto min-h-screen">
+    <div class="mb-12">
+        <a href="https://ad.oliviero.xyz" class="inline-flex items-center gap-2 text-primary hover:underline font-mono text-sm mb-6 transition-colors group">
+            <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"/></svg>
+            Back to Home
+        </a>
+        <h1 class="text-4xl font-bold text-foreground mb-6 tracking-tight">Andus</h1>
+    </div>
+    <article class="prose prose-invert prose-indigo prose-lg max-w-none text-muted-foreground">
+        <p>A roguelike where an ink-made hero fights off hordes of monsters across an office desk.</p>
+<span id="continue-reading"></span>
+<p>Andus is a 2D roguelike built with Swift and SpriteKit, where an ink-drawn hero defends an
+office table from waves of monsters. It's structured around reusable entity and component
+building blocks (sprites, players, monsters), with custom sprite atlases and typography
+driving the look.</p>
+<ul>
+<li>Proof of concept. Technically working, but not a full gaming experience</li>
+<li>Built natively with Swift and Apple's SpriteKit 2D engine</li>
+<li>Entity/component architecture for players and monsters</li>
+<li>Custom sprite atlases, art and fonts</li>
+</ul>
+
+    </article>
+</section>
+
+    </main>
+
+    <footer class="py-8 text-center text-muted-foreground text-sm font-mono bg-background border-t border-border">
+    <nav class="mb-4 flex justify-center gap-6" aria-label="Footer navigation">
+        <a href="mailto:adrianoliviero23@gmail.com" class="hover:text-primary transition-colors">Email</a>
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">GitHub</a>
+    </nav>
+    <p>&copy; 2026 Adriano Oliviero</p>
+</footer>
+
+
+    <script>
+        document.addEventListener('scroll', () => {
+            const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+            const scrolled = (scrollTop / (scrollHeight - clientHeight)) * 100;
+            document.getElementById('scroll-progress').style.width = `${scrolled}%`;
+        }, { passive: true });
+
+        // Shared dialog behavior: lock background scroll (preserving position) + backdrop close.
+        // position:fixed keeps the exact scroll spot so closing doesn't jump to top.
+        let _openDialogs = 0, _lockY = 0;
+        const _showModal = HTMLDialogElement.prototype.showModal;
+        HTMLDialogElement.prototype.showModal = function () {
+            if (_openDialogs++ === 0) {
+                _lockY = window.scrollY;
+                Object.assign(document.body.style, { position: 'fixed', top: `-${_lockY}px`, width: '100%' });
+            }
+            return _showModal.call(this);
+        };
+        document.addEventListener('close', e => {
+            if (e.target.tagName === 'DIALOG' && --_openDialogs === 0) {
+                Object.assign(document.body.style, { position: '', top: '', width: '' });
+                window.scrollTo({ top: _lockY, behavior: 'instant' });
+            }
+        }, true);
+        document.addEventListener('click', e => {
+            if (e.target.tagName === 'DIALOG' && e.target.open) e.target.close();
+        });
+    </script>
+</body>
+</html>

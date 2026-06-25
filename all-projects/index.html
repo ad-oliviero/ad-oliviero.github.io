@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects - Adriano Oliviero</title>
+    <meta name="description" content="My Portfolio">
+    <meta name="author" content="Adriano Oliviero">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="All Projects - Adriano Oliviero">
+    <meta property="og:description" content="My Portfolio">
+    <meta property="og:url" content="https:&#x2F;&#x2F;ad.oliviero.xyz&#x2F;all-projects&#x2F;">
+    <meta property="og:image" content="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;41623496?v=4&amp;s=400">
+    <meta name="twitter:card" content="summary">
+
+    <link rel="stylesheet" href="https://ad.oliviero.xyz/css/style.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://ad.oliviero.xyz/fonts/jetbrains-mono.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://ad.oliviero.xyz/fonts/quattrocento-400.woff2">
+    <link rel="icon" type="image/png" href="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;41623496?v=4&amp;s=400">
+</head>
+<body class="bg-background text-foreground font-sans antialiased selection:bg-primary selection:text-primary-foreground">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-primary-foreground px-4 py-2 rounded-md z-[100]">
+        Skip to main content
+    </a>
+
+    
+<header>
+    <nav class="fixed w-full z-50 bg-background/70 supports-[backdrop-filter]:bg-background/40 backdrop-blur-xl backdrop-saturate-150 border-b border-white/10" aria-label="Main navigation">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="https://ad.oliviero.xyz" class="flex-shrink-0 flex items-center gap-3 group" aria-label="Home">
+                    <img class="h-10 w-10 rounded-full border-2 border-transparent group-hover:border-primary transition-all" src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;41623496?v=4&amp;s=400" alt="" aria-hidden="true" loading="eager" decoding="async">
+                    <span class="font-mono font-bold text-foreground text-lg tracking-tighter group-hover:text-primary transition-colors">ad-oliviero</span>
+                </a>
+                <button type="button" id="mobile-menu-btn" class="md:hidden p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-colors" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+                <div class="hidden md:flex md:items-center md:space-x-6">
+                    
+                    <a href="https://ad.oliviero.xyz#about" class="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">about</a>
+                    
+                    <a href="https://ad.oliviero.xyz#experience" class="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">experience</a>
+                    
+                    <a href="https://ad.oliviero.xyz#projects" class="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">projects</a>
+                    
+                    <a href="https://ad.oliviero.xyz#skills" class="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">skills</a>
+                    
+                    <a href="https://ad.oliviero.xyz#education" class="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize">education</a>
+                    
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-background/70 backdrop-blur-xl backdrop-saturate-150">
+            <div class="px-4 py-4 space-y-2">
+                
+                <a href="https://ad.oliviero.xyz#about" class="block text-muted-foreground hover:text-foreground hover:bg-accent px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">about</a>
+                
+                <a href="https://ad.oliviero.xyz#experience" class="block text-muted-foreground hover:text-foreground hover:bg-accent px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">experience</a>
+                
+                <a href="https://ad.oliviero.xyz#projects" class="block text-muted-foreground hover:text-foreground hover:bg-accent px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">projects</a>
+                
+                <a href="https://ad.oliviero.xyz#skills" class="block text-muted-foreground hover:text-foreground hover:bg-accent px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">skills</a>
+                
+                <a href="https://ad.oliviero.xyz#education" class="block text-muted-foreground hover:text-foreground hover:bg-accent px-3 py-2 rounded-md text-base font-medium transition-colors capitalize">education</a>
+                
+            </div>
+        </div>
+        <div id="scroll-progress" class="absolute bottom-0 left-0 h-[3px] bg-primary w-0 transition-[width] duration-100 ease-linear" aria-hidden="true"></div>
+    </nav>
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        menuBtn.onclick = () => {
+            const open = menu.classList.toggle('hidden');
+            menuBtn.setAttribute('aria-expanded', !open);
+            menuBtn.querySelector('.menu-open').classList.toggle('hidden');
+            menuBtn.querySelector('.menu-close').classList.toggle('hidden');
+        };
+        menu.querySelectorAll('a').forEach(a => a.onclick = () => menuBtn.click());
+    </script>
+</header>
+
+
+    <main id="main-content">
+        
+
+<section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto min-h-screen" aria-labelledby="all-projects-heading">
+    <div class="mb-12">
+        <a href="https://ad.oliviero.xyz" class="inline-flex items-center gap-2 text-primary hover:underline font-mono text-sm mb-6 transition-colors group">
+            <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"/></svg>
+            Back to Home
+        </a>
+        <h1 id="all-projects-heading" class="text-4xl font-bold text-foreground mb-6 tracking-tight">All Projects</h1>
+        <p class="text-muted-foreground text-lg">
+            My public software and hardware projects. More on
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero?tab=repositories" class="text-primary hover:underline transition-colors">GitHub</a>.
+        </p>
+    </div>
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        
+<article class="project-card group p-6 flex flex-col h-full relative "
+    style="--accent: #f472b6"
+    data-tags="c,linux,cli">
+    <div class="flex justify-between items-center mb-4">
+        <div class="project-icon" style="color: var(--accent)">
+            
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"/></svg>
+
+
+        </div>
+        <div class="flex items-center gap-3 z-10">
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;uwufetch" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground transition-colors" aria-label="View source"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+        </div>
+    </div>
+    <h3 class="text-xl font-bold text-card-foreground mb-2">
+        <button type="button" onclick="document.getElementById('proj-uwufetch')?.showModal()"
+            class="text-left after:absolute after:inset-0 hover:text-[var(--accent)] transition-colors focus:outline-none"
+            aria-label="Open details for uwufetch">uwufetch</button>
+    </h3>
+    <div class="text-muted-foreground text-sm mb-4 flex-grow"><p>A meme system info tool for (almost) all your Linux/Unix-based systems, based on the nyan/UwU trend on r/linuxmasterrace.</p></div>
+    <ul class="font-mono text-xs text-muted-foreground mt-4 flex flex-wrap gap-2"><li>C</li><li>Linux</li><li>CLI</li></ul>
+</article>
+
+<article class="project-card group p-6 flex flex-col h-full relative "
+    style="--accent: #f59e0b"
+    data-tags="c++,embedded,raspberry pi pico,arduino">
+    <div class="flex justify-between items-center mb-4">
+        <div class="project-icon" style="color: var(--accent)">
+            
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25z"/></svg>
+
+
+        </div>
+        <div class="flex items-center gap-3 z-10">
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;telecomand" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground transition-colors" aria-label="View source"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+        </div>
+    </div>
+    <h3 class="text-xl font-bold text-card-foreground mb-2">
+        <button type="button" onclick="document.getElementById('proj-telecomand-ino')?.showModal()"
+            class="text-left after:absolute after:inset-0 hover:text-[var(--accent)] transition-colors focus:outline-none"
+            aria-label="Open details for telecomand.ino">telecomand.ino</button>
+    </h3>
+    <div class="text-muted-foreground text-sm mb-4 flex-grow"><p>A Raspberry Pi Pico project re-implementing an old ceiling-fan remote in software and hardware.</p></div>
+    <ul class="font-mono text-xs text-muted-foreground mt-4 flex flex-wrap gap-2"><li>C++</li><li>Embedded</li><li>Raspberry Pi Pico</li><li>Arduino</li></ul>
+</article>
+
+<article class="project-card group p-6 flex flex-col h-full relative "
+    style="--accent: #22d3ee"
+    data-tags="flutter,android">
+    <div class="flex justify-between items-center mb-4">
+        <div class="project-icon" style="color: var(--accent)">
+            <img src="https://ad.oliviero.xyz/img/unit-converter.png" alt="" class="w-12 h-12 rounded-xl shadow-md">
+        </div>
+        <div class="flex items-center gap-3 z-10">
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;unitconverter" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground transition-colors" aria-label="View source"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+        </div>
+    </div>
+    <h3 class="text-xl font-bold text-card-foreground mb-2">
+        <button type="button" onclick="document.getElementById('proj-unit-converter')?.showModal()"
+            class="text-left after:absolute after:inset-0 hover:text-[var(--accent)] transition-colors focus:outline-none"
+            aria-label="Open details for Unit Converter">Unit Converter</button>
+    </h3>
+    <div class="text-muted-foreground text-sm mb-4 flex-grow"><p>A Flutter app to quickly convert measurement units, with live monetary exchange rates.</p></div>
+    <ul class="font-mono text-xs text-muted-foreground mt-4 flex flex-wrap gap-2"><li>Flutter</li><li>Android</li></ul>
+</article>
+
+<article class="project-card group p-6 flex flex-col h-full relative "
+    style="--accent: #f97316"
+    data-tags="c,cli,interpreter">
+    <div class="flex justify-between items-center mb-4">
+        <div class="project-icon" style="color: var(--accent)">
+            
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"/></svg>
+
+
+        </div>
+        <div class="flex items-center gap-3 z-10">
+            <a href="&#x2F;bfli-demo" class="text-muted-foreground hover:text-foreground transition-colors" aria-label="Live demo"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></a>
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;bfli" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground transition-colors" aria-label="View source"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+        </div>
+    </div>
+    <h3 class="text-xl font-bold text-card-foreground mb-2">
+        <button type="button" onclick="document.getElementById('proj-bfli')?.showModal()"
+            class="text-left after:absolute after:inset-0 hover:text-[var(--accent)] transition-colors focus:outline-none"
+            aria-label="Open details for bfli">bfli</button>
+    </h3>
+    <div class="text-muted-foreground text-sm mb-4 flex-grow"><p>A fast and efficient Brainfuck language interpreter written in C.</p></div>
+    <ul class="font-mono text-xs text-muted-foreground mt-4 flex flex-wrap gap-2"><li>C</li><li>CLI</li><li>Interpreter</li></ul>
+</article>
+
+<article class="project-card group p-6 flex flex-col h-full relative "
+    style="--accent: #a855f7"
+    data-tags="unity,c#,macos,tvos,ios,multiplayer">
+    <div class="flex justify-between items-center mb-4">
+        <div class="project-icon" style="color: var(--accent)">
+            <img src="https://ad.oliviero.xyz/img/amazed.png" alt="" class="w-12 h-12 rounded-xl shadow-md">
+        </div>
+        <div class="flex items-center gap-3 z-10">
+            
+            <a href="https:&#x2F;&#x2F;boniot.github.io&#x2F;AmazeDSupport" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground transition-colors" aria-label="Website"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+            
+        </div>
+    </div>
+    <h3 class="text-xl font-bold text-card-foreground mb-2">
+        <button type="button" onclick="document.getElementById('proj-amazed')?.showModal()"
+            class="text-left after:absolute after:inset-0 hover:text-[var(--accent)] transition-colors focus:outline-none"
+            aria-label="Open details for AmazeD">AmazeD</button>
+    </h3>
+    <div class="text-muted-foreground text-sm mb-4 flex-grow"><p>A macOS and Apple TV maze racing game that turns your iPhone into a controller.</p></div>
+    <ul class="font-mono text-xs text-muted-foreground mt-4 flex flex-wrap gap-2"><li>Unity</li><li>C#</li><li>macOS</li><li>tvOS</li><li>iOS</li><li>Multiplayer</li></ul>
+</article>
+
+<article class="project-card group p-6 flex flex-col h-full relative "
+    style="--accent: #3b82f6"
+    data-tags="swift,swiftui,ios,machine learning">
+    <div class="flex justify-between items-center mb-4">
+        <div class="project-icon" style="color: var(--accent)">
+            
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/></svg>
+
+
+        </div>
+        <div class="flex items-center gap-3 z-10">
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;PicSolve" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground transition-colors" aria-label="View source"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+        </div>
+    </div>
+    <h3 class="text-xl font-bold text-card-foreground mb-2">
+        <button type="button" onclick="document.getElementById('proj-picsolve')?.showModal()"
+            class="text-left after:absolute after:inset-0 hover:text-[var(--accent)] transition-colors focus:outline-none"
+            aria-label="Open details for PicSolve">PicSolve</button>
+    </h3>
+    <div class="text-muted-foreground text-sm mb-4 flex-grow"><p>An iOS app that solves math problems straight from your camera, inspired by Photomath.</p></div>
+    <ul class="font-mono text-xs text-muted-foreground mt-4 flex flex-wrap gap-2"><li>Swift</li><li>SwiftUI</li><li>iOS</li><li>Machine Learning</li></ul>
+</article>
+
+<article class="project-card group p-6 flex flex-col h-full relative "
+    style="--accent: #818cf8"
+    data-tags="swift,swiftui,spritekit,ios,macos,game">
+    <div class="flex justify-between items-center mb-4">
+        <div class="project-icon" style="color: var(--accent)">
+            <img src="https://ad.oliviero.xyz/img/andus.png" alt="" class="w-12 h-12 rounded-xl shadow-md">
+        </div>
+        <div class="flex items-center gap-3 z-10">
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;andus" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground transition-colors" aria-label="View source"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+        </div>
+    </div>
+    <h3 class="text-xl font-bold text-card-foreground mb-2">
+        <button type="button" onclick="document.getElementById('proj-andus')?.showModal()"
+            class="text-left after:absolute after:inset-0 hover:text-[var(--accent)] transition-colors focus:outline-none"
+            aria-label="Open details for Andus">Andus</button>
+    </h3>
+    <div class="text-muted-foreground text-sm mb-4 flex-grow"><p>A roguelike where an ink-made hero fights off hordes of monsters across an office desk.</p></div>
+    <ul class="font-mono text-xs text-muted-foreground mt-4 flex flex-wrap gap-2"><li>Swift</li><li>SwiftUI</li><li>SpriteKit</li><li>iOS</li><li>macOS</li><li>Game</li></ul>
+</article>
+
+<article class="project-card group p-6 flex flex-col h-full relative "
+    style="--accent: #fb7185"
+    data-tags="swift,swiftui,swiftdata,ios">
+    <div class="flex justify-between items-center mb-4">
+        <div class="project-icon" style="color: var(--accent)">
+            <img src="https://ad.oliviero.xyz/img/snapyap.png" alt="" class="w-12 h-12 rounded-xl shadow-md">
+        </div>
+        <div class="flex items-center gap-3 z-10">
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;SnapYap" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground transition-colors" aria-label="View source"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+        </div>
+    </div>
+    <h3 class="text-xl font-bold text-card-foreground mb-2">
+        <button type="button" onclick="document.getElementById('proj-snapyap')?.showModal()"
+            class="text-left after:absolute after:inset-0 hover:text-[var(--accent)] transition-colors focus:outline-none"
+            aria-label="Open details for SnapYap">SnapYap</button>
+    </h3>
+    <div class="text-muted-foreground text-sm mb-4 flex-grow"><p>An iOS app that pairs a snapped photo with a short voice note, you first Snap, then you Yap.</p></div>
+    <ul class="font-mono text-xs text-muted-foreground mt-4 flex flex-wrap gap-2"><li>Swift</li><li>SwiftUI</li><li>SwiftData</li><li>iOS</li></ul>
+</article>
+
+<article class="project-card group p-6 flex flex-col h-full relative "
+    style="--accent: #34d399"
+    data-tags="rust,tauri,android,desktop">
+    <div class="flex justify-between items-center mb-4">
+        <div class="project-icon" style="color: var(--accent)">
+            <img src="https://ad.oliviero.xyz/img/num-string.png" alt="" class="w-12 h-12 rounded-xl shadow-md">
+        </div>
+        <div class="flex items-center gap-3 z-10">
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;num-string" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground transition-colors" aria-label="View source"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+        </div>
+    </div>
+    <h3 class="text-xl font-bold text-card-foreground mb-2">
+        <button type="button" onclick="document.getElementById('proj-num-string')?.showModal()"
+            class="text-left after:absolute after:inset-0 hover:text-[var(--accent)] transition-colors focus:outline-none"
+            aria-label="Open details for num-string">num-string</button>
+    </h3>
+    <div class="text-muted-foreground text-sm mb-4 flex-grow"><p>Spells any number out in words. 6347613 becomes "six million three hundred forty-seven...".</p></div>
+    <ul class="font-mono text-xs text-muted-foreground mt-4 flex flex-wrap gap-2"><li>Rust</li><li>Tauri</li><li>Android</li><li>Desktop</li></ul>
+</article>
+
+<article class="project-card group p-6 flex flex-col h-full relative "
+    style="--accent: #0ea5e9"
+    data-tags="c,raspberry pi pico,embedded,wifi">
+    <div class="flex justify-between items-center mb-4">
+        <div class="project-icon" style="color: var(--accent)">
+            
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25z"/></svg>
+
+
+        </div>
+        <div class="flex items-center gap-3 z-10">
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;wifiprint" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground transition-colors" aria-label="View source"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+        </div>
+    </div>
+    <h3 class="text-xl font-bold text-card-foreground mb-2">
+        <button type="button" onclick="document.getElementById('proj-wifiprint')?.showModal()"
+            class="text-left after:absolute after:inset-0 hover:text-[var(--accent)] transition-colors focus:outline-none"
+            aria-label="Open details for WifiPrint">WifiPrint</button>
+    </h3>
+    <div class="text-muted-foreground text-sm mb-4 flex-grow"><p>A Raspberry Pi Pico W concept for printing at a shop by scanning a QR code instead of emailing.</p></div>
+    <ul class="font-mono text-xs text-muted-foreground mt-4 flex flex-wrap gap-2"><li>C</li><li>Raspberry Pi Pico</li><li>Embedded</li><li>WiFi</li></ul>
+</article>
+
+<article class="project-card group p-6 flex flex-col h-full relative "
+    style="--accent: #ef4444"
+    data-tags="rust,algorithms,graphs,academic">
+    <div class="flex justify-between items-center mb-4">
+        <div class="project-icon" style="color: var(--accent)">
+            
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"/></svg>
+
+
+        </div>
+        <div class="flex items-center gap-3 z-10">
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;progetto_eia" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground transition-colors" aria-label="View source"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+        </div>
+    </div>
+    <h3 class="text-xl font-bold text-card-foreground mb-2">
+        <button type="button" onclick="document.getElementById('proj-progetto-eia')?.showModal()"
+            class="text-left after:absolute after:inset-0 hover:text-[var(--accent)] transition-colors focus:outline-none"
+            aria-label="Open details for Artificial Intelligence Project">Artificial Intelligence Project</button>
+    </h3>
+    <div class="text-muted-foreground text-sm mb-4 flex-grow"><p>A university AI-exam project in Rust running graph algorithms over large real-world datasets.</p></div>
+    <ul class="font-mono text-xs text-muted-foreground mt-4 flex flex-wrap gap-2"><li>Rust</li><li>Algorithms</li><li>Graphs</li><li>Academic</li></ul>
+</article>
+
+<article class="project-card group p-6 flex flex-col h-full relative "
+    style="--accent: #06b6d4"
+    data-tags="c,raylib,multiplayer,android">
+    <div class="flex justify-between items-center mb-4">
+        <div class="project-icon" style="color: var(--accent)">
+            
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/></svg>
+
+
+        </div>
+        <div class="flex items-center gap-3 z-10">
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;simple_TTT_online" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground transition-colors" aria-label="View source"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+        </div>
+    </div>
+    <h3 class="text-xl font-bold text-card-foreground mb-2">
+        <button type="button" onclick="document.getElementById('proj-simple-ttt')?.showModal()"
+            class="text-left after:absolute after:inset-0 hover:text-[var(--accent)] transition-colors focus:outline-none"
+            aria-label="Open details for Simple TTT Online">Simple TTT Online</button>
+    </h3>
+    <div class="text-muted-foreground text-sm mb-4 flex-grow"><p>An online tic-tac-toe game written in C with raylib, building for Linux, Windows and Android.</p></div>
+    <ul class="font-mono text-xs text-muted-foreground mt-4 flex flex-wrap gap-2"><li>C</li><li>raylib</li><li>Multiplayer</li><li>Android</li></ul>
+</article>
+
+<article class="project-card group p-6 flex flex-col h-full relative "
+    style="--accent: #f43f5e"
+    data-tags="c,graphics,game">
+    <div class="flex justify-between items-center mb-4">
+        <div class="project-icon" style="color: var(--accent)">
+            
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"/></svg>
+
+
+        </div>
+        <div class="flex items-center gap-3 z-10">
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;simple_raycasting" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground transition-colors" aria-label="View source"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+        </div>
+    </div>
+    <h3 class="text-xl font-bold text-card-foreground mb-2">
+        <button type="button" onclick="document.getElementById('proj-simple-raycasting')?.showModal()"
+            class="text-left after:absolute after:inset-0 hover:text-[var(--accent)] transition-colors focus:outline-none"
+            aria-label="Open details for Simple Raycasting">Simple Raycasting</button>
+    </h3>
+    <div class="text-muted-foreground text-sm mb-4 flex-grow"><p>A from-scratch Wolfenstein-style raycasting renderer written in C.</p></div>
+    <ul class="font-mono text-xs text-muted-foreground mt-4 flex flex-wrap gap-2"><li>C</li><li>Graphics</li><li>Game</li></ul>
+</article>
+
+<article class="project-card group p-6 flex flex-col h-full relative "
+    style="--accent: #a3e635"
+    data-tags="shell,zsh,dotfiles,hyprland,stow">
+    <div class="flex justify-between items-center mb-4">
+        <div class="project-icon" style="color: var(--accent)">
+            
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"/></svg>
+
+
+        </div>
+        <div class="flex items-center gap-3 z-10">
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;DotFiles" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground transition-colors" aria-label="View source"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+        </div>
+    </div>
+    <h3 class="text-xl font-bold text-card-foreground mb-2">
+        <button type="button" onclick="document.getElementById('proj-dotfiles')?.showModal()"
+            class="text-left after:absolute after:inset-0 hover:text-[var(--accent)] transition-colors focus:outline-none"
+            aria-label="Open details for Dotfiles">Dotfiles</button>
+    </h3>
+    <div class="text-muted-foreground text-sm mb-4 flex-grow"><p>My whole cross-platform development and desktop environment, managed with GNU stow.</p></div>
+    <ul class="font-mono text-xs text-muted-foreground mt-4 flex flex-wrap gap-2"><li>Shell</li><li>Zsh</li><li>Dotfiles</li><li>Hyprland</li><li>stow</li></ul>
+</article>
+
+<article class="project-card group p-6 flex flex-col h-full relative "
+    style="--accent: #22c55e"
+    data-tags="docker,kvm,self-hosting,linux">
+    <div class="flex justify-between items-center mb-4">
+        <div class="project-icon" style="color: var(--accent)">
+            
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+
+        </div>
+        <div class="flex items-center gap-3 z-10">
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;homelab" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground transition-colors" aria-label="View source"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+        </div>
+    </div>
+    <h3 class="text-xl font-bold text-card-foreground mb-2">
+        <button type="button" onclick="document.getElementById('proj-homelab')?.showModal()"
+            class="text-left after:absolute after:inset-0 hover:text-[var(--accent)] transition-colors focus:outline-none"
+            aria-label="Open details for Homelab">Homelab</button>
+    </h3>
+    <div class="text-muted-foreground text-sm mb-4 flex-grow"><p>My self-hosting setup: Docker stacks and KVM virtualization configs for a home server.</p></div>
+    <ul class="font-mono text-xs text-muted-foreground mt-4 flex flex-wrap gap-2"><li>Docker</li><li>KVM</li><li>Self-hosting</li><li>Linux</li></ul>
+</article>
+
+    </div>
+</section>
+
+<dialog id="proj-uwufetch" class="project-dialog" style="--accent: #f472b6">
+    <form method="dialog" class="absolute top-4 right-4 z-10">
+        <button class="text-muted-foreground hover:text-foreground transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </form>
+    <div class="flex items-center gap-4 mb-6">
+        <div style="color: var(--accent)">
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"/></svg>
+
+</div>
+        <h2 class="text-3xl font-bold text-popover-foreground">uwufetch</h2>
+    </div>
+    <div class="prose prose-invert prose-sm max-w-none text-muted-foreground mb-6
+        prose-headings:text-popover-foreground prose-a:text-[var(--accent)] prose-strong:text-popover-foreground
+        marker:text-[var(--accent)]"><p>A meme system info tool for (almost) all your Linux/Unix-based systems, based on the nyan/UwU trend on r/linuxmasterrace.</p>
+<span id="continue-reading"></span>
+<p>uwufetch is a meme system-information utility for Linux and other Unix-like systems that
+prints OS details. CPU, RAM, GPU and more "uwu"-themed layout. Written in pure
+C with minimal dependencies, it's the project that taught me the most, and ended up packaged in
+the official Arch repositories, the AUR and Pacstall.</p>
+<ul>
+<li>Themed ASCII art (and optional images) for a wide range of distros, plus FreeBSD, OpenBSD, macOS, iOS and Windows</li>
+<li>Optional image rendering via <code>viu</code> instead of ASCII art</li>
+<li>Ships <code>libfetch</code>, a reusable library so other apps can pull system info programmatically</li>
+<li>Builds with a plain <code>make</code> and a C compiler; available in the Arch repos, AUR and Pacstall</li>
+<li>GPL-3.0 licensed</li>
+</ul>
+</div>
+    
+    <ul class="font-mono text-xs text-secondary-foreground mb-6 flex flex-wrap gap-2"><li class="px-2 py-1 rounded-md bg-secondary border border-border">C</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Linux</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">CLI</li></ul>
+    
+    <div class="flex flex-wrap gap-3">
+        
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;uwufetch" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Source</a>
+        
+    </div>
+    
+</dialog>
+
+<dialog id="proj-telecomand-ino" class="project-dialog" style="--accent: #f59e0b">
+    <form method="dialog" class="absolute top-4 right-4 z-10">
+        <button class="text-muted-foreground hover:text-foreground transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </form>
+    <div class="flex items-center gap-4 mb-6">
+        <div style="color: var(--accent)">
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25z"/></svg>
+
+</div>
+        <h2 class="text-3xl font-bold text-popover-foreground">telecomand.ino</h2>
+    </div>
+    <div class="prose prose-invert prose-sm max-w-none text-muted-foreground mb-6
+        prose-headings:text-popover-foreground prose-a:text-[var(--accent)] prose-strong:text-popover-foreground
+        marker:text-[var(--accent)]"><p>A Raspberry Pi Pico project re-implementing an old ceiling-fan remote in software and hardware.</p>
+<span id="continue-reading"></span>
+<p>telecomand.ino recreates an old ceiling-fan remote control on a Raspberry Pi Pico,
+capturing and reproducing the original remote's signals to drive the fan wirelessly,
+both the firmware and the supporting hardware were built from scratch.</p>
+<ul>
+<li>Pi Pico microcontroller emulating the original remote's protocol</li>
+<li>Infrared signal capture and re-transmission</li>
+<li>Retrofits modern control onto a legacy appliance</li>
+<li>Written in C++ for the Arduino/Pico toolchain, MIT licensed</li>
+</ul>
+</div>
+    
+    <ul class="font-mono text-xs text-secondary-foreground mb-6 flex flex-wrap gap-2"><li class="px-2 py-1 rounded-md bg-secondary border border-border">C++</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Embedded</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Raspberry Pi Pico</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Arduino</li></ul>
+    
+    <div class="flex flex-wrap gap-3">
+        
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;telecomand" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Source</a>
+        
+    </div>
+    
+</dialog>
+
+<dialog id="proj-unit-converter" class="project-dialog" style="--accent: #22d3ee">
+    <form method="dialog" class="absolute top-4 right-4 z-10">
+        <button class="text-muted-foreground hover:text-foreground transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </form>
+    <div class="flex items-center gap-4 mb-6">
+        <div style="color: var(--accent)"><img src="https://ad.oliviero.xyz/img/unit-converter.png" alt="" class="w-16 h-16 rounded-2xl shadow-lg"></div>
+        <h2 class="text-3xl font-bold text-popover-foreground">Unit Converter</h2>
+    </div>
+    <div class="prose prose-invert prose-sm max-w-none text-muted-foreground mb-6
+        prose-headings:text-popover-foreground prose-a:text-[var(--accent)] prose-strong:text-popover-foreground
+        marker:text-[var(--accent)]"><p>A Flutter app to quickly convert measurement units, with live monetary exchange rates.</p>
+<span id="continue-reading"></span>
+<p>A cross-platform Flutter application for converting between many kinds of measurement
+units. A single Dart codebase runs across Android, iOS, web, Linux, macOS and Windows.</p>
+<ul>
+<li>One Flutter/Dart codebase deployed to six platforms</li>
+<li>Broad coverage of measurement-unit categories</li>
+<li>Live monetary exchange rates for currency conversion</li>
+<li>MIT licensed</li>
+</ul>
+</div>
+    
+    <ul class="font-mono text-xs text-secondary-foreground mb-6 flex flex-wrap gap-2"><li class="px-2 py-1 rounded-md bg-secondary border border-border">Flutter</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Android</li></ul>
+    
+    <div class="flex flex-wrap gap-3">
+        
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;unitconverter" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Source</a>
+        
+    </div>
+    
+</dialog>
+
+<dialog id="proj-bfli" class="project-dialog" style="--accent: #f97316">
+    <form method="dialog" class="absolute top-4 right-4 z-10">
+        <button class="text-muted-foreground hover:text-foreground transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </form>
+    <div class="flex items-center gap-4 mb-6">
+        <div style="color: var(--accent)">
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"/></svg>
+
+</div>
+        <h2 class="text-3xl font-bold text-popover-foreground">bfli</h2>
+    </div>
+    <div class="prose prose-invert prose-sm max-w-none text-muted-foreground mb-6
+        prose-headings:text-popover-foreground prose-a:text-[var(--accent)] prose-strong:text-popover-foreground
+        marker:text-[var(--accent)]"><p>A fast and efficient Brainfuck language interpreter written in C.</p>
+<span id="continue-reading"></span>
+<p>bfli is a fast, efficient interpreter for the Brainfuck esoteric language. It focuses on
+tight, correct execution of Brainfuck programs from the command line, and ships with a
+live browser demo that runs the interpreter itself, compiled to WebAssembly (see live demo).</p>
+<ul>
+<li>Brainfuck interpreter with a focus on speed and correctness</li>
+<li>Runs as a command-line tool</li>
+<li>Live web demo running the real interpreter in-browser via WebAssembly</li>
+</ul>
+</div>
+    
+    <ul class="font-mono text-xs text-secondary-foreground mb-6 flex flex-wrap gap-2"><li class="px-2 py-1 rounded-md bg-secondary border border-border">C</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">CLI</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Interpreter</li></ul>
+    
+    <div class="flex flex-wrap gap-3">
+        
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;bfli" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Source</a>
+        <a href="&#x2F;bfli-demo" class="btn btn-outline"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg> Live demo</a>
+    </div>
+    
+</dialog>
+
+<dialog id="proj-amazed" class="project-dialog" style="--accent: #a855f7">
+    <form method="dialog" class="absolute top-4 right-4 z-10">
+        <button class="text-muted-foreground hover:text-foreground transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </form>
+    <div class="flex items-center gap-4 mb-6">
+        <div style="color: var(--accent)"><img src="https://ad.oliviero.xyz/img/amazed.png" alt="" class="w-16 h-16 rounded-2xl shadow-lg"></div>
+        <h2 class="text-3xl font-bold text-popover-foreground">AmazeD</h2>
+    </div>
+    <div class="prose prose-invert prose-sm max-w-none text-muted-foreground mb-6
+        prose-headings:text-popover-foreground prose-a:text-[var(--accent)] prose-strong:text-popover-foreground
+        marker:text-[var(--accent)]"><p>A macOS and Apple TV maze racing game that turns your iPhone into a controller.</p>
+<span id="continue-reading"></span>
+<p>AmazeD is a party game built for game nights. Up to four players race through a dark, enchanted labyrinth. Each one steering their wizard by tilting their iPhone like a steering wheel. The maze fills your screen in split-screen, and every round generates a brand-new layout.</p>
+<p>Your wizard's torch casts a dim glow through thick fog, and glittering stardust is the only hint that something lurks around the next corner. Navigate by instinct, or by listening to your friends when they hit a dead end.</p>
+<p>The labyrinth is full of surprises.</p>
+<p>Every maze is unique, every round is a fresh sprint into the unknown. The first wizard to find the glowing portal wins.</p>
+<p>Just launch the game, pick up your iPhones, and play. No extra controllers needed. Just chaos, laughter, and the race to escape.</p>
+</div>
+    
+    <ul class="font-mono text-xs text-secondary-foreground mb-6 flex flex-wrap gap-2"><li class="px-2 py-1 rounded-md bg-secondary border border-border">Unity</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">C#</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">macOS</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">tvOS</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">iOS</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Multiplayer</li></ul>
+    
+    <div class="flex flex-wrap gap-3">
+        <a href="https:&#x2F;&#x2F;boniot.github.io&#x2F;AmazeDSupport" target="_blank" rel="noopener noreferrer" class="btn" style="background: var(--accent); color: var(--primary-foreground)"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg> Visit site</a>
+        
+        
+    </div>
+    
+</dialog>
+
+<dialog id="proj-picsolve" class="project-dialog" style="--accent: #3b82f6">
+    <form method="dialog" class="absolute top-4 right-4 z-10">
+        <button class="text-muted-foreground hover:text-foreground transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </form>
+    <div class="flex items-center gap-4 mb-6">
+        <div style="color: var(--accent)">
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/></svg>
+
+</div>
+        <h2 class="text-3xl font-bold text-popover-foreground">PicSolve</h2>
+    </div>
+    <div class="prose prose-invert prose-sm max-w-none text-muted-foreground mb-6
+        prose-headings:text-popover-foreground prose-a:text-[var(--accent)] prose-strong:text-popover-foreground
+        marker:text-[var(--accent)]"><p>An iOS app that solves math problems straight from your camera, inspired by Photomath.</p>
+<span id="continue-reading"></span>
+<p>PicSolve lets you point your iPhone at a handwritten or printed equation and get it
+recognised on-device. It pairs a SwiftUI interface with an AVFoundation camera pipeline and
+runs the Pix2Text math-formula models locally through ONNX Runtime, used because those
+models aren't available as CoreML.</p>
+<ul>
+<li>Live camera capture built on Apple's AVCam example</li>
+<li>On-device math formula detection and recognition (Pix2Text models)</li>
+<li>ONNX Runtime on iOS for models CoreML can't run</li>
+<li>Written in Swift &amp; SwiftUI, MIT licensed</li>
+</ul>
+</div>
+    
+    <ul class="font-mono text-xs text-secondary-foreground mb-6 flex flex-wrap gap-2"><li class="px-2 py-1 rounded-md bg-secondary border border-border">Swift</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">SwiftUI</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">iOS</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Machine Learning</li></ul>
+    
+    <div class="flex flex-wrap gap-3">
+        
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;PicSolve" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Source</a>
+        
+    </div>
+    
+</dialog>
+
+<dialog id="proj-andus" class="project-dialog" style="--accent: #818cf8">
+    <form method="dialog" class="absolute top-4 right-4 z-10">
+        <button class="text-muted-foreground hover:text-foreground transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </form>
+    <div class="flex items-center gap-4 mb-6">
+        <div style="color: var(--accent)"><img src="https://ad.oliviero.xyz/img/andus.png" alt="" class="w-16 h-16 rounded-2xl shadow-lg"></div>
+        <h2 class="text-3xl font-bold text-popover-foreground">Andus</h2>
+    </div>
+    <div class="prose prose-invert prose-sm max-w-none text-muted-foreground mb-6
+        prose-headings:text-popover-foreground prose-a:text-[var(--accent)] prose-strong:text-popover-foreground
+        marker:text-[var(--accent)]"><p>A roguelike where an ink-made hero fights off hordes of monsters across an office desk.</p>
+<span id="continue-reading"></span>
+<p>Andus is a 2D roguelike built with Swift and SpriteKit, where an ink-drawn hero defends an
+office table from waves of monsters. It's structured around reusable entity and component
+building blocks (sprites, players, monsters), with custom sprite atlases and typography
+driving the look.</p>
+<ul>
+<li>Proof of concept. Technically working, but not a full gaming experience</li>
+<li>Built natively with Swift and Apple's SpriteKit 2D engine</li>
+<li>Entity/component architecture for players and monsters</li>
+<li>Custom sprite atlases, art and fonts</li>
+</ul>
+</div>
+    
+    <ul class="font-mono text-xs text-secondary-foreground mb-6 flex flex-wrap gap-2"><li class="px-2 py-1 rounded-md bg-secondary border border-border">Swift</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">SwiftUI</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">SpriteKit</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">iOS</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">macOS</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Game</li></ul>
+    
+    <div class="flex flex-wrap gap-3">
+        
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;andus" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Source</a>
+        
+    </div>
+    
+</dialog>
+
+<dialog id="proj-snapyap" class="project-dialog" style="--accent: #fb7185">
+    <form method="dialog" class="absolute top-4 right-4 z-10">
+        <button class="text-muted-foreground hover:text-foreground transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </form>
+    <div class="flex items-center gap-4 mb-6">
+        <div style="color: var(--accent)"><img src="https://ad.oliviero.xyz/img/snapyap.png" alt="" class="w-16 h-16 rounded-2xl shadow-lg"></div>
+        <h2 class="text-3xl font-bold text-popover-foreground">SnapYap</h2>
+    </div>
+    <div class="prose prose-invert prose-sm max-w-none text-muted-foreground mb-6
+        prose-headings:text-popover-foreground prose-a:text-[var(--accent)] prose-strong:text-popover-foreground
+        marker:text-[var(--accent)]"><p>An iOS app that pairs a snapped photo with a short voice note, you first Snap, then you Yap.</p>
+<span id="continue-reading"></span>
+<p>SnapYap captures a photo and attaches a quick spoken note to it, storing both together so you
+can flip through a gallery of moments with their audio. It's built in SwiftUI with SwiftData
+persistence, an AVFoundation capture-and-record flow, and Accelerate (vDSP) for audio signal
+processing. Built together with the Test-Eagles Team.</p>
+<ul>
+<li>SwiftUI interface with SwiftData on-device persistence</li>
+<li>AVFoundation photo capture and voice-note recording</li>
+<li>Audio signal processing via the Accelerate framework</li>
+<li>Gallery with flip-to-detail interaction</li>
+</ul>
+</div>
+    
+    <ul class="font-mono text-xs text-secondary-foreground mb-6 flex flex-wrap gap-2"><li class="px-2 py-1 rounded-md bg-secondary border border-border">Swift</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">SwiftUI</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">SwiftData</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">iOS</li></ul>
+    
+    <div class="flex flex-wrap gap-3">
+        
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;SnapYap" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Source</a>
+        
+    </div>
+    
+</dialog>
+
+<dialog id="proj-num-string" class="project-dialog" style="--accent: #34d399">
+    <form method="dialog" class="absolute top-4 right-4 z-10">
+        <button class="text-muted-foreground hover:text-foreground transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </form>
+    <div class="flex items-center gap-4 mb-6">
+        <div style="color: var(--accent)"><img src="https://ad.oliviero.xyz/img/num-string.png" alt="" class="w-16 h-16 rounded-2xl shadow-lg"></div>
+        <h2 class="text-3xl font-bold text-popover-foreground">num-string</h2>
+    </div>
+    <div class="prose prose-invert prose-sm max-w-none text-muted-foreground mb-6
+        prose-headings:text-popover-foreground prose-a:text-[var(--accent)] prose-strong:text-popover-foreground
+        marker:text-[var(--accent)]"><p>Spells any number out in words. 6347613 becomes "six million three hundred forty-seven...".</p>
+<span id="continue-reading"></span>
+<p>num-string turns a number into its written form, in both English and Italian. The core
+conversion logic is written in Rust and ships as a desktop app via a Tauri GUI. Translations
+are template-driven so new languages can be contributed easily.
+The Rust core is used inside Unit Converter, bound to its Flutter code over FFI.</p>
+<ul>
+<li>Rust core converting numbers to words, English and Italian</li>
+<li>Cross-platform desktop GUI built with Tauri</li>
+<li>Rust core embedded into the Unit Converter Flutter app via FFI</li>
+<li>Standalone Android port deprecated in favour of that integration</li>
+<li>GPL-3 licensed</li>
+</ul>
+</div>
+    
+    <ul class="font-mono text-xs text-secondary-foreground mb-6 flex flex-wrap gap-2"><li class="px-2 py-1 rounded-md bg-secondary border border-border">Rust</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Tauri</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Android</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Desktop</li></ul>
+    
+    <div class="flex flex-wrap gap-3">
+        
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;num-string" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Source</a>
+        
+    </div>
+    
+</dialog>
+
+<dialog id="proj-wifiprint" class="project-dialog" style="--accent: #0ea5e9">
+    <form method="dialog" class="absolute top-4 right-4 z-10">
+        <button class="text-muted-foreground hover:text-foreground transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </form>
+    <div class="flex items-center gap-4 mb-6">
+        <div style="color: var(--accent)">
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25z"/></svg>
+
+</div>
+        <h2 class="text-3xl font-bold text-popover-foreground">WifiPrint</h2>
+    </div>
+    <div class="prose prose-invert prose-sm max-w-none text-muted-foreground mb-6
+        prose-headings:text-popover-foreground prose-a:text-[var(--accent)] prose-strong:text-popover-foreground
+        marker:text-[var(--accent)]"><p>A Raspberry Pi Pico W concept for printing at a shop by scanning a QR code instead of emailing.</p>
+<span id="continue-reading"></span>
+<p>WifiPrint was born from running a shop with a printing service: customers who can't easily
+send an email struggle to get documents to the seller. The idea is a Pico W that broadcasts a
+locked-down Wi-Fi access point, scan a QR code, join it, and a tiny web page lets you pick a
+document that's uploaded straight to the shop's Telegram. It works, but honestly ran into the
+Android captive-portal browser's JavaScript limits, so it stays a concept.</p>
+<ul>
+<li>Raspberry Pi Pico W broadcasting a restricted access point</li>
+<li>Upload-a-document web page delivering files via the Telegram API</li>
+<li>Built on the pico-sdk and lwIP in C</li>
+<li>Documented honestly, including the captive-portal limitation</li>
+</ul>
+</div>
+    
+    <ul class="font-mono text-xs text-secondary-foreground mb-6 flex flex-wrap gap-2"><li class="px-2 py-1 rounded-md bg-secondary border border-border">C</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Raspberry Pi Pico</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Embedded</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">WiFi</li></ul>
+    
+    <div class="flex flex-wrap gap-3">
+        
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;wifiprint" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Source</a>
+        
+    </div>
+    
+</dialog>
+
+<dialog id="proj-progetto-eia" class="project-dialog" style="--accent: #ef4444">
+    <form method="dialog" class="absolute top-4 right-4 z-10">
+        <button class="text-muted-foreground hover:text-foreground transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </form>
+    <div class="flex items-center gap-4 mb-6">
+        <div style="color: var(--accent)">
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"/></svg>
+
+</div>
+        <h2 class="text-3xl font-bold text-popover-foreground">Artificial Intelligence Project</h2>
+    </div>
+    <div class="prose prose-invert prose-sm max-w-none text-muted-foreground mb-6
+        prose-headings:text-popover-foreground prose-a:text-[var(--accent)] prose-strong:text-popover-foreground
+        marker:text-[var(--accent)]"><p>A university AI-exam project in Rust running graph algorithms over large real-world datasets.</p>
+<span id="continue-reading"></span>
+<p>Built for the Elementi di Intelligenza Artificiale (Elements of AI) exam, this Rust project
+runs graph search and analysis over large public SNAP datasets, from Bitcoin trust networks
+and the Enron email graph to road networks and LiveJournal, scaling to millions of nodes and
+edges. It includes memory profiling with massif and plotted benchmarks. (The written
+documentation is in Italian.)</p>
+<ul>
+<li>Graph algorithms in Rust over real datasets up to millions of nodes/edges</li>
+<li>Stanford SNAP datasets with an automated download script</li>
+<li>Memory profiling (massif) and benchmark plots</li>
+</ul>
+</div>
+    <div class="proj-shots hide-scrollbar mb-6"><a href="https://ad.oliviero.xyz/img/progetto-eia/enron-bfs.png" target="_blank" rel="noopener noreferrer"><img src="https://ad.oliviero.xyz/img/progetto-eia/enron-bfs.png" alt="Artificial Intelligence Project screenshot" loading="lazy"></a><a href="https://ad.oliviero.xyz/img/progetto-eia/roadnet-bidirectional.png" target="_blank" rel="noopener noreferrer"><img src="https://ad.oliviero.xyz/img/progetto-eia/roadnet-bidirectional.png" alt="Artificial Intelligence Project screenshot" loading="lazy"></a><a href="https://ad.oliviero.xyz/img/progetto-eia/patents-uniform-cost.png" target="_blank" rel="noopener noreferrer"><img src="https://ad.oliviero.xyz/img/progetto-eia/patents-uniform-cost.png" alt="Artificial Intelligence Project screenshot" loading="lazy"></a></div>
+    <ul class="font-mono text-xs text-secondary-foreground mb-6 flex flex-wrap gap-2"><li class="px-2 py-1 rounded-md bg-secondary border border-border">Rust</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Algorithms</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Graphs</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Academic</li></ul>
+    
+    <div class="flex flex-wrap gap-3">
+        
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;progetto_eia" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Source</a>
+        
+    </div>
+    
+</dialog>
+
+<dialog id="proj-simple-ttt" class="project-dialog" style="--accent: #06b6d4">
+    <form method="dialog" class="absolute top-4 right-4 z-10">
+        <button class="text-muted-foreground hover:text-foreground transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </form>
+    <div class="flex items-center gap-4 mb-6">
+        <div style="color: var(--accent)">
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/></svg>
+
+</div>
+        <h2 class="text-3xl font-bold text-popover-foreground">Simple TTT Online</h2>
+    </div>
+    <div class="prose prose-invert prose-sm max-w-none text-muted-foreground mb-6
+        prose-headings:text-popover-foreground prose-a:text-[var(--accent)] prose-strong:text-popover-foreground
+        marker:text-[var(--accent)]"><p>An online tic-tac-toe game written in C with raylib, building for Linux, Windows and Android.</p>
+<span id="continue-reading"></span>
+<p>Simple TTT Online is a networked tic-tac-toe built in C on top of the raylib game library. A
+single codebase compiles to Linux, Windows and Android, with the build steps and an Android
+setup script included.</p>
+<ul>
+<li>Online multiplayer tic-tac-toe in C</li>
+<li>Rendered with raylib</li>
+<li>One codebase building for Linux, Windows and Android</li>
+</ul>
+</div>
+    
+    <ul class="font-mono text-xs text-secondary-foreground mb-6 flex flex-wrap gap-2"><li class="px-2 py-1 rounded-md bg-secondary border border-border">C</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">raylib</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Multiplayer</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Android</li></ul>
+    
+    <div class="flex flex-wrap gap-3">
+        
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;simple_TTT_online" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Source</a>
+        
+    </div>
+    
+</dialog>
+
+<dialog id="proj-simple-raycasting" class="project-dialog" style="--accent: #f43f5e">
+    <form method="dialog" class="absolute top-4 right-4 z-10">
+        <button class="text-muted-foreground hover:text-foreground transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </form>
+    <div class="flex items-center gap-4 mb-6">
+        <div style="color: var(--accent)">
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"/></svg>
+
+</div>
+        <h2 class="text-3xl font-bold text-popover-foreground">Simple Raycasting</h2>
+    </div>
+    <div class="prose prose-invert prose-sm max-w-none text-muted-foreground mb-6
+        prose-headings:text-popover-foreground prose-a:text-[var(--accent)] prose-strong:text-popover-foreground
+        marker:text-[var(--accent)]"><p>A from-scratch Wolfenstein-style raycasting renderer written in C.</p>
+<span id="continue-reading"></span>
+<p>Simple Raycasting is a classic pseudo-3D raycasting engine built from the ground up in C, the
+technique behind games like Wolfenstein 3D.</p>
+<ul>
+<li>Hand-written raycasting renderer in C</li>
+<li>Player movement, HUD and basic fighting</li>
+<li>GPL-3 licensed</li>
+</ul>
+</div>
+    
+    <ul class="font-mono text-xs text-secondary-foreground mb-6 flex flex-wrap gap-2"><li class="px-2 py-1 rounded-md bg-secondary border border-border">C</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Graphics</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Game</li></ul>
+    
+    <div class="flex flex-wrap gap-3">
+        
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;simple_raycasting" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Source</a>
+        
+    </div>
+    
+</dialog>
+
+<dialog id="proj-dotfiles" class="project-dialog" style="--accent: #a3e635">
+    <form method="dialog" class="absolute top-4 right-4 z-10">
+        <button class="text-muted-foreground hover:text-foreground transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </form>
+    <div class="flex items-center gap-4 mb-6">
+        <div style="color: var(--accent)">
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"/></svg>
+
+</div>
+        <h2 class="text-3xl font-bold text-popover-foreground">Dotfiles</h2>
+    </div>
+    <div class="prose prose-invert prose-sm max-w-none text-muted-foreground mb-6
+        prose-headings:text-popover-foreground prose-a:text-[var(--accent)] prose-strong:text-popover-foreground
+        marker:text-[var(--accent)]"><p>My whole cross-platform development and desktop environment, managed with GNU stow.</p>
+<span id="continue-reading"></span>
+<p>A full configuration set spanning Linux and macOS, split into GNU stow packages so each machine
+(laptop, desktop, Mac) pulls in only the pieces it needs, with a custom <code>restow</code> helper to wire
+it all up in one command.</p>
+<ul>
+<li><strong>Shell &amp; terminal:</strong> zsh (aliases, keybinds, abbreviations) with a Starship prompt, Alacritty, ranger and SSH/Git config</li>
+<li><strong>Editor:</strong> a Lua-configured Neovim setup with a pinned plugin lockfile</li>
+<li><strong>Linux desktop:</strong> a complete Hyprland Wayland rice. hyprlock, hyprpaper, mako, rofi, wlogout, quickshell and GTK theming</li>
+<li><strong>macOS:</strong> AeroSpace tiling window management</li>
+<li>Per-machine stow packages for Linux and macOS, installed and restowed with one command</li>
+</ul>
+</div>
+    
+    <ul class="font-mono text-xs text-secondary-foreground mb-6 flex flex-wrap gap-2"><li class="px-2 py-1 rounded-md bg-secondary border border-border">Shell</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Zsh</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Dotfiles</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Hyprland</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">stow</li></ul>
+    
+    <div class="flex flex-wrap gap-3">
+        
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;DotFiles" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Source</a>
+        
+    </div>
+    
+</dialog>
+
+<dialog id="proj-homelab" class="project-dialog" style="--accent: #22c55e">
+    <form method="dialog" class="absolute top-4 right-4 z-10">
+        <button class="text-muted-foreground hover:text-foreground transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </form>
+    <div class="flex items-center gap-4 mb-6">
+        <div style="color: var(--accent)">
+
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+</div>
+        <h2 class="text-3xl font-bold text-popover-foreground">Homelab</h2>
+    </div>
+    <div class="prose prose-invert prose-sm max-w-none text-muted-foreground mb-6
+        prose-headings:text-popover-foreground prose-a:text-[var(--accent)] prose-strong:text-popover-foreground
+        marker:text-[var(--accent)]"><p>My self-hosting setup: Docker stacks and KVM virtualization configs for a home server.</p>
+<span id="continue-reading"></span>
+<p>The configuration behind my home server, Docker Compose stacks for the services I self-host
+alongside KVM virtual-machine configs and supporting documentation, kept under version control.
+Everything sits behind a Traefik reverse proxy with Authelia single sign-on.</p>
+<p>Services I self-host include:</p>
+<ul>
+<li><strong>Media &amp; files:</strong> Immich (photos), Navidrome (music), Syncthing, Copyparty, Garage (S3-compatible storage), rclone</li>
+<li><strong>Networking &amp; access:</strong> Traefik, Authelia (SSO), AdGuard Home (DNS), NetBird (WireGuard mesh VPN), LibreSpeed</li>
+<li><strong>Productivity &amp; dev:</strong> Gitea (git hosting), Wakapi (coding stats), ntfy (notifications), Webtop (browser-based desktop)</li>
+<li><strong>AI:</strong> local LLMs and tooling via Ollama, llama.cpp, Open WebUI and ComfyUI</li>
+<li><strong>Messaging:</strong> Continuwuity (Matrix homeserver)</li>
+<li><strong>Monitoring:</strong> Beszel</li>
+<li>Built on Docker Compose plus KVM virtual machines, documented and version-controlled</li>
+</ul>
+</div>
+    
+    <ul class="font-mono text-xs text-secondary-foreground mb-6 flex flex-wrap gap-2"><li class="px-2 py-1 rounded-md bg-secondary border border-border">Docker</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">KVM</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Self-hosting</li><li class="px-2 py-1 rounded-md bg-secondary border border-border">Linux</li></ul>
+    
+    <div class="flex flex-wrap gap-3">
+        
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero&#x2F;homelab" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Source</a>
+        
+    </div>
+    
+</dialog>
+
+
+    </main>
+
+    <footer class="py-8 text-center text-muted-foreground text-sm font-mono bg-background border-t border-border">
+    <nav class="mb-4 flex justify-center gap-6" aria-label="Footer navigation">
+        <a href="mailto:adrianoliviero23@gmail.com" class="hover:text-primary transition-colors">Email</a>
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;ad-oliviero" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">GitHub</a>
+    </nav>
+    <p>&copy; 2026 Adriano Oliviero</p>
+</footer>
+
+
+    <script>
+        document.addEventListener('scroll', () => {
+            const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+            const scrolled = (scrollTop / (scrollHeight - clientHeight)) * 100;
+            document.getElementById('scroll-progress').style.width = `${scrolled}%`;
+        }, { passive: true });
+
+        // Shared dialog behavior: lock background scroll (preserving position) + backdrop close.
+        // position:fixed keeps the exact scroll spot so closing doesn't jump to top.
+        let _openDialogs = 0, _lockY = 0;
+        const _showModal = HTMLDialogElement.prototype.showModal;
+        HTMLDialogElement.prototype.showModal = function () {
+            if (_openDialogs++ === 0) {
+                _lockY = window.scrollY;
+                Object.assign(document.body.style, { position: 'fixed', top: `-${_lockY}px`, width: '100%' });
+            }
+            return _showModal.call(this);
+        };
+        document.addEventListener('close', e => {
+            if (e.target.tagName === 'DIALOG' && --_openDialogs === 0) {
+                Object.assign(document.body.style, { position: '', top: '', width: '' });
+                window.scrollTo({ top: _lockY, behavior: 'instant' });
+            }
+        }, true);
+        document.addEventListener('click', e => {
+            if (e.target.tagName === 'DIALOG' && e.target.open) e.target.close();
+        });
+    </script>
+</body>
+</html>

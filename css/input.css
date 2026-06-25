@@ -1,0 +1,310 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Self-hosted fonts: no third-party request, no visitor IP leak to Google. */
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 800; /* variable */
+  font-display: swap;
+  src: url("../fonts/jetbrains-mono.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Quattrocento";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/quattrocento-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Quattrocento";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/quattrocento-700.woff2") format("woff2");
+}
+
+/* shadcn/ui design tokens. Site is always dark, so dark values live in :root.
+   Brand kept by overriding --primary/--ring to indigo within shadcn's system. */
+:root {
+  --radius: 1rem;
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.585 0.233 277.117);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent-color: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.585 0.233 277.117);
+}
+
+@theme inline {
+  --font-sans: "Quattrocento", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent-color);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+}
+
+@layer base {
+  * { border-color: var(--border); }
+  /* Soft colored glows behind everything so the frosted-glass blur is visible.
+     Fixed so they stay put while the page scrolls. */
+  body {
+    color: var(--foreground); overflow-x: clip;
+    background:
+      radial-gradient(42rem 42rem at 12% 8%, color-mix(in oklab, var(--primary) 20%, transparent), transparent 60%),
+      radial-gradient(38rem 38rem at 88% 88%, color-mix(in oklab, oklch(0.72 0.16 210) 16%, transparent), transparent 60%),
+      var(--background);
+    background-attachment: fixed;
+  }
+}
+
+/* iOS-style liquid glass surface. */
+.glass {
+  background: color-mix(in oklab, var(--card) 55%, transparent);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid color-mix(in oklab, white 12%, transparent);
+  box-shadow: 0 8px 32px -8px rgb(0 0 0 / 0.45), inset 0 1px 0 0 rgb(255 255 255 / 0.08);
+}
+
+/* shadcn-style buttons (the cva variants, as plain CSS for a static site). */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  border-radius: var(--radius-md); font-size: .875rem; font-weight: 500;
+  padding: .625rem 1.25rem; cursor: pointer; white-space: nowrap;
+  transition: background-color .15s, color .15s, border-color .15s;
+}
+.btn:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+.btn-lg { padding: .85rem 2rem; }
+.btn-primary { background: var(--primary); color: var(--primary-foreground); }
+.btn-primary:hover { background: color-mix(in oklab, var(--primary) 88%, transparent); }
+.btn-outline { border: 1px solid var(--input); background: transparent; color: var(--foreground); }
+.btn-outline:hover { background: var(--accent-color); color: var(--accent-foreground); }
+.btn-secondary { background: var(--secondary); color: var(--secondary-foreground); }
+.btn-secondary:hover { background: color-mix(in oklab, var(--secondary) 80%, var(--background)); }
+
+/* Project cards: shadcn card surface + per-project accent + tvOS tilt.
+   --accent is the project's own color, set inline. */
+.project-card {
+  --accent: var(--primary);
+  color: var(--card-foreground);
+  background: color-mix(in oklab, var(--card) 55%, transparent);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid color-mix(in oklab, white 12%, transparent);
+  border-radius: var(--radius-2xl);
+  box-shadow: 0 8px 32px -10px rgb(0 0 0 / 0.45), inset 0 1px 0 0 rgb(255 255 255 / 0.08);
+  transform-style: preserve-3d;
+  transform: perspective(1200px) rotateX(var(--rx, 0)) rotateY(var(--ry, 0));
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.project-card:hover { border-color: color-mix(in oklab, var(--accent) 55%, var(--border)); }
+/* tvOS-style lift only in the horizontal scroller (JS feeds --rx/--ry). */
+.project-marquee .project-card:hover {
+  transform: perspective(1200px) rotateX(var(--rx, 0)) rotateY(var(--ry, 0)) scale(1.04);
+  box-shadow: 0 18px 45px -16px color-mix(in oklab, var(--accent) 45%, transparent);
+}
+
+/* Native <dialog> = shadcn popover/dialog surface. */
+.project-dialog {
+  --accent: var(--primary);
+  margin: auto; width: min(90vw, 42rem); max-height: 85vh; overflow-y: auto;
+  padding: 2rem; position: relative;
+  border-radius: var(--radius-2xl);
+  color: var(--popover-foreground);
+  background: color-mix(in oklab, var(--popover) 70%, transparent);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid color-mix(in oklab, white 14%, transparent);
+  box-shadow: 0 30px 60px -15px rgb(0 0 0 / 0.6), inset 0 1px 0 0 rgb(255 255 255 / 0.1);
+}
+.project-dialog-wide { width: min(92vw, 64rem); }
+.project-dialog[open] { animation: dialog-in .2s ease both; }
+.project-dialog::backdrop {
+  background: rgb(0 0 0 / 0.5);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+@keyframes dialog-in {
+  from { opacity: 0; transform: translateY(8px) scale(.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+.hide-scrollbar { scrollbar-width: none; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Hero name: per-word SVGs in a flex container. Words wrap at viewport edges;
+   gap replaces the old baked space-advance. Each word resets --i=0; --wbase
+   (cumulative glyphs across previous words) sequences the draw across words.
+   --offset (inherited from hero-line) shifts the whole line later for staging. */
+.hero-line {
+  display: flex; flex-wrap: wrap; align-items: flex-start;
+  gap: 0.15em 0.25em;  /* row-gap (wrapped lines), column-gap (word spacing) */
+}
+.hero-word { display: inline-flex; }
+.hero-name {
+  height: 1em; width: auto; display: block; margin-top: -.07em;
+}
+/* Role has descenders (g,p); viewBox = ascent+|descent| = 1108, so height =
+   1108/1000 em to keep the same baseline position as the name. */
+.hero-role { height: 1.108em; /* = (ascent-descent)/upem */ }
+.hero-stroke {
+  fill: transparent;
+  stroke: var(--foreground);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: hero-draw .45s ease both;
+  animation-delay: calc((var(--i) + var(--wbase, 0)) * var(--speed, .1) * 1s + var(--offset, 0) * 1s);
+}
+@keyframes hero-draw {
+  0%   { stroke-dashoffset: 1; fill: transparent; }
+  80%  { stroke-dashoffset: 0; fill: transparent; }
+  100% { stroke-dashoffset: 0; fill: var(--foreground); }
+}
+/* Role line uses muted foreground instead of white. */
+.hero-role .hero-stroke { stroke: var(--muted-foreground); }
+@keyframes hero-draw-muted {
+  0%   { stroke-dashoffset: 1; fill: transparent; }
+  80%  { stroke-dashoffset: 0; fill: transparent; }
+  100% { stroke-dashoffset: 0; fill: var(--muted-foreground); }
+}
+.hero-role .hero-stroke { animation-name: hero-draw-muted; }
+
+/* Description: per-word staggered reveal. --wi index, --offset from wrapper. */
+.hw-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: word-in .28s ease both;
+  animation-delay: calc(var(--wi) * .07s + var(--offset, 0) * 1s);
+}
+@keyframes word-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Buttons: staggered fade+slide. --bi index, --offset from wrapper. */
+.hw-btn {
+  display: inline-flex;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: btn-in .35s ease both;
+  animation-delay: calc(var(--bi) * .12s + var(--offset, 0) * 1s);
+}
+@keyframes btn-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Full-bleed project row: two copies in one track; JS auto-scrolls scrollLeft
+   (pauses on hover/touch so the user can scroll and click manually). */
+.project-marquee { display: flex; gap: 1.5rem; width: max-content; }
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card { transition: none; transform: none; }
+  .project-marquee .project-card:hover { transform: scale(1.02); }
+  .project-dialog[open] { animation: none; }
+  .hero-stroke { animation: none; stroke-dashoffset: 0; fill: var(--foreground); }
+  .hero-role .hero-stroke { fill: var(--muted-foreground); }
+  .hw-word, .hw-btn { opacity: 1; transform: none; animation: none; }
+}
+
+/* Skills: hover (or focus) a skill to reveal the projects that prove it.
+   Pure CSS — the popover is a descendant of the chip, so hovering it keeps
+   the chip hovered; padding-top bridges the gap with no dead zone. */
+.skill-chip { position: relative; }
+.skill-chip[data-projects] {
+  cursor: pointer; outline: none;
+  text-decoration: underline dotted color-mix(in oklab, var(--foreground) 35%, transparent);
+  text-underline-offset: 4px;
+  transition: color .12s;
+}
+.skill-chip[data-projects]:hover, .skill-chip[data-projects]:focus-visible { color: var(--foreground); }
+.skill-pop {
+  position: absolute; left: 50%; top: 100%; transform: translateX(-50%);
+  padding-top: .6rem; z-index: 40; min-width: 11rem; max-width: 16rem;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .15s ease;
+}
+.skill-chip:hover .skill-pop, .skill-chip:focus-within .skill-pop {
+  opacity: 1; visibility: visible; pointer-events: auto;
+}
+.skill-pop-inner {
+  display: flex; flex-direction: column; gap: .15rem;
+  padding: .5rem; text-align: left;
+  border-radius: var(--radius-md);
+  background: color-mix(in oklab, var(--popover) 80%, transparent);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid color-mix(in oklab, white 12%, transparent);
+  box-shadow: 0 18px 40px -16px rgb(0 0 0 / 0.55);
+}
+.skill-pop-item {
+  display: flex; align-items: center; gap: .5rem; width: 100%;
+  padding: .35rem .5rem; border-radius: var(--radius-sm);
+  font-size: .8rem; color: var(--popover-foreground); white-space: nowrap;
+  cursor: pointer; transition: background-color .12s;
+}
+.skill-pop-item:hover { background: color-mix(in oklab, var(--accent) 22%, transparent); }
+.skill-dot { width: .5rem; height: .5rem; border-radius: 9999px; background: var(--accent, var(--muted-foreground)); flex-shrink: 0; }
+/* Non-link note (e.g. "learned in an exam") — read-only line, wraps. */
+.skill-pop-note {
+  padding: .35rem .5rem; font-size: .78rem; line-height: 1.35;
+  color: var(--muted-foreground); white-space: normal; text-align: left;
+}
+
+/* Project screenshots: horizontal scroll strip inside the detail dialog. */
+.proj-shots { display: flex; gap: .75rem; overflow-x: auto; padding-bottom: .25rem; }
+.proj-shots img {
+  height: 12rem; width: auto; flex-shrink: 0;
+  border-radius: var(--radius-md);
+  border: 1px solid color-mix(in oklab, white 12%, transparent);
+  background: white; object-fit: contain;
+}
+
+/* Education: a project shown as a clickable pill (opens its dialog). */
+.edu-proj {
+  display: inline-flex; align-items: center; gap: .45rem;
+  padding: .25rem .65rem; border-radius: var(--radius-md);
+  font-size: .8rem; color: var(--secondary-foreground); cursor: pointer;
+  background: var(--secondary);
+  border: 1px solid color-mix(in oklab, var(--accent, var(--border)) 35%, var(--border));
+  transition: background-color .12s, border-color .12s;
+}
+.edu-proj:hover {
+  background: color-mix(in oklab, var(--accent) 22%, var(--secondary));
+  border-color: color-mix(in oklab, var(--accent) 55%, var(--border));
+}
