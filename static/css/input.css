@@ -165,6 +165,32 @@
 .hide-scrollbar { scrollbar-width: none; }
 .hide-scrollbar::-webkit-scrollbar { display: none; }
 
+/* Hero name: glyph outlines draw in, staggered per character.
+   pathLength="1" (baked in) + stroke-dasharray:1 → animate stroke-dashoffset
+   1→0 to reveal the outline, then fill fades in at the end.
+   --i is the glyph index (inline style); animation-delay staggers per char. */
+.hero-name {
+  height: 1em; width: auto; display: block; margin-top: -.07em;
+}
+.hero-stroke {
+  fill: transparent;
+  stroke: var(--foreground);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: hero-draw .45s ease both;
+  animation-delay: calc(var(--i) * .1s);
+  /* final state (animation-fill: both holds after) sets fill solid so the
+     name ends as normal text — tune the fill fade-in inside the keyframe. */
+}
+@keyframes hero-draw {
+  0%   { stroke-dashoffset: 1; fill: transparent; }
+  80%  { stroke-dashoffset: 0; fill: transparent; }
+  100% { stroke-dashoffset: 0; fill: var(--foreground); }
+}
+
 /* Full-bleed project row: two copies in one track; JS auto-scrolls scrollLeft
    (pauses on hover/touch so the user can scroll and click manually). */
 .project-marquee { display: flex; gap: 1.5rem; width: max-content; }
@@ -173,6 +199,7 @@
   .project-card { transition: none; transform: none; }
   .project-marquee .project-card:hover { transform: scale(1.02); }
   .project-dialog[open] { animation: none; }
+  .hero-stroke { animation: none; stroke-dashoffset: 0; fill: var(--foreground); }
 }
 
 /* Skills: hover (or focus) a skill to reveal the projects that prove it.

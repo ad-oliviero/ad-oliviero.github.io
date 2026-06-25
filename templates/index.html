@@ -6,7 +6,10 @@
 <!-- Hero -->
 <section class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto min-h-screen flex flex-col justify-center items-start" aria-labelledby="hero-heading">
     <p class="font-mono text-primary mb-4">Ciao, I am</p>
-    <h1 id="hero-heading" class="text-5xl sm:text-7xl font-bold text-foreground mb-6 tracking-tight">{{ config.extra.author }}.</h1>
+    <h1 id="hero-heading" class="text-5xl sm:text-7xl font-bold text-foreground mb-6 tracking-tight">
+        <span class="sr-only">{{ config.extra.author }}.</span>
+        {% include "partials/hero-name.html" %}
+    </h1>
     <p class="text-4xl sm:text-5xl font-bold text-muted-foreground mb-8 tracking-tight">{{ config.extra.role }}</p>
     <p class="max-w-xl text-lg text-muted-foreground mb-12 leading-relaxed">{{ section.extra.hero_description }}</p>
     <div class="flex flex-wrap gap-4">
