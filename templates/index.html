@@ -10,11 +10,17 @@
         <span class="sr-only">{{ config.extra.author }}.</span>
         {% include "partials/hero-name.html" %}
     </h1>
-    <p class="text-4xl sm:text-5xl font-bold text-muted-foreground mb-8 tracking-tight">{{ config.extra.role }}</p>
-    <p class="max-w-xl text-lg text-muted-foreground mb-12 leading-relaxed">{{ section.extra.hero_description }}</p>
-    <div class="flex flex-wrap gap-4">
-        <a href="#projects" class="btn btn-primary btn-lg font-mono">Check out my projects</a>
-        <a href="{{ config.extra.github }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-lg font-mono">{{ svgs::github_icon() }} GitHub</a>
+    <p class="text-4xl sm:text-5xl font-bold text-muted-foreground mb-8 tracking-tight" style="--offset:1.2;--speed:.06">
+        <span class="sr-only">{{ config.extra.role }}</span>
+        {% include "partials/hero-role.html" %}
+    </p>
+    <p class="max-w-xl text-lg text-muted-foreground mb-12 leading-relaxed" style="--offset:3.0">
+        {% set words = section.extra.hero_description | split(pat=" ") %}
+        {% for word in words %}<span class="hw-word" style="--wi:{{ loop.index0 }}">{{ word }}</span>{% if not loop.last %} {% endif %}{% endfor %}
+    </p>
+    <div class="flex flex-wrap gap-4" style="--offset:4.2">
+        <span class="hw-btn" style="--bi:0"><a href="#projects" class="btn btn-primary btn-lg font-mono">Check out my projects</a></span>
+        <span class="hw-btn" style="--bi:1"><a href="{{ config.extra.github }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-lg font-mono">{{ svgs::github_icon() }} GitHub</a></span>
     </div>
     <a href="#about" aria-label="Scroll to about" class="absolute bottom-8 left-1/2 -ml-3 text-muted-foreground hover:text-primary transition-colors animate-bounce">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
