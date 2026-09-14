@@ -6,7 +6,7 @@ weight = 17
 [extra]
 tags = ["Docker", "KVM", "Self-hosting", "Linux"]
 github_url = "https://github.com/ad-oliviero/homelab"
-accent = "#22c55e"
+accent = "#98971a"
 +++
 My self-hosting setup: Docker stacks and KVM virtualization configs for a home server.
 <!-- more -->

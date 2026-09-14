@@ -6,7 +6,7 @@ weight = 7
 [extra]
 tags = ["Swift", "SwiftUI", "SpriteKit", "iOS", "macOS", "Game"]
 github_url = "https://github.com/ad-oliviero/andus"
-accent = "#818cf8"
+accent = "#83a598"
 logo = "img/andus.png"
 +++
 A roguelike where an ink-made hero fights off hordes of monsters across an office desk.

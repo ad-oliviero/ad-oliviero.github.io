@@ -6,7 +6,7 @@ weight = 9
 [extra]
 tags = ["Rust", "Tauri", "Android", "Desktop"]
 github_url = "https://github.com/ad-oliviero/num-string"
-accent = "#34d399"
+accent = "#8ec07c"
 logo = "img/num-string.png"
 +++
 Spells any number out in words. 6347613 becomes "six million three hundred forty-seven...".

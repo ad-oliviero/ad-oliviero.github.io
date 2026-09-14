@@ -6,7 +6,7 @@ weight = 10
 [extra]
 tags = ["C", "Raspberry Pi Pico", "Embedded", "WiFi"]
 github_url = "https://github.com/ad-oliviero/wifiprint"
-accent = "#0ea5e9"
+accent = "#83a598"
 +++
 A Raspberry Pi Pico W concept for printing at a shop by scanning a QR code instead of emailing.
 <!-- more -->

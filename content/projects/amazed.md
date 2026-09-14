@@ -5,7 +5,7 @@ weight = 5
 
 [extra]
 tags = ["Unity", "C#", "macOS", "tvOS", "iOS", "Multiplayer"]
-accent = "#a855f7"
+accent = "#b16286"
 logo = "img/amazed.png"
 website_url = "https://boniot.github.io/AmazeDSupport"
 +++

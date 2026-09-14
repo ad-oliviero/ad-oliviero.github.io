@@ -6,7 +6,7 @@ weight = 15
 [extra]
 tags = ["C", "Graphics", "Game"]
 github_url = "https://github.com/ad-oliviero/simple_raycasting"
-accent = "#f43f5e"
+accent = "#fb4934"
 +++
 A from-scratch Wolfenstein-style raycasting renderer written in C.
 <!-- more -->

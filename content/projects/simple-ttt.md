@@ -6,7 +6,7 @@ weight = 14
 [extra]
 tags = ["C", "raylib", "Multiplayer", "Android"]
 github_url = "https://github.com/ad-oliviero/simple_TTT_online"
-accent = "#06b6d4"
+accent = "#689d6a"
 +++
 An online tic-tac-toe game written in C with raylib, building for Linux, Windows and Android.
 <!-- more -->

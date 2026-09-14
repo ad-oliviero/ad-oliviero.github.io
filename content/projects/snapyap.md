@@ -6,7 +6,7 @@ weight = 8
 [extra]
 tags = ["Swift", "SwiftUI", "SwiftData", "iOS"]
 github_url = "https://github.com/ad-oliviero/SnapYap"
-accent = "#fb7185"
+accent = "#d3869b"
 logo = "img/snapyap.png"
 +++
 An iOS app that pairs a snapped photo with a short voice note, you first Snap, then you Yap.

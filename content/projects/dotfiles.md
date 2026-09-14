@@ -6,7 +6,7 @@ weight = 16
 [extra]
 tags = ["Shell", "Zsh", "Dotfiles", "Hyprland", "stow"]
 github_url = "https://github.com/ad-oliviero/DotFiles"
-accent = "#a3e635"
+accent = "#b8bb26"
 +++
 My whole cross-platform development and desktop environment, managed with GNU stow.
 <!-- more -->

@@ -6,7 +6,7 @@ weight = 13
 [extra]
 tags = ["Rust", "Algorithms", "Graphs", "Academic"]
 github_url = "https://github.com/ad-oliviero/progetto_eia"
-accent = "#ef4444"
+accent = "#cc241d"
 screenshots = ["img/progetto-eia/enron-bfs.png", "img/progetto-eia/roadnet-bidirectional.png", "img/progetto-eia/patents-uniform-cost.png"]
 +++
 A university AI-exam project in Rust running graph algorithms over large real-world datasets.

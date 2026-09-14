@@ -6,7 +6,7 @@ weight = 6
 [extra]
 tags = ["Swift", "SwiftUI", "iOS", "Machine Learning"]
 github_url = "https://github.com/ad-oliviero/PicSolve"
-accent = "#3b82f6"
+accent = "#458588"
 +++
 An iOS app that solves math problems straight from your camera, inspired by Photomath.
 <!-- more -->

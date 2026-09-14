@@ -7,7 +7,7 @@ weight = 4
 tags = ["C", "CLI", "Interpreter"]
 github_url = "https://github.com/ad-oliviero/bfli"
 demo_url = "/bfli-demo"
-accent = "#f97316"
+accent = "#fe8019"
 +++
 A fast and efficient Brainfuck language interpreter written in C.
 <!-- more -->

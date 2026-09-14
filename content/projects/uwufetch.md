@@ -6,7 +6,7 @@ weight = 1
 [extra]
 tags = ["C", "Linux", "CLI"]
 github_url = "https://github.com/ad-oliviero/uwufetch"
-accent = "#f472b6"
+accent = "#d65d0e"
 +++
 A meme system info tool for (almost) all your Linux/Unix-based systems, based on the nyan/UwU trend on r/linuxmasterrace.
 <!-- more -->

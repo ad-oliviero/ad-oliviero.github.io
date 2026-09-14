@@ -6,7 +6,7 @@ weight = 2
 [extra]
 tags = ["C++", "Embedded", "Raspberry Pi Pico", "Arduino"]
 github_url = "https://github.com/ad-oliviero/telecomand"
-accent = "#f59e0b"
+accent = "#d79921"
 +++
 A Raspberry Pi Pico project re-implementing an old ceiling-fan remote in software and hardware.
 <!-- more -->

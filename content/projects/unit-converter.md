@@ -6,7 +6,7 @@ weight = 3
 [extra]
 tags = ["Flutter", "Android"]
 github_url = "https://github.com/ad-oliviero/unitconverter"
-accent = "#22d3ee"
+accent = "#fabd2f"
 logo = "img/unit-converter.png"
 +++
 A Flutter app to quickly convert measurement units, with live monetary exchange rates.

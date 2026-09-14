@@ -15,7 +15,7 @@ jobs:
           mv tailwindcss-linux-x64 tailwindcss
           ./tailwindcss -i static/css/input.css -o static/css/style.css --minify
       - name: build_and_deploy
-        uses: shalzz/zola-deploy-action@master
+        uses: shalzz/zola-deploy-action@v0.22.1
         env:
           # Target branch
           PAGES_BRANCH: gh-pages
